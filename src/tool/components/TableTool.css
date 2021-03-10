@@ -1,0 +1,11 @@
+.table-tool-btn-action {
+    display: flex;
+}
+
+.table-tool-btn-action button:first-child {
+    margin-right: 10px;
+}
+
+.table-tool-modal-textarea {
+    margin: 10px 0;
+}
