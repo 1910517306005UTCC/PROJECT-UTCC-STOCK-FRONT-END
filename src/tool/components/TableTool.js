@@ -70,7 +70,7 @@ export default function TableTool() {
     const [headerId, setHeaderId] = useState('');
     const [toolId, setToolId] = useState('')
 
-console.log(toolList)
+    console.log(toolList)
     // console.log(messageAlert, loading)
 
     useEffect(() => {
@@ -126,7 +126,7 @@ console.log(toolList)
 
     return (
         <div>
-            { messageAlert && <Alert onClose={() => { }} style={{margin: "10px 0"}}>This is a success alert — check it out!</Alert>}
+            { messageAlert && <Alert onClose={() => { }} style={{ margin: "10px 0" }}>This is a success alert — check it out!</Alert>}
             {/* Table */}
 
             <Paper className={classes.root}>

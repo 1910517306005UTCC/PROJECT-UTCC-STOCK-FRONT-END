@@ -11,10 +11,10 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import SlideBar from './SlideBar';
+import { Link } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
+    },
+    webName: {
+        color: "#fff"
     },
     search: {
         position: 'relative',
@@ -130,6 +133,7 @@ export default function Nav() {
         >
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Sign out</MenuItem>
         </Menu>
     );
 
@@ -194,7 +198,7 @@ export default function Nav() {
 
                     {/* Header */}
                     <Typography className={classes.title} variant="h6" noWrap>
-                        Material-UI
+                        <Link to="/" className={classes.webName}>Stock-Electronic</Link>
                     </Typography>
 
                     {/* Search Icon */}

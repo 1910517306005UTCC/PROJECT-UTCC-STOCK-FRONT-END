@@ -2,14 +2,10 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
     list: {
@@ -18,6 +14,9 @@ const useStyles = makeStyles({
     fullList: {
         width: 'auto',
     },
+    link: {
+        paddingLeft: "40px"
+    }
 });
 
 export default function SlideBar(props) {
@@ -58,21 +57,42 @@ export default function SlideBar(props) {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                <ListItem button>
+                    <Link className={classes.link} to="/">All Tool</Link>
+                </ListItem>
+                <ListItem button>
+                    <Link className={classes.link} to="/tool/new">Add Tool</Link>
+                </ListItem>
+                <ListItem button>
+                    <Link className={classes.link} to="/">history of Tool</Link>
+                </ListItem>
             </List>
             <Divider />
             <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                <ListItem button>
+                    <Link className={classes.link} to="/">All Board</Link>
+                </ListItem>
+                <ListItem button>
+                    <Link className={classes.link} to="/board/new">Add Board</Link>
+                </ListItem>
+                <ListItem button>
+                    <Link className={classes.link} to="/project/new">Add Project</Link>
+                </ListItem>
+                <ListItem button>
+                    <Link className={classes.link} to="/">Request Board</Link>
+                </ListItem>
+                <ListItem button>
+                    <Link className={classes.link} to="/">history of Board</Link>
+                </ListItem>
+                <ListItem button>
+                    <Link className={classes.link} to="/">history of Project</Link>
+                </ListItem>
+            </List>
+            <Divider />
+            <List>
+                <ListItem button>
+                    <Link className={classes.link} to="/">อุปกรณ์ไม่ครบ</Link>
+                </ListItem>
             </List>
         </div>
     );

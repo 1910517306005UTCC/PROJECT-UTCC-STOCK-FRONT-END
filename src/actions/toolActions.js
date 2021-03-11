@@ -14,6 +14,7 @@ export const toolListAction = () => (dispatch) => {
 
 export const addToolToTotal = (id, total) => (dispatch) => {
     try {
+        
         dispatch({type: TOOL_ADD_TOTAL_REQUEST});
         dispatch( {type: TOOL_ADD_TOTAL_SUCCESS, payload: { id: id, total: total } } )
     } catch (error) {

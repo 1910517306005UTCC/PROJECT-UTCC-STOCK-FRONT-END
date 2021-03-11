@@ -73,6 +73,7 @@ const Input = props => {
                 onChange={changeHandler}
                 onBlur={touchHandler}
                 value={inputState.value}
+                style={{margin: "20px 0"}}
             />
         ) : (
             <textarea
