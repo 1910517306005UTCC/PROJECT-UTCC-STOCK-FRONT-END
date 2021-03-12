@@ -8,6 +8,8 @@ import CreateTool from "./tool/pages/CreateTool";
 import "./App.css"
 import CreateBoard from "./board/page/CreateBoard";
 import CreateProject from "./board/page/CreateProject";
+import BoardList from "./board/page/BoardList";
+import BoardRequest from "./board/page/BoardRequest";
 
 function App() {
   return (
@@ -21,6 +23,12 @@ function App() {
             </Route>
             <Route path="/tool/new">
               <CreateTool />
+            </Route>
+            <Route path="/board/list">
+              <BoardList />
+            </Route>
+            <Route path="/board/request">
+              <BoardRequest />
             </Route>
             <Route path="/board/new">
               <CreateBoard />

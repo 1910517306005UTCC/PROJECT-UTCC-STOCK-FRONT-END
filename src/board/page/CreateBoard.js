@@ -9,7 +9,7 @@ import { toolListAction } from "../../actions/toolActions";
 
 
 
-// import "./CreateTool.css"
+import "./CreateBoard.css"
 import ImageUpload from '../../shared/components/FormElements/ImageUpload'
 import SelectComponent from '../../shared/components/FormElements/Select'
 import ListToolSelected from '../components/ListToolSelected'
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         margin: "20px 0"
     },
     input: {
-        margin: "20px 0"
+        margin: "20px 0",
     },
     button: {
         margin: "20px 0"
@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
     },
     PaperFilter: {
         padding: "10px"
+    },
+    margin: {
+        margin: "10px 0"
     }
 }));
 
@@ -41,7 +44,6 @@ function CreateBoard() {
     const toolList = useSelector((state) => state.toolList);
     const { tools } = toolList;
     const [file, setFile] = useState();
-    const [previewUrl, setPreviewUrl] = useState();
     const [total, setTotal] = useState('');
     const [type, setType] = useState('');
     const [description, setDescription] = useState('');
@@ -94,21 +96,6 @@ function CreateBoard() {
         console.log(newTool);
     }
 
-    // Function of selecting image
-    const pickedHandler = e => {
-        setFile(e.target.files[0]);
-        const fileReader = new FileReader();
-        fileReader.onload = () => {
-            setPreviewUrl(fileReader.result);
-        };
-        fileReader.readAsDataURL(e.target.files[0]);
-
-    };
-
-    const deleteImage = () => {
-        setPreviewUrl(false);
-        setFile();
-    }
 
     const onChangeTypeFilter = (e) => {
         let filterData = tools.filter((item) => item.type.toLowerCase() === e.target.value)
@@ -120,14 +107,14 @@ function CreateBoard() {
 
     const onChangeCategoryFilter = (e) => {
         setCategorySelect(e.target.value);
-        let filterData = categoryFilter.filter((item) => item.category.toLowerCase() === e.target.value)
+        let filterData = typeFilter.filter((item) => item.category.toLowerCase() === e.target.value)
         setNameFilter(filterData);
 
     }
 
     const onChangeNameFilter = (e) => {
         setNameSelect(e.target.value);
-        let filterData = nameFilter.filter((item) => item.toolName.toLowerCase() === e.target.value);
+        let filterData = categoryFilter.filter((item) => item.toolName.toLowerCase() === e.target.value);
         setNameFilter(filterData)
     }
 
@@ -144,13 +131,11 @@ function CreateBoard() {
             total: totalSelect
         }
 
-        setToolSelected([...toolSelected, createNewTool])
-
-        setNameFilter([])
         setTotalSelect("")
         setNameSelect("")
         setCategorySelect("")
         setTypeSelect("")
+        setToolSelected([...toolSelected, createNewTool])
     }
 
     const deleteToolSelected = (id) => {
@@ -161,7 +146,7 @@ function CreateBoard() {
     return (
         <Container maxWidth="sm">
             <h1>Create Board</h1>
-            <Paper className="createtool-form">
+            <Paper className="createboard-form">
                 <form onSubmit={onSubmit}>
 
                     <Input
@@ -185,7 +170,7 @@ function CreateBoard() {
                     />
 
                     <Paper className={classes.PaperFilter}>
-                        <div className="createtool-input-group">
+                        <div className="createproject-select-group">
                             <SelectComponent list={tools} typeFilter="tool" filterName="type" dataType="type" onChange={onChangeTypeFilter} value={typeSelect} />
                             <SelectComponent list={typeFilter} typeFilter="tool" filterName="category" dataType="category" onChange={onChangeCategoryFilter} value={categorySelect} />
                         </div>
@@ -209,7 +194,7 @@ function CreateBoard() {
                     </Paper>
 
 
-                    <div className="createtool-input-group">
+                    <div className="createboard-input-group">
                         <TextField
                             label="Total"
                             variant="outlined"
@@ -217,7 +202,6 @@ function CreateBoard() {
                             type="number"
                             className={classes.input}
                             onChange={(e) => setTotal(e.target.value)}
-
                         />
                         <TextField
                             label="Type of work"
@@ -229,7 +213,7 @@ function CreateBoard() {
                         />
                     </div>
 
-                    <ImageUpload pickedHandler={pickedHandler} previewUrl={previewUrl} deleteImage={deleteImage} />
+                    <ImageUpload file={file} setFile={setFile} />
 
                     <TextField
                         id="outlined-multiline-flexible"

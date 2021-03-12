@@ -1,0 +1,21 @@
+.createproject-input-group {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.createproject-input-group div {
+    width: 98%;
+}
+
+.createproject-select-group {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.createproject-select-group div {
+    width: 98%;
+}
+
+.createproject-form {
+    padding: 10px 20px;
+}

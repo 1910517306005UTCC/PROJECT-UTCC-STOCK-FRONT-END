@@ -1,0 +1,11 @@
+.uploadMultiple-container {
+    display: flex;
+}
+
+/* .uploadMutiple-container div {
+    margin-right: 10px;
+} */
+
+.form-control {
+    margin: 10px 0;
+}

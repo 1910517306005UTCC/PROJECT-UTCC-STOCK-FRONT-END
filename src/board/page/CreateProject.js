@@ -9,10 +9,11 @@ import { toolListAction } from "../../actions/toolActions";
 
 
 
-// import "./CreateTool.css"
+import "./CreateProject.css"
 import ImageUpload from '../../shared/components/FormElements/ImageUpload'
 import SelectComponent from '../../shared/components/FormElements/Select'
 import ListToolSelected from '../components/ListToolSelected'
+import ImageUploadMultiple from '../../shared/components/FormElements/ImageUploadMultiple'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,12 +26,11 @@ const useStyles = makeStyles((theme) => ({
     button: {
         margin: "20px 0"
     },
-    inputFilter: {
-        margin: "20px 0px",
-        padding: "0 5px"
-    },
     PaperFilter: {
         padding: "10px"
+    },
+    margin: {
+        margin: "10px 0"
     }
 }));
 
@@ -41,7 +41,6 @@ function CreateProject() {
     const toolList = useSelector((state) => state.toolList);
     const { tools } = toolList;
     const [file, setFile] = useState();
-    const [previewUrl, setPreviewUrl] = useState();
     const [total, setTotal] = useState('');
     const [type, setType] = useState('');
     const [description, setDescription] = useState('');
@@ -54,6 +53,7 @@ function CreateProject() {
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [nameFilter, setNameFilter] = useState([]);
     const [toolSelected, setToolSelected] = useState([]);
+    const [files, setFiles] = useState([]);
 
 
 
@@ -87,27 +87,16 @@ function CreateProject() {
             type: type,
             imageProfile: file,
             description: description,
-            tools: toolSelected
+            tools: toolSelected,
+            images: files
         }
 
         console.log(newProject);
     }
 
-    // Function of selecting image
-    const pickedHandler = e => {
-        setFile(e.target.files[0]);
-        const fileReader = new FileReader();
-        fileReader.onload = () => {
-            setPreviewUrl(fileReader.result);
-        };
-        fileReader.readAsDataURL(e.target.files[0]);
 
-    };
 
-    const deleteImage = () => {
-        setPreviewUrl(false);
-        setFile();
-    }
+
 
     const onChangeTypeFilter = (e) => {
         let filterData = tools.filter((item) => item.type.toLowerCase() === e.target.value)
@@ -119,17 +108,16 @@ function CreateProject() {
 
     const onChangeCategoryFilter = (e) => {
         setCategorySelect(e.target.value);
-        let filterData = categoryFilter.filter((item) => item.category.toLowerCase() === e.target.value)
+        let filterData = typeFilter.filter((item) => item.category.toLowerCase() === e.target.value)
         setNameFilter(filterData);
 
     }
 
     const onChangeNameFilter = (e) => {
         setNameSelect(e.target.value);
-        let filterData = nameFilter.filter((item) => item.toolName.toLowerCase() === e.target.value);
+        let filterData = categoryFilter.filter((item) => item.toolName.toLowerCase() === e.target.value);
         setNameFilter(filterData)
     }
-
 
     const onSubmitToolSelected = () => {
         let { id, toolName, type, category, size, imageProfile } = nameFilter[0];
@@ -140,16 +128,16 @@ function CreateProject() {
             category,
             size,
             imageProfile,
-            total: totalSelect
+            total: totalSelect,
         }
 
-        setToolSelected([...toolSelected, createNewTool])
-
-        setNameFilter([])
         setTotalSelect("")
         setNameSelect("")
         setCategorySelect("")
         setTypeSelect("")
+        setToolSelected([...toolSelected, createNewTool])
+
+
     }
 
     const deleteToolSelected = (id) => {
@@ -160,7 +148,7 @@ function CreateProject() {
     return (
         <Container maxWidth="sm">
             <h1>Create Project</h1>
-            <Paper className="createtool-form">
+            <Paper className="createproject-form">
                 <form onSubmit={onSubmit}>
 
                     <Input
@@ -184,7 +172,7 @@ function CreateProject() {
                     />
 
                     <Paper className={classes.PaperFilter}>
-                        <div className="createtool-input-group">
+                        <div className="createproject-select-group">
                             <SelectComponent list={tools} typeFilter="tool" filterName="type" dataType="type" onChange={onChangeTypeFilter} value={typeSelect} />
                             <SelectComponent list={typeFilter} typeFilter="tool" filterName="category" dataType="category" onChange={onChangeCategoryFilter} value={categorySelect} />
                         </div>
@@ -195,7 +183,6 @@ function CreateProject() {
                             type="number"
                             fullWidth
                             value={totalSelect}
-                            className={classes.inputFilter}
                             onChange={(e) => setTotalSelect(e.target.value)}
                         />
                         <Button variant="contained" size="small" color="primary" className={classes.margin} onClick={onSubmitToolSelected}>
@@ -208,7 +195,7 @@ function CreateProject() {
                     </Paper>
 
 
-                    <div className="createtool-input-group">
+                    <div className="createproject-input-group">
                         <TextField
                             label="Total"
                             variant="outlined"
@@ -216,7 +203,6 @@ function CreateProject() {
                             type="number"
                             className={classes.input}
                             onChange={(e) => setTotal(e.target.value)}
-
                         />
                         <TextField
                             label="Type of work"
@@ -228,7 +214,11 @@ function CreateProject() {
                         />
                     </div>
 
-                    <ImageUpload pickedHandler={pickedHandler} previewUrl={previewUrl} deleteImage={deleteImage} />
+                    <ImageUpload file={file} setFile={setFile} />
+
+                    <Divider />
+
+                    <ImageUploadMultiple files={files} setFiles={setFiles} />
 
                     <TextField
                         id="outlined-multiline-flexible"

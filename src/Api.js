@@ -125,6 +125,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "R10K",
+        toolCode: "vdsv15",
         imageProfile: "/images/tool2.jpg",
         status: "2",
         type: "resister",
@@ -136,6 +137,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "C470UF",
+        toolCode: "vdsv15",
         imageProfile: "/images/c1.jpg",
         status: "1",
         type: "c",
@@ -147,6 +149,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "R560K",
+        toolCode: "vdsv15",
         imageProfile: "/images/r2.jpg",
         status: "1",
         type: "resister",
@@ -158,6 +161,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "R120",
+        toolCode: "vdsv15",
         imageProfile: "/images/tool2.jpg",
         status: "3",
         type: "resister",
@@ -169,6 +173,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "LM-2575",
+        toolCode: "vdsv15",
         imageProfile: "/images/lm.jpg",
         status: "1",
         type: "Lm",
@@ -180,6 +185,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "IC-1",
+        toolCode: "vdsv15",
         imageProfile: "/images/ic1.jpg",
         status: "3",
         type: "IC",
@@ -193,6 +199,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "IC-2",
+        toolCode: "vdsv15",
         imageProfile: "/images/i2.jpg",
         status: "1",
         type: "IC",
@@ -204,6 +211,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "IC-3",
+        toolCode: "vdsv15",
         imageProfile: "/images/i2.jpg",
         status: "2",
         type: "IC",
@@ -215,6 +223,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "Module-WIFI",
+        toolCode: "vdsv15",
         imageProfile: "/images/tool1.jpg",
         status: "1",
         type: "Module",
@@ -227,6 +236,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "Module-WIFI v.2",
+        toolCode: "vdsv15",
         imageProfile: "/images/tool1.jpg",
         status: "3",
         type: "Module",
@@ -239,6 +249,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "Module-WIFI v.3",
+        toolCode: "vdsv15",
         imageProfile: "/images/tool1.jpg",
         status: "3",
         type: "Module",
@@ -250,6 +261,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "R10M",
+        toolCode: "vdsv15",
         imageProfile: "https://images.unsplash.com/photo-1615216865517-f2e0c2cd79a1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
         status: "1",
         type: "resister",
@@ -261,6 +273,7 @@ export const listToolApi = [
     {
         id: uuidv4(),
         toolName: "R22k",
+        toolCode: "vdsv15",
         imageProfile: "https://images.unsplash.com/photo-1612611679469-1f2f2da849fe?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
         status: "2",
         type: "resister",
@@ -313,7 +326,9 @@ export const toolItem = {
 export const listBoards = [
     {
         id: uuidv4(),
-        nameBoard: "ET-ARDUINO v.1",
+        boardName: "ET-ARDUINO v.1",
+        total: "0",
+        boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",
         images: [
             "/images/b1.png",
@@ -326,7 +341,7 @@ export const listBoards = [
         tools: [
             {
                 id: uuidv4(),
-                nameTool: "R10K",
+                toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
                 type: "RESISTER",
@@ -336,7 +351,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "LM-2575",
+                toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
                 type: "LM",
@@ -347,7 +362,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "ic1.jpg",
+                toolName: "ic1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -359,7 +374,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "Module-WIFI",
+                toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
                 type: "Module",
@@ -372,7 +387,9 @@ export const listBoards = [
     },
     {
         id: uuidv4(),
-        nameBoard: "ET-ARDUINO v.2",
+        boardName: "ET-ARDUINO v.2",
+        total: "0",
+        boardCode: "f5d6gs",
         imageProfile: "/images/b3.jpg",
         images: [
             "/images/b1.png",
@@ -385,7 +402,7 @@ export const listBoards = [
         tools: [
             {
                 id: uuidv4(),
-                nameTool: "R10K",
+                toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
                 type: "RESISTER",
@@ -395,7 +412,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "LM-2575",
+                toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
                 type: "LM",
@@ -406,7 +423,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "ic1.jpg",
+                toolName: "ic1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -418,7 +435,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "Module-WIFI",
+                toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
                 type: "Module",
@@ -431,7 +448,9 @@ export const listBoards = [
     },
     {
         id: uuidv4(),
-        nameBoard: "ET-ARDUINO v.3",
+        boardName: "ET-ARDUINO v.3",
+        total: "0",
+        boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",
         images: [
             "/images/b1.png",
@@ -444,7 +463,7 @@ export const listBoards = [
         tools: [
             {
                 id: uuidv4(),
-                nameTool: "R10K",
+                toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
                 type: "RESISTER",
@@ -454,7 +473,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "LM-2575",
+                toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
                 type: "LM",
@@ -465,7 +484,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "ic1.jpg",
+                toolName: "ic1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -477,7 +496,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "Module-WIFI",
+                toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
                 type: "Module",
@@ -490,7 +509,9 @@ export const listBoards = [
     },
     {
         id: uuidv4(),
-        nameBoard: "ET-ARDUINO v.4",
+        boardName: "ET-ARDUINO v.4",
+        total: "0",
+        boardCode: "f5d6gs",
         imageProfile: "/images/b3.jpg",
         images: [
             "/images/b1.png",
@@ -503,7 +524,7 @@ export const listBoards = [
         tools: [
             {
                 id: uuidv4(),
-                nameTool: "R10K",
+                toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
                 type: "RESISTER",
@@ -513,7 +534,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "LM-2575",
+                toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
                 type: "LM",
@@ -524,7 +545,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "ic1.jpg",
+                toolName: "ic1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -536,7 +557,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "Module-WIFI",
+                toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
                 type: "Module",
@@ -549,7 +570,9 @@ export const listBoards = [
     },
     {
         id: uuidv4(),
-        nameBoard: "ET-ARDUINO v.5",
+        boardName: "ET-ARDUINO v.5",
+        total: "0",
+        boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",
         images: [
             "/images/b1.png",
@@ -562,7 +585,7 @@ export const listBoards = [
         tools: [
             {
                 id: uuidv4(),
-                nameTool: "R10K",
+                toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
                 type: "RESISTER",
@@ -572,7 +595,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "LM-2575",
+                toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
                 type: "LM",
@@ -583,7 +606,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "ic1.jpg",
+                toolName: "ic1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -595,7 +618,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "Module-WIFI",
+                toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
                 type: "Module",
@@ -608,7 +631,9 @@ export const listBoards = [
     },
     {
         id: uuidv4(),
-        nameBoard: "ET-ARDUINO v.6",
+        boardName: "ET-ARDUINO v.6",
+        total: "0",
+        boardCode: "f5d6gs",
         imageProfile: "/images/b3.jpg",
         images: [
             "/images/b1.png",
@@ -621,7 +646,7 @@ export const listBoards = [
         tools: [
             {
                 id: uuidv4(),
-                nameTool: "R10K",
+                toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
                 type: "RESISTER",
@@ -631,7 +656,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "LM-2575",
+                toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
                 type: "LM",
@@ -642,7 +667,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "ic1.jpg",
+                toolName: "ic1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -654,7 +679,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "Module-WIFI",
+                toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
                 type: "Module",
@@ -667,7 +692,9 @@ export const listBoards = [
     },
     {
         id: uuidv4(),
-        nameBoard: "ET-ARDUINO v.7",
+        boardName: "ET-ARDUINO v.7",
+        total: "0",
+        boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",
         images: [
             "/images/b1.png",
@@ -680,7 +707,7 @@ export const listBoards = [
         tools: [
             {
                 id: uuidv4(),
-                nameTool: "R10K",
+                toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
                 type: "RESISTER",
@@ -690,7 +717,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "LM-2575",
+                toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
                 type: "LM",
@@ -701,7 +728,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "ic1.jpg",
+                toolName: "ic1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -713,7 +740,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "Module-WIFI",
+                toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
                 type: "Module",
@@ -726,7 +753,9 @@ export const listBoards = [
     },
     {
         id: uuidv4(),
-        nameBoard: "ET-ARDUINO v.8",
+        boardName: "ET-ARDUINO v.8",
+        total: "0",
+        boardCode: "f5d6gs",
         imageProfile: "/images/b3.jpg",
         images: [
             "/images/b1.png",
@@ -739,7 +768,7 @@ export const listBoards = [
         tools: [
             {
                 id: uuidv4(),
-                nameTool: "R10K",
+                toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
                 type: "RESISTER",
@@ -749,7 +778,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "LM-2575",
+                toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
                 type: "LM",
@@ -760,7 +789,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "ic1.jpg",
+                toolName: "ic1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -772,7 +801,7 @@ export const listBoards = [
             },
             {
                 id: uuidv4(),
-                nameTool: "Module-WIFI",
+                toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
                 type: "Module",

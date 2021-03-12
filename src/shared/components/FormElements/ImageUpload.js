@@ -26,22 +26,40 @@ const useStyles = makeStyles((theme) => ({
 
 const ImageUpload = props => {
     const classes = useStyles();
+    const { file, setFile } = props;
+    const [previewUrl, setPreviewUrl] = useState();
+
+    // Function of selecting image
+    const pickedHandler = e => {
+        setFile(e.target.files[0]);
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+            setPreviewUrl(fileReader.result);
+        };
+        fileReader.readAsDataURL(e.target.files[0]);
+
+    };
+
+    const deleteImage = () => {
+        setPreviewUrl(false);
+        setFile();
+    }
 
     return (
         <div className="form-control">
-            { props.previewUrl &&
+            <h4>Profile Image</h4>
+            { previewUrl &&
                 <div className={classes.square}>
-                    <Badge color="secondary" badgeContent="x" onClick={props.deleteImage} className={classes.btnDelete} >
-                        <Avatar variant="square"  src={props.previewUrl} />
+                    <Badge color="secondary" badgeContent="x" onClick={deleteImage} className={classes.btnDelete} >
+                        <Avatar variant="square" src={previewUrl} />
                     </Badge>
                 </div>}
             <input
                 accept="image/*"
                 className={classes.input}
                 id="contained-button-file"
-                multiple
                 type="file"
-                onChange={props.pickedHandler}
+                onChange={pickedHandler}
             />
             <label htmlFor="contained-button-file">
                 <Button variant="contained" color="primary" component="span">

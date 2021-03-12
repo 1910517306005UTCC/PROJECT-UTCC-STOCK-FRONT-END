@@ -1,10 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from 'redux-thunk';
 import { toolListReducer } from "./reducers/toolReducers";
+import { boardListReducer } from "./reducers/boardReducers";
 
 const inititalState = [];
 const reducer = combineReducers({
-    toolList: toolListReducer
+    toolList: toolListReducer,
+    boardList: boardListReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

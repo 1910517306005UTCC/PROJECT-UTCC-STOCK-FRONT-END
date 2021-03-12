@@ -70,7 +70,7 @@ export default function SlideBar(props) {
             <Divider />
             <List>
                 <ListItem button>
-                    <Link className={classes.link} to="/">All Board</Link>
+                    <Link className={classes.link} to="/board/list">All Board</Link>
                 </ListItem>
                 <ListItem button>
                     <Link className={classes.link} to="/board/new">Add Board</Link>
@@ -79,7 +79,7 @@ export default function SlideBar(props) {
                     <Link className={classes.link} to="/project/new">Add Project</Link>
                 </ListItem>
                 <ListItem button>
-                    <Link className={classes.link} to="/">Request Board</Link>
+                    <Link className={classes.link} to="/board/request">Request Board</Link>
                 </ListItem>
                 <ListItem button>
                     <Link className={classes.link} to="/">history of Board</Link>

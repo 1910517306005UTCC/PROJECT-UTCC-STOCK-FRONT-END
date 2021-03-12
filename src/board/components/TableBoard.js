@@ -6,22 +6,16 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePag
 import { useForm } from "../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import Input from "../../shared/components/FormElements/Input";
-import { toolListAction, addToolToTotal } from "../../actions/toolActions";
+import { boardListAction, addBoardToTotal } from "../../actions/boardActions";
 
-import "./TableTool.css"
+import "./TableBoard.css"
 
 const columns = [
     { label: 'Image', minWidth: 100 },
-    { label: 'Tool name', minWidth: 170 },
-    { label: 'Tool code', minWidth: 170 },
+    { label: 'Board name', minWidth: 170 },
+    { label: 'Board code', minWidth: 170 },
     {
         label: 'type', minWidth: 100, align: 'left',
-    },
-    {
-        label: 'category', minWidth: 120, align: 'left',
-    },
-    {
-        label: 'size', minWidth: 120, align: 'left',
     },
     {
         label: 'status', minWidth: 170, align: 'left',
@@ -58,21 +52,21 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function TableTool() {
+export default function TableBoard() {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const toolList = useSelector((state) => state.toolList);
-    const { tools, loading, error, messageAlert } = toolList;
+    const boardList = useSelector((state) => state.boardList);
+    const { boards, loading, error, messageAlert } = boardList;
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     // const [tools] = useState(listToolApi);
     const [openModal, setOpenModal] = useState(false);
     const [headerForm, setHeaderForm] = useState('');
     const [headerId, setHeaderId] = useState('');
-    const [toolId, setToolId] = useState('')
+    const [boardId, setBoardId] = useState('')
 
     useEffect(() => {
-        dispatch(toolListAction());
+        dispatch(boardListAction());
         return () => {
 
         }
@@ -101,19 +95,19 @@ export default function TableTool() {
         // const newName = name
         setHeaderForm(header + ' ' + name)
         setHeaderId(header);
-        setToolId(id);
+        setBoardId(id);
         setOpenModal(true);
     };
 
     const handleCloseModal = () => {
         setOpenModal(false);
         setHeaderForm("")
-        setToolId("");
+        setBoardId("");
     };
 
     const onSubmitAdd = (e) => {
         e.preventDefault();
-        dispatch(addToolToTotal(toolId, formState.inputs.total.value));
+        dispatch(addBoardToTotal(boardId, formState.inputs.total.value));
         setOpenModal(false)
     }
 
@@ -144,39 +138,33 @@ export default function TableTool() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {tools.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((tool, index) => {
+                            {boards.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((board, index) => {
                                 return (
                                     <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                                         <TableCell align="left">
-                                            <Avatar variant="square" src={tool.imageProfile} />
+                                            <Avatar variant="square" src={board.imageProfile} />
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>{tool.toolName}</p>
+                                            <p>{board.boardName}</p>
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>{tool.toolCode}</p>
+                                            <p>{board.boardCode}</p>
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>{tool.type}</p>
+                                            <p>{board.type}</p>
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>{tool.category}</p>
+                                            <p>In Stock</p>
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>{tool.size}</p>
+                                            <p>{board.total}</p>
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>{tool.status}</p>
-                                        </TableCell>
-                                        <TableCell align="left">
-                                            <p>{tool.total}</p>
-                                        </TableCell>
-                                        <TableCell align="left">
-                                            <div className="table-tool-btn-action">
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenModal(tool.toolName, index, "Request")}>
+                                            <div className="table-board-btn-action">
+                                                <Button variant="contained" color="primary" onClick={() => handleOpenModal(board.boardName, index, "Request")}>
                                                     request
                                                 </Button>
-                                                <Button variant="contained" onClick={() => handleOpenModal(tool.toolName, index, "Add")} style={{ background: "#28a745", color: "#fff" }}>
+                                                <Button variant="contained" onClick={() => handleOpenModal(board.boardName, index, "Add")} style={{ background: "#28a745", color: "#fff" }}>
                                                     add
                                                 </Button>
                                             </div>
@@ -190,7 +178,7 @@ export default function TableTool() {
                 <TablePagination
                     rowsPerPageOptions={[10, 25, 100]}
                     component="div"
-                    count={tools.length}
+                    count={boards.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onChangePage={handleChangePage}
@@ -235,7 +223,7 @@ export default function TableTool() {
                                 fullWidth
                                 className={classes.textarea}
                             />
-                            <div className="table-tool-btn-action">
+                            <div className="table-board-btn-action">
                                 <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid} >submit</Button>
                                 <Button variant="contained" color="secondary" onClick={() => setOpenModal(false)}>cancel</Button>
                             </div>

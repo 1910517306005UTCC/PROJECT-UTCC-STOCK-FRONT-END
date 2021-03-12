@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 120
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
@@ -70,7 +69,7 @@ function SelectComponent(props) {
 
     return (
         <div>
-            <FormControl variant="outlined" className={classes.formControl}>
+            <FormControl variant="outlined" className={classes.formControl} style={{width: "100%"}}>
                 <InputLabel id="demo-simple-select-outlined-label">{props.filterName}</InputLabel>
                 <Select
                     labelId="demo-simple-select-outlined-label"
