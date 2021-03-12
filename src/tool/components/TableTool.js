@@ -70,9 +70,6 @@ export default function TableTool() {
     const [headerId, setHeaderId] = useState('');
     const [toolId, setToolId] = useState('')
 
-    console.log(toolList)
-    // console.log(messageAlert, loading)
-
     useEffect(() => {
         dispatch(toolListAction());
         return () => {
@@ -80,7 +77,7 @@ export default function TableTool() {
         }
     }, [])
 
-    const [formState, inputHandler, setFormData] = useForm(
+    const [formState, inputHandler] = useForm(
         {
             total: {
                 value: '',
@@ -153,7 +150,7 @@ export default function TableTool() {
                                             <Avatar variant="square" src={tool.imageProfile} />
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>{tool.nameTool}</p>
+                                            <p>{tool.toolName}</p>
                                         </TableCell>
                                         <TableCell align="left">
                                             <p>{tool.type}</p>
