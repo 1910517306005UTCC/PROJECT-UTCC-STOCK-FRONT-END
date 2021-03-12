@@ -28,9 +28,8 @@ function CreateTool() {
     const [description, setDescription] = useState('');
     const [toolCode, setToolCode] = useState('');
     const [file, setFile] = useState();
-    const [previewUrl, setPreviewUrl] = useState();
 
-    const [formState, inputHandler, setFormData] = useForm(
+    const [formState, inputHandler] = useForm(
         {
             name: {
                 value: '',
@@ -70,22 +69,6 @@ function CreateTool() {
         }
 
         console.log(newTool);
-    }
-
-    // Function of selecting image
-    const pickedHandler = e => {
-        setFile(e.target.files[0]);
-        const fileReader = new FileReader();
-        fileReader.onload = () => {
-            setPreviewUrl(fileReader.result);
-        };
-        fileReader.readAsDataURL(e.target.files[0]);
-
-    };
-
-    const deleteImage = () => {
-        setPreviewUrl(false);
-        setFile();
     }
 
     return (
@@ -152,7 +135,7 @@ function CreateTool() {
                             onChange={(e) => setSize(e.target.value)}
                         />
                     </div>
-                    <ImageUpload pickedHandler={pickedHandler} previewUrl={previewUrl} deleteImage={deleteImage} />
+                    <ImageUpload  file={file} setFile={setFile} />
                     <TextField
                         id="outlined-multiline-flexible"
                         label="Description"
