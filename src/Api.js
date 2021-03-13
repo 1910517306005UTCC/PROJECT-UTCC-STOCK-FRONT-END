@@ -305,14 +305,14 @@ export const listToolApi = [
 
 export const toolItem = {
     id: uuidv4(),
-    nameTool: "R10K",
+    toolName: "R10K",
     imageProfile: "/images/tool2.jpg",
     images: [
         "/images/tool2.jpg",
         "/images/b2.jpg",
         "/images/b1.png",
-        "/images/b3.jpg",
-        "/images/detailTool.jpg"
+        // "/images/b3.jpg",
+        // "/images/detailTool.jpg"
     ],
     status: "Out of Stock",
     type: "RESISTER",

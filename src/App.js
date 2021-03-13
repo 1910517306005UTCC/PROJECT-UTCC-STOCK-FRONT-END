@@ -11,6 +11,7 @@ import CreateProject from "./board/page/CreateProject";
 import BoardList from "./board/page/BoardList";
 import BoardRequest from "./board/page/BoardRequest";
 import EditProfile from "./user/pages/EditProfile";
+import DetailTool from "./tool/pages/DetailTool";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route path="/tool/new">
               <CreateTool />
+            </Route>
+            <Route path="/:tid/tool">
+              <DetailTool />
             </Route>
             <Route path="/board/list">
               <BoardList />

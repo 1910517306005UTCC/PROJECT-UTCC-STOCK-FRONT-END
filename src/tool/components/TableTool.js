@@ -7,6 +7,7 @@ import { useForm } from "../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import Input from "../../shared/components/FormElements/Input";
 import { toolListAction, addToolToTotal } from "../../actions/toolActions";
+import { Link } from "react-router-dom"
 
 import "./TableTool.css"
 
@@ -178,6 +179,9 @@ export default function TableTool() {
                                                 </Button>
                                                 <Button variant="contained" onClick={() => handleOpenModal(tool.toolName, index, "Add")} style={{ background: "#28a745", color: "#fff" }}>
                                                     add
+                                                </Button>
+                                                <Button variant="contained" color="primary" >
+                                                    <Link to={`/${tool.id}/tool`}>description</Link>
                                                 </Button>
                                             </div>
                                         </TableCell>
