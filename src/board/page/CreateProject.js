@@ -40,7 +40,7 @@ function CreateProject() {
     const dispatch = useDispatch();
     const toolList = useSelector((state) => state.toolList);
     const { tools } = toolList;
-    const [file, setFile] = useState();
+    const [file, setFile] = useState(null);
     const [total, setTotal] = useState('');
     const [type, setType] = useState('');
     const [description, setDescription] = useState('');
@@ -53,7 +53,7 @@ function CreateProject() {
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [nameFilter, setNameFilter] = useState([]);
     const [toolSelected, setToolSelected] = useState([]);
-    const [files, setFiles] = useState([]);
+    const [files, setFiles] = useState(null);
 
 
 

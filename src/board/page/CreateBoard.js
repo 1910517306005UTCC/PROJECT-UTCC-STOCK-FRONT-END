@@ -43,7 +43,7 @@ function CreateBoard() {
     const dispatch = useDispatch();
     const toolList = useSelector((state) => state.toolList);
     const { tools } = toolList;
-    const [file, setFile] = useState();
+    const [file, setFile] = useState(null);
     const [total, setTotal] = useState('');
     const [type, setType] = useState('');
     const [description, setDescription] = useState('');

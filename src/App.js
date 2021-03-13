@@ -10,6 +10,7 @@ import CreateBoard from "./board/page/CreateBoard";
 import CreateProject from "./board/page/CreateProject";
 import BoardList from "./board/page/BoardList";
 import BoardRequest from "./board/page/BoardRequest";
+import EditProfile from "./user/pages/EditProfile";
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route path="/project/new">
               <CreateProject />
+            </Route>
+            <Route path="/profile/id">
+              <EditProfile />
             </Route>
             <Redirect to="/" />
           </Switch>

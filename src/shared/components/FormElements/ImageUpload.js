@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Avatar, Badge } from "@material-ui/core"
 
@@ -26,10 +26,22 @@ const useStyles = makeStyles((theme) => ({
 
 const ImageUpload = props => {
     const classes = useStyles();
+    // รับบค่าจากภายนอกเข้ามา 2 ค่า
     const { file, setFile } = props;
+    // โชวรูปภาพที่เราอัปโหลด แต่ไม่นำค่านี้ไปเก็บในฐานข้อมูล แต่จะใช้ ตัวแปร file แทน
     const [previewUrl, setPreviewUrl] = useState();
 
-    // Function of selecting image
+    useEffect(() => {
+        // set ค่า ไฟลรูปภาพเมื่อมีข้อมูล เบื่องต้นอยู่แล้ว 
+        if (file) {
+            setPreviewUrl(file)
+        }
+        return () => {
+
+        }
+    }, [])
+
+    // Function ทำงานต่อเมื่อกดอัพโหลดรูปภาพจาก ปุ่ม
     const pickedHandler = e => {
         setFile(e.target.files[0]);
         const fileReader = new FileReader();
@@ -40,9 +52,11 @@ const ImageUpload = props => {
 
     };
 
+
+    // function ลบรูปภาพ
     const deleteImage = () => {
         setPreviewUrl(false);
-        setFile();
+        setFile(null);
     }
 
     return (

@@ -27,7 +27,7 @@ function CreateTool() {
     const [size, setSize] = useState('');
     const [description, setDescription] = useState('');
     const [toolCode, setToolCode] = useState('');
-    const [file, setFile] = useState();
+    const [file, setFile] = useState(null);
 
     const [formState, inputHandler] = useForm(
         {

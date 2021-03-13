@@ -132,7 +132,7 @@ export default function Nav() {
             onClose={handleMenuClose}
         >
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}><Link to="/profile/id">Edit account</Link></MenuItem>
             <MenuItem onClick={handleMenuClose}>Sign out</MenuItem>
         </Menu>
     );
