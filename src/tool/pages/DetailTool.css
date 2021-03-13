@@ -48,10 +48,6 @@
     padding: 15px;
 }
 
-.container-detailtool div:last-child h2 {
-    /* margin-left: 25px; */
-}
-
 .container-detailtool div:last-child .detailtool-list {
     padding: 0;
     display: flex;

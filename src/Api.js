@@ -311,8 +311,8 @@ export const toolItem = {
         "/images/tool2.jpg",
         "/images/b2.jpg",
         "/images/b1.png",
-        // "/images/b3.jpg",
-        // "/images/detailTool.jpg"
+        "/images/b3.jpg",
+        "/images/detailTool.jpg"
     ],
     status: "Out of Stock",
     type: "RESISTER",
