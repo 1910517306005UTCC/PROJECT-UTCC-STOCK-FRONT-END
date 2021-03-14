@@ -1,13 +1,5 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -15,6 +7,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import SlideBar from './SlideBar';
 import { Link } from "react-router-dom"
+import { Avatar, Menu, MenuItem, Badge, InputBase, Typography, IconButton, Toolbar, AppBar } from "@material-ui/core"
+
+import "./Nav.css"
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -81,20 +76,31 @@ const useStyles = makeStyles((theme) => ({
             display: 'none',
         },
     },
+    menuNotification: {
+        width: "250px",
+        overflow: "initial"
+    }
 }));
 
 export default function Nav() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorElNoti, setAnchorElNoti] = React.useState(null);
     const [Hamburgur, setHamburgur] = React.useState(false);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
     const isMenuOpen = Boolean(anchorEl);
+    const isNotifiOpen = Boolean(anchorElNoti);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const handleProfileMenuOpen = (event) => {
         // console.log(event.currentTarget)
         setAnchorEl(event.currentTarget);
+    };
+
+    const handleNotificationOpen = (event) => {
+        // console.log(event.currentTarget)
+        setAnchorElNoti(event.currentTarget);
     };
 
     const handleMobileMenuClose = () => {
@@ -103,6 +109,11 @@ export default function Nav() {
 
     const handleMenuClose = () => {
         setAnchorEl(null);
+        handleMobileMenuClose();
+    };
+
+    const handleNotificationClose = () => {
+        setAnchorElNoti(null);
         handleMobileMenuClose();
     };
 
@@ -121,6 +132,56 @@ export default function Nav() {
     }
 
     const menuId = 'primary-search-account-menu';
+    const renderNotification = (
+        <Menu
+            anchorEl={anchorElNoti}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            id={menuId}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={isNotifiOpen}
+            onClose={handleNotificationClose}
+        >
+            {/* <MenuItem onClick={handleNotificationClose} className={classes.menuNotification} > */}
+            <div className="container-notification" >
+                <h2>News</h2>
+                <div className="list-notification">
+                    <div className="detail-notification">
+                        <Avatar alt="" src="/images/profile.png" />
+                        <div className="profile-detail-notification"><p>Boonyarit <span>(Admin)</span></p></div>
+                    </div>
+                    <div className="text-notification">
+                        <p>Add a new project to database and then data will update </p>
+                        <p>34 minutes</p>
+                    </div>
+                </div>
+                <h2>Earlier</h2>
+                <React.Fragment>
+                    <div className="list-notification">
+                        <div className="detail-notification">
+                            <Avatar alt="" src="/images/profile.png" />
+                            <div className="profile-detail-notification"><p>Boonyarit <span>(Admin)</span></p></div>
+                        </div>
+                        <div className="text-notification">
+                            <p>Edit board ET-RS's description </p>
+                            <p>25/01/64</p>
+                        </div>
+                    </div>
+                    <div className="list-notification">
+                        <div className="detail-notification">
+                            <Avatar alt="" src="/images/profile.png" />
+                            <div className="profile-detail-notification"><p>Boonyarit <span>(Admin)</span></p></div>
+                        </div>
+                        <div className="text-notification">
+                            <p>requested board ET-RS </p>
+                            <p>24/01/64</p>
+                        </div>
+                    </div>
+                </React.Fragment>
+            </div>
+        </Menu>
+    );
+
     const renderMenu = (
         <Menu
             anchorEl={anchorEl}
@@ -150,15 +211,7 @@ export default function Nav() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            {/* <MenuItem>
-                <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                        <MailIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem> */}
-            <MenuItem>
+            <MenuItem onClick={handleNotificationOpen}>
                 <IconButton aria-label="show 11 new notifications" color="inherit">
                     <Badge badgeContent={11} color="secondary">
                         <NotificationsIcon />
@@ -226,7 +279,7 @@ export default function Nav() {
                         </IconButton> */}
 
                         {/* Notification Icon */}
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
+                        <IconButton aria-label="show 17 new notifications" color="inherit" onClick={handleNotificationOpen}>
                             <Badge badgeContent={17} color="secondary">
                                 <NotificationsIcon />
                             </Badge>
@@ -262,6 +315,7 @@ export default function Nav() {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
+            {renderNotification}
             <SlideBar openHamburgur={openHamburgur} closeHamburgur={closeHamburgur} Hamburgur={Hamburgur} />
         </div>
     );

@@ -64,7 +64,7 @@ export default function SlideBar(props) {
                     <Link className={classes.link} to="/tool/new">Add Tool</Link>
                 </ListItem>
                 <ListItem button>
-                    <Link className={classes.link} to="/">history of Tool</Link>
+                    <Link className={classes.link} to="/historytool">history of Tool</Link>
                 </ListItem>
             </List>
             <Divider />
@@ -82,16 +82,16 @@ export default function SlideBar(props) {
                     <Link className={classes.link} to="/board/request">Request Board</Link>
                 </ListItem>
                 <ListItem button>
-                    <Link className={classes.link} to="/">history of Board</Link>
+                    <Link className={classes.link} to="/historyboard">history of Board</Link>
                 </ListItem>
                 <ListItem button>
-                    <Link className={classes.link} to="/">history of Project</Link>
+                    <Link className={classes.link} to="/historyproject">history of Project</Link>
                 </ListItem>
             </List>
             <Divider />
             <List>
                 <ListItem button>
-                    <Link className={classes.link} to="/">อุปกรณ์ไม่ครบ</Link>
+                    <Link className={classes.link} to="/boardincomplete">อุปกรณ์ไม่ครบ</Link>
                 </ListItem>
             </List>
         </div>

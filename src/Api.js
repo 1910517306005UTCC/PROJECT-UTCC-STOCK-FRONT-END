@@ -306,6 +306,7 @@ export const listToolApi = [
 export const toolItem = {
     id: uuidv4(),
     toolName: "R10K",
+    toolCode: "vnsds",
     imageProfile: "/images/tool2.jpg",
     images: [
         "/images/tool2.jpg",
@@ -816,7 +817,8 @@ export const listBoards = [
 
 export const boardItem = {
     id: uuidv4(),
-    nameBoard: "ET-ARDUINO",
+    boardName: "ET-ARDUINO",
+    boardCode: "cdscs",
     imageProfile: "/images/b3.jpg",
     images: [
         "/images/b1.png",
@@ -825,12 +827,16 @@ export const boardItem = {
         "/images/detailTool.jpg"
     ],
     type: "education",
+    limit: "50",
+    total: "105",
+    status: "In Stock",
     description: "This board is only used for education.",
     tools: [
         {
             id: uuidv4(),
-            nameTool: "R10K",
+            toolName: "R10K",
             imageProfile: "/images/tool2.jpg",
+            toolCode: "1235",
             status: "Out of Stock",
             type: "RESISTER",
             size: "CODE_100",
@@ -839,8 +845,9 @@ export const boardItem = {
         },
         {
             id: uuidv4(),
-            nameTool: "LM-2575",
+            toolName: "LM-2575",
             imageProfile: "/images/lm.jpg",
+            toolCode: "1235",
             status: "In Stock",
             type: "LM",
             size: "CODE_845",
@@ -850,8 +857,9 @@ export const boardItem = {
         },
         {
             id: uuidv4(),
-            nameTool: "ic1.jpg",
+            toolName: "ic1.jpg",
             imageProfile: "/images/ic1.jpg",
+            toolCode: "1235",
             status: "Getting out of Stock",
             type: "IC",
             size: "CODE_448",
@@ -862,8 +870,9 @@ export const boardItem = {
         },
         {
             id: uuidv4(),
-            nameTool: "Module-WIFI",
+            toolName: "Module-WIFI",
             imageProfile: "/images/tool1.jpg",
+            toolCode: "1235",
             status: "In Stock",
             type: "Module",
             size: "CODE_170",
@@ -893,7 +902,59 @@ export const todos = [
         deadline: '15/12/63 : 09.00',
         description: 'This is still incomplete..........'
     }
-] 
+]
+
+
+export const boardIncompleteList = [
+    {
+        id: uuidv4(),
+        boardName: "ET-OPPTO",
+        username: "boonyarit",
+        userStatus: "Admin",
+        date: "12/12/63",
+        tools: [
+            {
+                id: uuidv4(),
+                toolName: "R10K",
+                total: "10",
+            },
+            {
+                id: uuidv4(),
+                toolName: "LM-2575",
+                total: "250",
+            },
+            {
+                id: uuidv4(),
+                toolName: "ic1.jpg",
+                total: "17",
+            },
+            {
+                id: uuidv4(),
+                toolName: "Module-WIFI",
+                total: "5",
+            }
+        ]
+    },
+    {
+        id: uuidv4(),
+        boardName: "ET-OPPTO",
+        username: "Katagi",
+        userStatus: "Admin",
+        date: "11/12/63",
+        tools: [
+            {
+                id: uuidv4(),
+                toolName: "R10K",
+                total: "10",
+            },
+            {
+                id: uuidv4(),
+                toolName: "LM-2575",
+                total: "250",
+            }
+        ]
+    }
+]
 
 
 

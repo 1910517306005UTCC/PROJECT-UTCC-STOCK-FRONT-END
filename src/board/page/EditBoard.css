@@ -1,0 +1,42 @@
+form {
+    padding: 10px;
+}
+
+.editboard-input-group {
+    display: flex;
+    padding: 20px 0;
+}
+
+.editboard-input-group div:first-child {
+    padding-right: 5px;
+}
+
+.editboard-input-group div:last-child {
+    padding-left: 5px;
+}
+
+.editboard-toolSelected {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.editboard-select-group {
+    display: flex;
+}
+
+.editboard-select-group div {
+    width: 100%;
+}
+
+.editboard-select-group div:first-child {
+    padding-right: 5px;
+}
+
+.editboard-select-group div:last-child {
+    padding: 0 5px;
+}
+
+.editboard-btn-add {
+    margin: 10px 0;
+}

@@ -35,6 +35,10 @@ function DetailTool() {
                 <div>
                     <h2>{tool.toolName}</h2>
                     <div className="detailtool-list">
+                        <p>Tool Code</p>
+                        <p>{tool.total}</p>
+                    </div>
+                    <div className="detailtool-list">
                         <p>total</p>
                         <p>{tool.total}</p>
                     </div>
@@ -64,7 +68,7 @@ function DetailTool() {
                             type="button"
                             variant="contained"
                         >
-                            <Link to={`/tool/:tid`}>Edit</Link>
+                            <Link to={`/tool/${tool.id}`}>Edit</Link>
                         </Button>
                         <Button
                             type="button"

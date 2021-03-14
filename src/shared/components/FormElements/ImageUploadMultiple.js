@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // import { Swiper, SwiperSlide } from 'swiper/react';
 // import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,13 +36,31 @@ function ImageUploadMultiple(props) {
     const { files, setFiles } = props;
     const [previewfiles, setPreviewFiles] = useState([]);
 
+    useEffect(() => {
+        // set ค่า ไฟลรูปภาพเมื่อมีข้อมูล เบื่องต้นอยู่แล้ว 
+        if (files) {
+            setPreviewFiles(files)
+        }
+        return () => {
+
+        }
+    }, [])
+
     const pickedHandler = e => {
-        console.log(e.target.files)
+        console.log(typeof(e.target.files[0]))
         if (e.target.files) {
             // covert e.target.files to be a new array
             const filesArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
             setPreviewFiles((prevImages) => prevImages.concat(filesArray));
-            setFiles(e.target.files);
+            // submit files first.
+            if (!files) {
+                setFiles(e.target.files);
+            }
+            // submit files morn than 1.
+            else {
+                // temporaryArr = [...files, ...e.target.files]
+                setFiles([...files, ...e.target.files])
+            }
         }
 
     }

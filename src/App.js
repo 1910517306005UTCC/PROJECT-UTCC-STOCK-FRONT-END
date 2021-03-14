@@ -12,6 +12,13 @@ import BoardList from "./board/page/BoardList";
 import BoardRequest from "./board/page/BoardRequest";
 import EditProfile from "./user/pages/EditProfile";
 import DetailTool from "./tool/pages/DetailTool";
+import DetailBoard from "./board/page/DetailBoard";
+import EditBoard from "./board/page/EditBoard";
+import EditTool from "./tool/pages/EditTool";
+import BoardIncomplete from "./board/page/BoardIncomplete";
+import HistoryTool from "./tool/pages/HistoryTool";
+import HistoryBoard from "./board/page/HistoryBoard";
+
 
 function App() {
   return (
@@ -26,8 +33,11 @@ function App() {
             <Route path="/tool/new">
               <CreateTool />
             </Route>
-            <Route path="/:tid/tool">
+            <Route path="/:tid/tool" exact>
               <DetailTool />
+            </Route>
+            <Route path="/tool/:bid" exact>
+              <EditTool />
             </Route>
             <Route path="/board/list">
               <BoardList />
@@ -38,11 +48,26 @@ function App() {
             <Route path="/board/new">
               <CreateBoard />
             </Route>
+            <Route path="/:bid/board" exact>
+              <DetailBoard />
+            </Route>
+            <Route path="/board/:bid">
+              <EditBoard />
+            </Route>
+            <Route path="/boardincomplete">
+              <BoardIncomplete />
+            </Route>
             <Route path="/project/new">
               <CreateProject />
             </Route>
             <Route path="/profile/id">
               <EditProfile />
+            </Route>
+            <Route path="/historytool">
+              <HistoryTool />
+            </Route>
+            <Route path="/historyboard">
+              <HistoryBoard />
             </Route>
             <Redirect to="/" />
           </Switch>

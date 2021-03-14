@@ -9,6 +9,7 @@ import { toolListAction } from "../../actions/toolActions";
 
 
 
+
 import "./CreateBoard.css"
 import ImageUpload from '../../shared/components/FormElements/ImageUpload'
 import SelectComponent from '../../shared/components/FormElements/Select'
@@ -72,6 +73,7 @@ function CreateBoard() {
 
 
     useEffect(() => {
+        // ดึงข้อมูลอุปกรณ์สำหรับเพิ่มลงในรายการบอร์ด
         dispatch(toolListAction());
         return () => {
 
@@ -170,7 +172,7 @@ function CreateBoard() {
                     />
 
                     <Paper className={classes.PaperFilter}>
-                        <div className="createproject-select-group">
+                        <div className="editboard-select-group">
                             <SelectComponent list={tools} typeFilter="tool" filterName="type" dataType="type" onChange={onChangeTypeFilter} value={typeSelect} />
                             <SelectComponent list={typeFilter} typeFilter="tool" filterName="category" dataType="category" onChange={onChangeCategoryFilter} value={categorySelect} />
                         </div>

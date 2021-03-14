@@ -2,8 +2,12 @@
     display: flex;
 }
 
-.table-board-btn-action button:first-child {
+.table-board-btn-action button {
     margin-right: 10px;
+}
+
+.table-board-btn-action button a {
+    color: #fff;
 }
 
 .table-board-modal-textarea {

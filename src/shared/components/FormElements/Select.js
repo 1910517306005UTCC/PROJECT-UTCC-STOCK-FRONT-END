@@ -3,12 +3,9 @@ import { FormControl, Select, InputLabel, MenuItem } from "@material-ui/core"
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
-    formControl: {
-        margin: theme.spacing(1),
-    },
-    selectEmpty: {
-        marginTop: theme.spacing(2),
-    },
+    margin: {
+        margin: "10px 0"
+    }
 }));
 
 function SelectComponent(props) {
@@ -69,7 +66,7 @@ function SelectComponent(props) {
 
     return (
         <div>
-            <FormControl variant="outlined" className={classes.formControl} style={{width: "100%"}}>
+            <FormControl variant="outlined" className={classes.margin} style={{width: "100%"}}>
                 <InputLabel id="demo-simple-select-outlined-label">{props.filterName}</InputLabel>
                 <Select
                     labelId="demo-simple-select-outlined-label"
@@ -77,6 +74,7 @@ function SelectComponent(props) {
                     value={props.value}
                     onChange={props.onChange}
                     label="Age"
+                    fullWidth
                 >
                     <MenuItem value="">
                         <em>None</em>

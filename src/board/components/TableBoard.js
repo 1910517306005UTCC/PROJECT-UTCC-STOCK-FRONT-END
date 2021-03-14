@@ -7,6 +7,7 @@ import { useForm } from "../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import Input from "../../shared/components/FormElements/Input";
 import { boardListAction, addBoardToTotal } from "../../actions/boardActions";
+import { Link } from "react-router-dom";
 
 import "./TableBoard.css"
 
@@ -166,6 +167,9 @@ export default function TableBoard() {
                                                 </Button>
                                                 <Button variant="contained" onClick={() => handleOpenModal(board.boardName, index, "Add")} style={{ background: "#28a745", color: "#fff" }}>
                                                     add
+                                                </Button>
+                                                <Button variant="contained" color="primary" >
+                                                    <Link to={`/${board.id}/board`}>description</Link>
                                                 </Button>
                                             </div>
                                         </TableCell>
