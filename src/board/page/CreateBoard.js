@@ -43,7 +43,7 @@ function CreateBoard() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const toolList = useSelector((state) => state.toolList);
-    const { tools } = toolList;
+    const [tools, setTools] = useState(toolList.tools)
     const [file, setFile] = useState(null);
     const [total, setTotal] = useState('');
     const [type, setType] = useState('');
@@ -57,6 +57,7 @@ function CreateBoard() {
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [nameFilter, setNameFilter] = useState([]);
     const [toolSelected, setToolSelected] = useState([]);
+    const [toolBackup, setToolBackup] = useState([])
 
 
 
@@ -123,6 +124,18 @@ function CreateBoard() {
 
     const onSubmitToolSelected = () => {
         let { id, toolName, type, category, size, imageProfile } = nameFilter[0];
+        // เก็บข้อมูลอุปกรณ์ที่เลือก ไปยังตัวแปรใหม่ เพื่อ 
+        // 1. ป้องกันผู้ใช้เลือกอุปกรณ์ที่เหมือนกัน เช่น R100K 10 ตัว, R100K 5 ตัว จริงๆแล้วผู้ใช้ควรเลือก R100K 15 ตัว
+        // 2. ลบข้อมูลในตัวแปร tools เพื่อป้องกันค่าอุปกรณ์ที่เลือกแล้วมาแสดงใน select tag ซ้ำ แล้วนำค่าที่ลบมาเก็บไว้ในตัวแปร กรณี ผู้ใช้ลบข้อมูลอุปกรณ์ที่เลือกในตัวแปร
+        // toolSelected ก็จะนำค่าที่ลบ นำกลับคืนสู่ตัวแปร tools 
+        let backupData = [...toolBackup, nameFilter[0]]
+        let newtool = tools.filter((tool) => tool.id !== nameFilter[0].id)
+        // ลบอุปกรณ์ที่ถูกเลือกไปยังบอร์ด
+        setTools(newtool)
+        // backup อุปกรณ์ที่ถูกลบ
+        setToolBackup(backupData)
+        
+
         let createNewTool = {
             id,
             toolName,
@@ -138,10 +151,19 @@ function CreateBoard() {
         setCategorySelect("")
         setTypeSelect("")
         setToolSelected([...toolSelected, createNewTool])
+        setCategoryFilter([])
     }
 
-    const deleteToolSelected = (id) => {
+    const deleteToolSelected = (id) => { 
+        let findData = toolBackup.find((item) => item.id === id);
         setToolSelected(toolSelected.filter(item => item.id !== id));
+        setToolBackup(toolBackup.filter(item => item.id !== id))
+        // set ข้อมูลที่ถูกลบกลับไปยังตัวแปรเดิม
+        setTools([...tools, findData])
+        setTotalSelect("")
+        setNameSelect("")
+        setCategorySelect("")
+        setTypeSelect("")
     }
 
 
