@@ -855,7 +855,7 @@ export const boardItem = {
         },
         {
             id: "t6",
-            toolName: "IC-1.jpg",
+            toolName: "IC-1",
             imageProfile: "/images/ic1.jpg",
             status: "Getting out of Stock",
             type: "IC",
