@@ -123,7 +123,7 @@ export const filterNotification = (items) => {
 
 export const listToolApi = [
     {
-        id: uuidv4(),
+        id: "t1",
         toolName: "R10K",
         toolCode: "vdsv15",
         imageProfile: "/images/tool2.jpg",
@@ -135,7 +135,7 @@ export const listToolApi = [
         limit: "1500"
     },
     {
-        id: uuidv4(),
+        id: "t2",
         toolName: "C470UF",
         toolCode: "vdsv15",
         imageProfile: "/images/c1.jpg",
@@ -147,7 +147,7 @@ export const listToolApi = [
         limit: "100"
     },
     {
-        id: uuidv4(),
+        id: "t3",
         toolName: "R560K",
         toolCode: "vdsv15",
         imageProfile: "/images/r2.jpg",
@@ -159,7 +159,7 @@ export const listToolApi = [
         limit: "1500"
     },
     {
-        id: uuidv4(),
+        id: "t4",
         toolName: "R120",
         toolCode: "vdsv15",
         imageProfile: "/images/tool2.jpg",
@@ -171,7 +171,7 @@ export const listToolApi = [
         limit: "1500"
     },
     {
-        id: uuidv4(),
+        id: "t5",
         toolName: "LM-2575",
         toolCode: "vdsv15",
         imageProfile: "/images/lm.jpg",
@@ -183,7 +183,7 @@ export const listToolApi = [
         limit: "300"
     },
     {
-        id: uuidv4(),
+        id: "t6",
         toolName: "IC-1",
         toolCode: "vdsv15",
         imageProfile: "/images/ic1.jpg",
@@ -197,7 +197,7 @@ export const listToolApi = [
 
     },
     {
-        id: uuidv4(),
+        id: "t7",
         toolName: "IC-2",
         toolCode: "vdsv15",
         imageProfile: "/images/i2.jpg",
@@ -209,7 +209,7 @@ export const listToolApi = [
         limit: "20"
     },
     {
-        id: uuidv4(),
+        id: "t8",
         toolName: "IC-3",
         toolCode: "vdsv15",
         imageProfile: "/images/i2.jpg",
@@ -221,7 +221,7 @@ export const listToolApi = [
         limit: "10"
     },
     {
-        id: uuidv4(),
+        id: "t9",
         toolName: "Module-WIFI",
         toolCode: "vdsv15",
         imageProfile: "/images/tool1.jpg",
@@ -234,7 +234,7 @@ export const listToolApi = [
 
     },
     {
-        id: uuidv4(),
+        id: "t10",
         toolName: "Module-WIFI v.2",
         toolCode: "vdsv15",
         imageProfile: "/images/tool1.jpg",
@@ -247,7 +247,7 @@ export const listToolApi = [
 
     },
     {
-        id: uuidv4(),
+        id: "t11",
         toolName: "Module-WIFI v.3",
         toolCode: "vdsv15",
         imageProfile: "/images/tool1.jpg",
@@ -259,7 +259,7 @@ export const listToolApi = [
         limit: "75"
     },
     {
-        id: uuidv4(),
+        id: "t12",
         toolName: "R10M",
         toolCode: "vdsv15",
         imageProfile: "https://images.unsplash.com/photo-1615216865517-f2e0c2cd79a1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
@@ -271,7 +271,7 @@ export const listToolApi = [
         limit: "1500"
     },
     {
-        id: uuidv4(),
+        id: "t13",
         toolName: "R22k",
         toolCode: "vdsv15",
         imageProfile: "https://images.unsplash.com/photo-1612611679469-1f2f2da849fe?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
@@ -304,7 +304,7 @@ export const listToolApi = [
 // }
 
 export const toolItem = {
-    id: uuidv4(),
+    id: "t1",
     toolName: "R10K",
     toolCode: "vnsds",
     imageProfile: "/images/tool2.jpg",
@@ -341,7 +341,7 @@ export const listBoards = [
         description: "This board is only used for education.",
         tools: [
             {
-                id: uuidv4(),
+                id: "t1",
                 toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
@@ -351,7 +351,7 @@ export const listBoards = [
                 category: "SURFACE"
             },
             {
-                id: uuidv4(),
+                id: "t5",
                 toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
@@ -362,8 +362,8 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
-                toolName: "ic1.jpg",
+                id: "t6",
+                toolName: "IC-1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -374,7 +374,7 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
+                id: "t9",
                 toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
@@ -402,7 +402,7 @@ export const listBoards = [
         description: "This board is only used for education.",
         tools: [
             {
-                id: uuidv4(),
+                id: "t1",
                 toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
@@ -412,7 +412,7 @@ export const listBoards = [
                 category: "SURFACE"
             },
             {
-                id: uuidv4(),
+                id: "t5",
                 toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
@@ -423,8 +423,8 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
-                toolName: "ic1.jpg",
+                id: "t6",
+                toolName: "IC-1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -435,7 +435,7 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
+                id: "t9",
                 toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
@@ -463,7 +463,7 @@ export const listBoards = [
         description: "This board is only used for education.",
         tools: [
             {
-                id: uuidv4(),
+                id: "t1",
                 toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
@@ -473,7 +473,7 @@ export const listBoards = [
                 category: "SURFACE"
             },
             {
-                id: uuidv4(),
+                id: "t5",
                 toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
@@ -484,8 +484,8 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
-                toolName: "ic1.jpg",
+                id: "t6",
+                toolName: "IC-1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -496,7 +496,7 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
+                id: "t9",
                 toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
@@ -524,7 +524,7 @@ export const listBoards = [
         description: "This board is only used for education.",
         tools: [
             {
-                id: uuidv4(),
+                id: "t1",
                 toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
@@ -534,7 +534,7 @@ export const listBoards = [
                 category: "SURFACE"
             },
             {
-                id: uuidv4(),
+                id: "t5",
                 toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
@@ -545,8 +545,8 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
-                toolName: "ic1.jpg",
+                id: "t6",
+                toolName: "IC-1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -557,7 +557,7 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
+                id: "t9",
                 toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
@@ -585,7 +585,7 @@ export const listBoards = [
         description: "This board is only used for education.",
         tools: [
             {
-                id: uuidv4(),
+                id: "t1",
                 toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
@@ -595,7 +595,7 @@ export const listBoards = [
                 category: "SURFACE"
             },
             {
-                id: uuidv4(),
+                id: "t5",
                 toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
@@ -606,8 +606,8 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
-                toolName: "ic1.jpg",
+                id: "t6",
+                toolName: "IC-1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -618,7 +618,7 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
+                id: "t9",
                 toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
@@ -646,7 +646,7 @@ export const listBoards = [
         description: "This board is only used for education.",
         tools: [
             {
-                id: uuidv4(),
+                id: "t1",
                 toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
@@ -656,7 +656,7 @@ export const listBoards = [
                 category: "SURFACE"
             },
             {
-                id: uuidv4(),
+                id: "t5",
                 toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
@@ -667,8 +667,8 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
-                toolName: "ic1.jpg",
+                id: "t6",
+                toolName: "IC-1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -679,7 +679,7 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
+                id: "t9",
                 toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
@@ -707,7 +707,7 @@ export const listBoards = [
         description: "This board is only used for education.",
         tools: [
             {
-                id: uuidv4(),
+                id: "t1",
                 toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
@@ -717,7 +717,7 @@ export const listBoards = [
                 category: "SURFACE"
             },
             {
-                id: uuidv4(),
+                id: "t5",
                 toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
@@ -728,8 +728,8 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
-                toolName: "ic1.jpg",
+                id: "t6",
+                toolName: "IC-1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -740,7 +740,7 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
+                id: "t9",
                 toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
@@ -768,7 +768,7 @@ export const listBoards = [
         description: "This board is only used for education.",
         tools: [
             {
-                id: uuidv4(),
+                id: "t1",
                 toolName: "R10K",
                 imageProfile: "/images/tool2.jpg",
                 status: "Out of Stock",
@@ -778,7 +778,7 @@ export const listBoards = [
                 category: "SURFACE"
             },
             {
-                id: uuidv4(),
+                id: "t5",
                 toolName: "LM-2575",
                 imageProfile: "/images/lm.jpg",
                 status: "In Stock",
@@ -789,8 +789,8 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
-                toolName: "ic1.jpg",
+                id: "t6",
+                toolName: "IC-1.jpg",
                 imageProfile: "/images/ic1.jpg",
                 status: "Getting out of Stock",
                 type: "IC",
@@ -801,7 +801,7 @@ export const listBoards = [
 
             },
             {
-                id: uuidv4(),
+                id: "t9",
                 toolName: "Module-WIFI",
                 imageProfile: "/images/tool1.jpg",
                 status: "In Stock",
@@ -833,10 +833,9 @@ export const boardItem = {
     description: "This board is only used for education.",
     tools: [
         {
-            id: uuidv4(),
+            id: "t1",
             toolName: "R10K",
             imageProfile: "/images/tool2.jpg",
-            toolCode: "1235",
             status: "Out of Stock",
             type: "RESISTER",
             size: "CODE_100",
@@ -844,10 +843,9 @@ export const boardItem = {
             category: "SURFACE"
         },
         {
-            id: uuidv4(),
+            id: "t5",
             toolName: "LM-2575",
             imageProfile: "/images/lm.jpg",
-            toolCode: "1235",
             status: "In Stock",
             type: "LM",
             size: "CODE_845",
@@ -856,10 +854,9 @@ export const boardItem = {
 
         },
         {
-            id: uuidv4(),
-            toolName: "ic1.jpg",
+            id: "t6",
+            toolName: "IC-1.jpg",
             imageProfile: "/images/ic1.jpg",
-            toolCode: "1235",
             status: "Getting out of Stock",
             type: "IC",
             size: "CODE_448",
@@ -869,10 +866,9 @@ export const boardItem = {
 
         },
         {
-            id: uuidv4(),
+            id: "t9",
             toolName: "Module-WIFI",
             imageProfile: "/images/tool1.jpg",
-            toolCode: "1235",
             status: "In Stock",
             type: "Module",
             size: "CODE_170",

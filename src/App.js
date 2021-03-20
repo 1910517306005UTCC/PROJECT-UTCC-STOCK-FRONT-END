@@ -10,7 +10,7 @@ import CreateBoard from "./board/page/CreateBoard";
 import CreateProject from "./board/page/CreateProject";
 import BoardList from "./board/page/BoardList";
 import BoardRequest from "./board/page/BoardRequest";
-import EditProfile from "./user/pages/EditProfile";
+// import EditProfile from "./user/pages/EditProfile";
 import DetailTool from "./tool/pages/DetailTool";
 import DetailBoard from "./board/page/DetailBoard";
 import EditBoard from "./board/page/EditBoard";
@@ -60,9 +60,9 @@ function App() {
             <Route path="/project/new">
               <CreateProject />
             </Route>
-            <Route path="/profile/id">
+            {/* <Route path="/profile/id">
               <EditProfile />
-            </Route>
+            </Route> */}
             <Route path="/historytool">
               <HistoryTool />
             </Route>

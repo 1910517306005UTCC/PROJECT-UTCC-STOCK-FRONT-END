@@ -157,7 +157,7 @@ function CreateProject() {
 
     const deleteToolSelected = (id) => {
         let findData = toolBackup.find((item) => item.id === id);
-        console.log(findData)
+        // console.log(findData)
         setToolSelected(toolSelected.filter(item => item.id !== id));
         setToolBackup(toolBackup.filter(item => item.id !== id))
         // set ข้อมูลที่ถูกลบกลับไปยังตัวแปรเดิม
