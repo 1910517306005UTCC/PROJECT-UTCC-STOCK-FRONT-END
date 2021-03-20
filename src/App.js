@@ -18,6 +18,9 @@ import EditTool from "./tool/pages/EditTool";
 import BoardIncomplete from "./board/page/BoardIncomplete";
 import HistoryTool from "./tool/pages/HistoryTool";
 import HistoryBoard from "./board/page/HistoryBoard";
+import HistoryProject from "./board/page/HistoryProject";
+import DetailHistoryProject from "./board/page/DetailHistoryProject";
+import EditProject from "./board/page/EditProject";
 
 
 function App() {
@@ -68,6 +71,15 @@ function App() {
             </Route>
             <Route path="/historyboard">
               <HistoryBoard />
+            </Route>
+            <Route path="/historyproject">
+              <HistoryProject />
+            </Route>
+            <Route path="/:hid/project">
+              <DetailHistoryProject />
+            </Route>
+            <Route path="/project/:pid">
+              <EditProject />
             </Route>
             <Redirect to="/" />
           </Switch>

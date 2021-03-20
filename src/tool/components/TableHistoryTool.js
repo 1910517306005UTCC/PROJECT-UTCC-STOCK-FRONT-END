@@ -4,7 +4,7 @@ import { historyTool } from '../../ApiHistory';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Button, Modal, Backdrop, Fade } from '@material-ui/core';
 import Input from '../../shared/components/FormElements/Input';
 import { useForm } from "../../shared/hooks/form-hook";
-import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../../shared/util/validators";
+import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 
 const columns = [
     { label: 'Date', minWidth: 170 },

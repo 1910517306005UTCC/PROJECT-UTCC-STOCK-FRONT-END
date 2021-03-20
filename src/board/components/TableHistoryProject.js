@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { historyBoard } from '../../ApiHistory';
+import { historyProject } from '../../ApiHistory';
+import { Link } from "react-router-dom"
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Button, Modal, Backdrop, Fade } from '@material-ui/core';
-import { useForm } from "../../shared/hooks/form-hook";
-import Input from '../../shared/components/FormElements/Input';
-import { VALIDATOR_REQUIRE } from '../../shared/util/validators';
 
 
 const columns = [
-    { label: 'Date', minWidth: 170 },
-    { label: 'Board name', minWidth: 170 },
+    { label: 'วันที่', minWidth: 170 },
+    { label: 'ชื่อโปรเจค', minWidth: 170 },
     {
-        label: 'Username',
+        label: 'ชื่อคนเบิก',
         minWidth: 170,
     },
     {
-        label: 'total',
+        label: 'จำนวน',
         minWidth: 170,
     },
     {
-        label: 'time',
+        label: 'เวลา',
         minWidth: 170,
     },
     {
-        label: 'action',
+        label: 'อื่นๆ',
         minWidth: 330,
         align: 'center'
     },
@@ -49,26 +47,16 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function TableHistoryBoard() {
+
+function TableHistoryProject() {
     const classes = useStyles();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
-    const [boards, setBoards] = useState(historyBoard);
+    const [projects, setProjects] = useState(historyProject);
     const [openRestore, setOpenRestore] = useState(false);
     const [data, setData] = useState();
-    const [openEdit, setOpenEdit] = useState(false);
     const [openDescription, setOpenDescription] = useState(false);
 
-
-    const [formState, inputHandler, setFormData] = useForm(
-        {
-            total: {
-                value: '',
-                isValid: false
-            }
-        },
-        false
-    );
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -94,25 +82,13 @@ export default function TableHistoryBoard() {
         setData()
     }
     const handleSubmitRestore = () => {
+        console.log(data)
         setData()
-    }
-    const handleCloseEdit = () => {
-        setOpenEdit(false)
-    }
-
-    const handleSubmitEdit = (e) => {
-        e.preventDefault()
-        setOpenEdit(false)
-        console.log(formState.inputs.total.value)
     }
 
     const handleOpenDescription = (description) => {
         setData(description)
         setOpenDescription(true)
-    }
-
-    const handleOpenEdit = () => {
-        setOpenEdit(true)
     }
 
     const handleCloseDescription = () => {
@@ -139,29 +115,29 @@ export default function TableHistoryBoard() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {boards.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((board, index) => {
+                            {projects.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((project, index) => {
                                 return (
                                     <TableRow key={index} hover role="checkbox" tabIndex={-1}>
                                         <TableCell>
-                                            {board.date}
+                                            {project.date}
                                         </TableCell>
                                         <TableCell>
-                                            {board.boardName}
+                                            {project.projectName}
                                         </TableCell>
                                         <TableCell>
-                                            {board.username}
+                                            {project.username}
                                         </TableCell>
                                         <TableCell>
-                                            {board.total}
+                                            {project.total}
                                         </TableCell>
                                         <TableCell>
-                                            {board.time}
+                                            {project.time}
                                         </TableCell>
                                         <TableCell>
-                                            <div className="TableHistoryboard-action">
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenRestore(board.boardName, board.total)}>Restore</Button>
-                                                <Button variant="contained" color="primary" onClick={handleOpenEdit}>Edit</Button>
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenDescription(board.description)}>Description</Button>
+                                            <div className="TableHistoryTool-action">
+                                                <Button variant="contained" color="primary" onClick={() => handleOpenRestore(project.projectName, project.total)}>คืน</Button>
+                                                <Link to={`/project/${project.id}`}><Button variant="contained" color="primary">แก้ไข</Button></Link>
+                                                <Link to={`/${project.id}/project`}><Button variant="contained" color="primary">ดู</Button></Link>
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -173,7 +149,7 @@ export default function TableHistoryBoard() {
                 <TablePagination
                     rowsPerPageOptions={[10, 25, 100]}
                     component="div"
-                    count={boards.length}
+                    count={projects.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onChangePage={handleChangePage}
@@ -195,38 +171,11 @@ export default function TableHistoryBoard() {
                 <Fade in={openRestore}>
                     <div className={classes.paper}>
                         <h2 id="transition-modal-title">Are you sure ?</h2>
-                        <div className="TableHistoryboard-action">
+                        <div className="TableHistoryTool-action">
                             <Button variant="contained" color="primary" onClick={handleSubmitRestore}>Submit</Button>
                             <Button variant="contained" color="secondary" onClick={handleCloseRestore}>Cancel</Button>
                         </div>
                     </div>
-                </Fade>
-            </Modal>
-
-            <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                className={classes.modal}
-                open={openEdit}
-                onClose={handleCloseEdit}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                    timeout: 500,
-                }}
-            >
-                <Fade in={openEdit}>
-                    <div className={classes.paper}>
-                        <h2 id="transition-modal-title">History</h2>
-                        <form onSubmit={handleSubmitEdit}>
-                            <Input id="total" element="input" label="Total" type="number" errorText="Please fill data" validators={[VALIDATOR_REQUIRE()]} onInput={inputHandler} required />
-                            <div className="TableHistoryTool-action">
-                                <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid}>Submit</Button>
-                                <Button variant="contained" color="secondary" onClick={handleCloseEdit}>Cancel</Button>
-                            </div>
-                        </form>
-                    </div>
-
                 </Fade>
             </Modal>
 
@@ -252,3 +201,6 @@ export default function TableHistoryBoard() {
         </div>
     );
 }
+
+export default TableHistoryProject
+

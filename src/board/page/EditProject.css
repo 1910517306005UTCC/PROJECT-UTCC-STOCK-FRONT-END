@@ -1,0 +1,42 @@
+form {
+    padding: 10px;
+}
+
+.editproject-input-group {
+    display: flex;
+    padding: 20px 0;
+}
+
+.editproject-input-group div:first-child {
+    padding-right: 5px;
+}
+
+.editproject-input-group div:last-child {
+    padding-left: 5px;
+}
+
+.editproject-toolSelected {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.editproject-select-group {
+    display: flex;
+}
+
+.editproject-select-group div {
+    width: 100%;
+}
+
+.editproject-select-group div:first-child {
+    padding-right: 5px;
+}
+
+.editproject-select-group div:last-child {
+    padding: 0 5px;
+}
+
+.editproject-btn-add {
+    margin: 10px 0;
+}

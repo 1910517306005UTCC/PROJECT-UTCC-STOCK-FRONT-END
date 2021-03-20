@@ -4,8 +4,8 @@ import "./HistoryBoard.css"
 
 function HistoryBoard() {
     return (
-        <div className="Container-historytool">
-            <h1>History of Tool</h1>
+        <div className="Container-historyboard">
+            <h1>History of Board</h1>
             <TableHistoryBoard />
         </div>
     )
