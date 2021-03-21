@@ -162,14 +162,14 @@ function EditBoard() {
 
     return (
         <Container>
-            <h1>Edit {board.boardName}</h1>
+            <h1>แก้ไข {board.boardName}</h1>
             <Paper>
                 <form onSubmit={onSubmit}>
                     <Input
                         id="name"
                         element="input"
                         type="text"
-                        label="Board name *"
+                        label="ชื่อบอร์ด *"
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="Please enter a valid board name."
                         onInput={inputHandler}
@@ -178,7 +178,7 @@ function EditBoard() {
                         required
                     />
                     <TextField
-                        label="Board code"
+                        label="รหัสบอร์ด"
                         variant="outlined"
                         fullWidth
                         type="text"
@@ -187,7 +187,7 @@ function EditBoard() {
                         onChange={(e) => setBoardCode(e.target.value)}
                     />
                     <TextField
-                        label="Board limit"
+                        label="จำกัด"
                         variant="outlined"
                         type="number"
                         fullWidth
@@ -197,7 +197,7 @@ function EditBoard() {
                     />
                     <div className="editboard-input-group">
                         <TextField
-                            label="total"
+                            label="จำนวน"
                             variant="outlined"
                             type="number"
                             fullWidth
@@ -205,7 +205,7 @@ function EditBoard() {
                             onChange={(e) => setTotal(e.target.value)}
                         />
                         <TextField
-                            label="type"
+                            label="ชนิด"
                             variant="outlined"
                             type="text"
                             fullWidth
@@ -214,16 +214,17 @@ function EditBoard() {
                             onChange={(e) => setType(e.target.value)}
                         />
                     </div>
+                    <h3>อุปกรณ์</h3>
                     <div className="editboard-toolSelected">
                         <div className="editboard-select-group">
-                            <SelectComponent list={tools} typeFilter="tool" filterName="type" dataType="type" onChange={onChangeTypeFilter} value={typeSelect} />
-                            <SelectComponent list={typeFilter} typeFilter="tool" filterName="category" dataType="category" onChange={onChangeCategoryFilter} value={categorySelect} />
+                            <SelectComponent list={tools} typeFilter="tool" filterName="ชนิด" dataType="type" onChange={onChangeTypeFilter} value={typeSelect} />
+                            <SelectComponent list={typeFilter} typeFilter="tool" filterName="ประเภท" dataType="category" onChange={onChangeCategoryFilter} value={categorySelect} />
                         </div>
                         <div className="">
-                            <SelectComponent list={categoryFilter} typeFilter="tool" filterName="Tool name" dataType="name" onChange={onChangeNameFilter} value={nameSelect} />
+                            <SelectComponent list={categoryFilter} typeFilter="tool" filterName="ชื่ออุปกรณ์" dataType="name" onChange={onChangeNameFilter} value={nameSelect} />
                         </div>
                         <TextField
-                            label="Total"
+                            label="จำนวน"
                             variant="outlined"
                             type="number"
                             fullWidth
@@ -232,22 +233,23 @@ function EditBoard() {
                             onChange={(e) => setTotalSelect(e.target.value)}
                         />
                         <Button variant="contained" size="small" color="primary" className="editboard-btn-add" onClick={onSubmitToolSelected}>
-                            add
+                            เพิ่ม
                         </Button>
                         <Divider />
-                        <h4>Tool selected</h4>
+                        <h4>อุปกรณ์ที่ใช้ในบอร์ด</h4>
                         <ListToolSelected toolSelected={toolSelected} deleteTool={deleteToolSelected} />
                     </div>
                     <ImageUpload file={file} setFile={setFile} />
                     <ImageUploadMultiple files={files} setFiles={setFiles} />
                     <TextField
                         id="outlined-multiline-flexible"
-                        label="Description"
+                        label="รายละเอียดอื่นๆ"
                         multiline
                         rowsMax={4}
                         variant="outlined"
                         fullWidth
                         className={classes.margin}
+                        value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
 
@@ -259,7 +261,7 @@ function EditBoard() {
                         className={classes.margin}
                         disabled={!formState.isValid}
                     >
-                        submit
+                        อัพเดต
                     </Button>
 
                 </form>

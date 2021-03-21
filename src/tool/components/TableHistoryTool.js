@@ -7,22 +7,26 @@ import { useForm } from "../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 
 const columns = [
-    { label: 'Date', minWidth: 170 },
-    { label: 'Tool name', minWidth: 170 },
+    { label: 'วันที่', minWidth: 170 },
+    { label: 'ชื่ออุปกรณ์', minWidth: 170 },
     {
-        label: 'Username',
+        label: 'ชื่อผู้เบิก',
         minWidth: 170,
     },
     {
-        label: 'Total',
+        label: 'จำนวน',
         minWidth: 170,
     },
     {
-        label: 'Time',
+        label: 'เวลา',
         minWidth: 170,
     },
     {
-        label: 'Action',
+        label: 'วันหมดอายุ',
+        minWidth: 170,
+    },
+    {
+        label: 'อื่นๆ',
         minWidth: 330,
         align: 'center'
     },
@@ -52,14 +56,14 @@ export default function TableHistoryTool() {
     const classes = useStyles();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
-    const [tools, setTools] = useState(historyTool);
+    const [tools] = useState(historyTool);
     const [openRestore, setOpenRestore] = useState(false);
     const [data, setData] = useState();
     const [openEdit, setOpenEdit] = useState(false);
     const [openDescription, setOpenDescription] = useState(false);
 
 
-    const [formState, inputHandler, setFormData] = useForm(
+    const [formState, inputHandler] = useForm(
         {
             total: {
                 value: '',
@@ -158,10 +162,13 @@ export default function TableHistoryTool() {
                                             {tool.time}
                                         </TableCell>
                                         <TableCell>
+                                            {tool.exp}
+                                        </TableCell>
+                                        <TableCell>
                                             <div className="TableHistoryTool-action">
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenRestore(tool.toolName, tool.total)}>Restore</Button>
-                                                <Button variant="contained" color="primary" onClick={handleOpenEdit}>Edit</Button>
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenDescription(tool.description)}>Description</Button>
+                                                <Button variant="contained" color="primary" onClick={() => handleOpenRestore(tool.toolName, tool.total)}>คืน</Button>
+                                                <Button variant="contained" color="primary" onClick={handleOpenEdit}>แก้ไข</Button>
+                                                <Button variant="contained" color="primary" onClick={() => handleOpenDescription(tool.description)}>ดู</Button>
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -194,10 +201,10 @@ export default function TableHistoryTool() {
             >
                 <Fade in={openRestore}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">Are you sure ?</h2>
+                        <h2 id="transition-modal-title">คุณต้องการทำขั้นตอนนี้หรือไม่ ?</h2>
                         <div className="TableHistoryTool-action">
-                            <Button variant="contained" color="primary" onClick={handleSubmitRestore}>Submit</Button>
-                            <Button variant="contained" color="secondary" onClick={handleCloseRestore}>Cancel</Button>
+                            <Button variant="contained" color="primary" onClick={handleSubmitRestore}>ยืนยัน</Button>
+                            <Button variant="contained" color="secondary" onClick={handleCloseRestore}>ยกเลิก</Button>
                         </div>
                     </div>
                 </Fade>
@@ -217,12 +224,12 @@ export default function TableHistoryTool() {
             >
                 <Fade in={openEdit}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">History</h2>
+                        <h2 id="transition-modal-title">ประวัติ</h2>
                         <form onSubmit={handleSubmitEdit}>
                             <Input id="total" element="input" label="Total" type="number" errorText="Please fill data" validators={[VALIDATOR_REQUIRE()]} onInput={inputHandler} required />
                             <div className="TableHistoryTool-action">
-                                <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid}>Submit</Button>
-                                <Button variant="contained" color="secondary" onClick={handleCloseEdit}>Cancel</Button>
+                                <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid}>แก้ไข</Button>
+                                <Button variant="contained" color="secondary" onClick={handleCloseEdit}>ยกเลิก</Button>
                             </div>
                         </form>
                     </div>
@@ -244,7 +251,7 @@ export default function TableHistoryTool() {
             >
                 <Fade in={openDescription}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">Description</h2>
+                        <h2 id="transition-modal-title">รายละเอียดเพิ่มเติม</h2>
                         <p>{data}</p>
                     </div>
                 </Fade>

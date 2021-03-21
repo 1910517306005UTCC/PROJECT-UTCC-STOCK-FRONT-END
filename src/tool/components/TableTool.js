@@ -12,26 +12,26 @@ import { Link } from "react-router-dom"
 import "./TableTool.css"
 
 const columns = [
-    { label: 'Image', minWidth: 100 },
-    { label: 'Tool name', minWidth: 170 },
-    { label: 'Tool code', minWidth: 170 },
+    { label: 'รูปภาพ', minWidth: 100 },
+    { label: 'ชื่ออุปกรณ์', minWidth: 170 },
+    { label: 'รหัสอุปกรณ์', minWidth: 170 },
     {
-        label: 'type', minWidth: 100, align: 'left',
+        label: 'ชนิด', minWidth: 100, align: 'left',
     },
     {
-        label: 'category', minWidth: 120, align: 'left',
+        label: 'ประเภท', minWidth: 120, align: 'left',
     },
     {
-        label: 'size', minWidth: 120, align: 'left',
+        label: 'ขนาด', minWidth: 120, align: 'left',
     },
     {
-        label: 'status', minWidth: 170, align: 'left',
+        label: 'สถานะ', minWidth: 170, align: 'left',
     },
     {
-        label: 'Qty', minWidth: 100, align: 'left',
+        label: 'จำนวน', minWidth: 100, align: 'left',
     },
     {
-        label: 'action', minWidth: 170, align: 'left',
+        label: 'อื่นๆ', minWidth: 170, align: 'left',
     },
 ];
 
@@ -167,22 +167,28 @@ export default function TableTool() {
                                             <p>{tool.size}</p>
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>{tool.status}</p>
+                                            {Number(tool.total) > Number(tool.limit) ?
+                                                <p>มี</p> :
+                                                Number(tool.total) === 0 ?
+                                                    <p style={{ color: "red" }}>หมด</p> : <p style={{ color: "orange" }}>กำลังจะหมด</p>
+                                            }
                                         </TableCell>
                                         <TableCell align="left">
                                             <p>{tool.total}</p>
                                         </TableCell>
                                         <TableCell align="left">
                                             <div className="table-tool-btn-action">
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenModal(tool.toolName, index, "Request")}>
-                                                    request
+                                                <Button variant="contained" color="primary" onClick={() => handleOpenModal(tool.toolName, index, "เบิก")}>
+                                                    เบิก
                                                 </Button>
-                                                <Button variant="contained" onClick={() => handleOpenModal(tool.toolName, index, "Add")} style={{ background: "#28a745", color: "#fff" }}>
-                                                    add
+                                                <Button variant="contained" onClick={() => handleOpenModal(tool.toolName, index, "เพิ่ม")} style={{ background: "#28a745", color: "#fff" }}>
+                                                    เพิ่ม
                                                 </Button>
-                                                <Button variant="contained" color="primary" >
-                                                    <Link to={`/${tool.id}/tool`}>description</Link>
-                                                </Button>
+                                                <Link to={`/${tool.id}/tool`}>
+                                                    <Button variant="contained" color="primary" >
+                                                        ดู
+                                                    </Button>
+                                                </Link>
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -219,12 +225,12 @@ export default function TableTool() {
                 <Fade in={openModal}>
                     <div className={classes.paper}>
                         <h2 id="transition-modal-title">{headerForm}</h2>
-                        <form onSubmit={headerId == "Request" ? onSubmitRequest : onSubmitAdd}>
+                        <form onSubmit={headerId == "เบิก" ? onSubmitRequest : onSubmitAdd}>
                             <Input
                                 id="total"
                                 element="input"
                                 type="number"
-                                label="Total"
+                                label="จำนวน"
                                 validators={[VALIDATOR_REQUIRE()]}
                                 errorText="Please enter a valid Total."
                                 onInput={inputHandler}
@@ -232,7 +238,7 @@ export default function TableTool() {
                             />
                             <TextField
                                 id="outlined-multiline-flexible"
-                                label="Description"
+                                label="รายละเอียดเพิ่มเติม"
                                 multiline
                                 rowsMax={4}
                                 variant="outlined"
@@ -240,8 +246,8 @@ export default function TableTool() {
                                 className={classes.textarea}
                             />
                             <div className="table-tool-btn-action">
-                                <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid} >submit</Button>
-                                <Button variant="contained" color="secondary" onClick={() => setOpenModal(false)}>cancel</Button>
+                                <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid} >ยืนยัน</Button>
+                                <Button variant="contained" color="secondary" onClick={() => setOpenModal(false)}>ยกเลิก</Button>
                             </div>
                         </form>
                     </div>

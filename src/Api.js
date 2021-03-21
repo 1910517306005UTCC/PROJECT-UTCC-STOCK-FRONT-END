@@ -328,7 +328,8 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.1",
-        total: "0",
+        total: "10",
+        limit: "20",
         boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",
         images: [
@@ -389,7 +390,8 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.2",
-        total: "0",
+        total: "30",
+        limit: "20",
         boardCode: "f5d6gs",
         imageProfile: "/images/b3.jpg",
         images: [
@@ -451,6 +453,7 @@ export const listBoards = [
         id: uuidv4(),
         boardName: "ET-ARDUINO v.3",
         total: "0",
+        limit: "20",
         boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",
         images: [
@@ -511,7 +514,8 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.4",
-        total: "0",
+        total: "8",
+        limit: "10",
         boardCode: "f5d6gs",
         imageProfile: "/images/b3.jpg",
         images: [
@@ -572,7 +576,8 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.5",
-        total: "0",
+        total: "100",
+        limit: "10",
         boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",
         images: [
@@ -633,7 +638,8 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.6",
-        total: "0",
+        total: "50",
+        limit: "20",
         boardCode: "f5d6gs",
         imageProfile: "/images/b3.jpg",
         images: [
@@ -695,6 +701,7 @@ export const listBoards = [
         id: uuidv4(),
         boardName: "ET-ARDUINO v.7",
         total: "0",
+        limit: "20",
         boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",
         images: [
@@ -755,7 +762,8 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.8",
-        total: "0",
+        total: "40",
+        limit: "20",
         boardCode: "f5d6gs",
         imageProfile: "/images/b3.jpg",
         images: [

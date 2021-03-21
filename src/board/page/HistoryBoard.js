@@ -5,7 +5,7 @@ import "./HistoryBoard.css"
 function HistoryBoard() {
     return (
         <div className="Container-historyboard">
-            <h1>History of Board</h1>
+            <h1>ประวัติการเบิกบอร์ด</h1>
             <TableHistoryBoard />
         </div>
     )

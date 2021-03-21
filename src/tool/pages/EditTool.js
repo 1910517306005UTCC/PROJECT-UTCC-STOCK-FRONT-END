@@ -27,7 +27,7 @@ function EditTool() {
     const [file, setFile] = useState(tool.imageProfile);
     const [files, setFiles] = useState(tool.images);
     const [total, setTotal] = useState(tool.total);
-    const [type, setType] = useState(tool.type);
+    const [type] = useState(tool.type);
     const [limit, setLimit] = useState(tool.limit);
     const [description, setDescription] = useState(tool.description);
     const [toolCode, settoolCode] = useState(tool.toolCode);
@@ -71,49 +71,23 @@ function EditTool() {
 
     return (
         <Container>
-            <h1>Edit {tool.toolName}</h1>
+            <h1>แก้ไข {tool.toolName}</h1>
             <Paper>
                 <form onSubmit={onSubmit}>
                     <Input
                         id="name"
                         element="input"
                         type="text"
-                        label="tool name *"
+                        label="ชื่ออุปกรณ์ *"
                         validators={[VALIDATOR_REQUIRE()]}
-                        errorText="Please enter a valid tool name."
+                        errorText="โปรดใส่ข้อมูล."
                         onInput={inputHandler}
                         initialValue={tool.toolName}
                         initialValid={true}
                         required
                     />
-                    <div className="edittool-input-group">
-                        <Input
-                            id="type"
-                            element="input"
-                            type="text"
-                            label="type *"
-                            validators={[VALIDATOR_REQUIRE()]}
-                            errorText="Please enter a valid type."
-                            onInput={inputHandler}
-                            initialValue={tool.type}
-                            initialValid={true}
-                            required
-                        />
-                        <Input
-                            id="category"
-                            element="input"
-                            type="text"
-                            label="category *"
-                            validators={[VALIDATOR_REQUIRE()]}
-                            errorText="Please enter a valid category."
-                            onInput={inputHandler}
-                            initialValue={tool.category}
-                            initialValid={true}
-                            required
-                        />
-                    </div>
                     <TextField
-                        label="tool code"
+                        label="รหัสอุปกรณ์"
                         variant="outlined"
                         fullWidth
                         type="text"
@@ -122,7 +96,7 @@ function EditTool() {
                         onChange={(e) => settoolCode(e.target.value)}
                     />
                     <TextField
-                        label="tool limit"
+                        label="จำกัด"
                         variant="outlined"
                         type="number"
                         fullWidth
@@ -130,8 +104,34 @@ function EditTool() {
                         className={classes.margin}
                         onChange={(e) => setLimit(e.target.value)}
                     />
+                    <div className="edittool-input-group">
+                        <Input
+                            id="type"
+                            element="input"
+                            type="text"
+                            label="ชนิด *"
+                            validators={[VALIDATOR_REQUIRE()]}
+                            errorText="โปรดใส่ข้อมูล."
+                            onInput={inputHandler}
+                            initialValue={type}
+                            initialValid={true}
+                            required
+                        />
+                        <Input
+                            id="category"
+                            element="input"
+                            type="text"
+                            label="ประเภท *"
+                            validators={[VALIDATOR_REQUIRE()]}
+                            errorText="โปรดใส่ข้อมูล."
+                            onInput={inputHandler}
+                            initialValue={tool.category}
+                            initialValid={true}
+                            required
+                        />
+                    </div>
                     <TextField
-                        label="total"
+                        label="จำนวน"
                         variant="outlined"
                         type="number"
                         fullWidth
@@ -143,12 +143,13 @@ function EditTool() {
                     <ImageUploadMultiple files={files} setFiles={setFiles} />
                     <TextField
                         id="outlined-multiline-flexible"
-                        label="Description"
+                        label="รายละเอียดเพิ่มเติม"
                         multiline
                         rowsMax={4}
                         variant="outlined"
                         fullWidth
                         className={classes.margin}
+                        value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
 
@@ -160,7 +161,7 @@ function EditTool() {
                         className={classes.margin}
                         disabled={!formState.isValid}
                     >
-                        submit
+                        อัพเดต
                     </Button>
 
                 </form>

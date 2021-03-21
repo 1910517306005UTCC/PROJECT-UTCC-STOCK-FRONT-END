@@ -5,8 +5,8 @@ import './HistoryTool.css'
 function HistoryTool() {
     return (
         <div className="Container-historytool">
-            <h1>History of Tool</h1>
-           <TableHistoryTool />
+            <h1>ประวัติการเบิกอุปกรณ์</h1>
+            <TableHistoryTool />
         </div>
     )
 }

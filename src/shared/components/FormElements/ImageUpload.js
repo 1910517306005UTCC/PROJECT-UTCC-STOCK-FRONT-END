@@ -61,7 +61,7 @@ const ImageUpload = props => {
 
     return (
         <div className="form-control">
-            <h4>Profile Image</h4>
+            <h4>รูปภาพโปรไฟล์</h4>
             { previewUrl &&
                 <div className={classes.square}>
                     <Badge color="secondary" badgeContent="x" onClick={deleteImage} className={classes.btnDelete} >
@@ -77,7 +77,7 @@ const ImageUpload = props => {
             />
             <label htmlFor="contained-button-file">
                 <Button variant="contained" color="primary" component="span">
-                    Upload
+                    อัพโหลด
                 </Button>
             </label>
         </div>

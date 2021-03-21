@@ -60,7 +60,7 @@ function DetailBoard() {
 
     return (
         <div>
-            <h1>Board Detail</h1>
+            <h1>รายละเอียดบอร์ด {board.boardName}</h1>
 
             <div className="container-detailboard">
                 <div>
@@ -80,50 +80,43 @@ function DetailBoard() {
                 <div>
                     <h2>{board.boardName}</h2>
                     <div className="detailboard-list">
-                        <p>Board code</p>
+                        <p>รหัสบอร์ด</p>
                         <p>{board.boardCode}</p>
                     </div>
                     <div className="detailboard-list">
-                        <p>total</p>
+                        <p>จำนวน</p>
                         <p>{board.total}</p>
                     </div>
                     <div className="detailboard-list">
-                        <p>type</p>
+                        <p>ชนิด</p>
                         <p>{board.type}</p>
                     </div>
                     <div className="detailboard-list">
-                        <p>status</p>
-                        <p>{board.status}</p>
+                        <p>สถานะ</p>
+                        {Number(board.total) > Number(board.limit) ?
+                            <p>มี</p> :
+                            Number(board.total) === 0 ?
+                                <p style={{ color: "red" }}>หมด</p> : <p style={{ color: "orange" }}>กำลังจะหมด</p>
+                        }
                     </div>
                     <div className="detailboard-list">
-                        <p>limit</p>
+                        <p>จำกัด</p>
                         <p>{board.limit}</p>
                     </div>
                     <div className="detailboard-des">
-                        <p>description</p>
+                        <p>รายละเอียดเพิ่มเติม</p>
                         <p>{board.description}</p>
                     </div>
                     <div className="detailboard-btn">
-                        <Button
-                            color="primary"
-                            type="button"
-                            variant="contained"
-                        >
-                            <Link to={`/board/${board.id}`}>Edit</Link>
-                        </Button>
-                        <Button
-                            type="button"
-                            variant="contained"
-                        >
-                            <Link to="/">Back</Link>
-                        </Button>
+                        <Link to={`/board/${board.id}`}><Button color="primary" type="button" variant="contained">แก้ไข</Button></Link>
+                        <Link to="/"><Button type="button" variant="contained">กลับ</Button></Link>
                     </div>
                 </div>
             </div>
 
             <Divider />
 
-            <h2>Tools of {board.boardName}</h2>
+            <h2>อุปกรณ์ของบอร์ด {board.boardName}</h2>
 
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
@@ -158,16 +151,18 @@ function DetailBoard() {
                                             <p>{tool.type}</p>
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>In Stock</p>
+                                            {Number(tool.total) > Number(tool.limit) ?
+                                                <p>มี</p> :
+                                                Number(tool.total) === 0 ?
+                                                    <p style={{ color: "red" }}>หมด</p> : <p style={{ color: "orange" }}>กำลังจะหมด</p>
+                                            }
                                         </TableCell>
                                         <TableCell align="left">
                                             <p>{tool.total}</p>
                                         </TableCell>
                                         <TableCell align="left">
                                             <div className="table-board-btn-action">
-                                                <Button variant="contained" color="primary" >
-                                                    <Link to={`/${tool.id}/tool`}>description</Link>
-                                                </Button>
+                                                <Link to={`/${tool.id}/tool`}><Button variant="contained" color="primary">ดู</Button></Link>
                                             </div>
                                         </TableCell>
                                     </TableRow>

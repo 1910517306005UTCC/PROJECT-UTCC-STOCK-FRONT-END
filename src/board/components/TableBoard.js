@@ -12,20 +12,20 @@ import { Link } from "react-router-dom";
 import "./TableBoard.css"
 
 const columns = [
-    { label: 'Image', minWidth: 100 },
-    { label: 'Board name', minWidth: 170 },
-    { label: 'Board code', minWidth: 170 },
+    { label: 'รูปภาพ', minWidth: 100 },
+    { label: 'ชื่อบอร์ด', minWidth: 170 },
+    { label: 'รหัสบอร์ด', minWidth: 170 },
     {
-        label: 'type', minWidth: 100, align: 'left',
+        label: 'ชนิด', minWidth: 100, align: 'left',
     },
     {
-        label: 'status', minWidth: 170, align: 'left',
+        label: 'สถานะ', minWidth: 170, align: 'left',
     },
     {
-        label: 'Qty', minWidth: 100, align: 'left',
+        label: 'จำนวน', minWidth: 100, align: 'left',
     },
     {
-        label: 'action', minWidth: 170, align: 'left',
+        label: 'อื่นๆ', minWidth: 170, align: 'left',
     },
 ];
 
@@ -112,11 +112,6 @@ export default function TableBoard() {
         setOpenModal(false)
     }
 
-    const onSubmitRequest = (e) => {
-        e.preventDefault();
-        // console.log("Request")
-    }
-
     return (
         <div>
             { messageAlert && <Alert onClose={() => { }} style={{ margin: "10px 0" }}>This is a success alert — check it out!</Alert>}
@@ -155,22 +150,21 @@ export default function TableBoard() {
                                             <p>{board.type}</p>
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>In Stock</p>
+                                            {Number(board.total) > Number(board.limit) ?
+                                                <p>มี</p> :
+                                                Number(board.total) === 0 ?
+                                                    <p style={{ color: "red" }}>หมด</p> : <p style={{ color: "orange" }}>กำลังจะหมด</p>
+                                            }
                                         </TableCell>
                                         <TableCell align="left">
                                             <p>{board.total}</p>
                                         </TableCell>
                                         <TableCell align="left">
                                             <div className="table-board-btn-action">
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenModal(board.boardName, index, "Request")}>
-                                                    request
+                                                <Button variant="contained" onClick={() => handleOpenModal(board.boardName, index, "เพิ่ม")} style={{ background: "#28a745", color: "#fff" }}>
+                                                    เพิ่ม
                                                 </Button>
-                                                <Button variant="contained" onClick={() => handleOpenModal(board.boardName, index, "Add")} style={{ background: "#28a745", color: "#fff" }}>
-                                                    add
-                                                </Button>
-                                                <Button variant="contained" color="primary" >
-                                                    <Link to={`/${board.id}/board`}>description</Link>
-                                                </Button>
+                                                <Link to={`/${board.id}/board`}><Button variant="contained" color="primary">ดู</Button></Link>
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -207,12 +201,12 @@ export default function TableBoard() {
                 <Fade in={openModal}>
                     <div className={classes.paper}>
                         <h2 id="transition-modal-title">{headerForm}</h2>
-                        <form onSubmit={headerId == "Request" ? onSubmitRequest : onSubmitAdd}>
+                        <form onSubmit={onSubmitAdd}>
                             <Input
                                 id="total"
                                 element="input"
                                 type="number"
-                                label="Total"
+                                label="จำนวน"
                                 validators={[VALIDATOR_REQUIRE()]}
                                 errorText="Please enter a valid Total."
                                 onInput={inputHandler}
@@ -220,7 +214,7 @@ export default function TableBoard() {
                             />
                             <TextField
                                 id="outlined-multiline-flexible"
-                                label="Description"
+                                label="รายละเอียดเพิ่มเติม"
                                 multiline
                                 rowsMax={4}
                                 variant="outlined"
@@ -228,8 +222,8 @@ export default function TableBoard() {
                                 className={classes.textarea}
                             />
                             <div className="table-board-btn-action">
-                                <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid} >submit</Button>
-                                <Button variant="contained" color="secondary" onClick={() => setOpenModal(false)}>cancel</Button>
+                                <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid} >ยืนยัน</Button>
+                                <Button variant="contained" color="secondary" onClick={() => setOpenModal(false)}>ยกเลิก</Button>
                             </div>
                         </form>
                     </div>

@@ -169,7 +169,7 @@ function CreateBoard() {
 
     return (
         <Container maxWidth="sm">
-            <h1>Create Board</h1>
+            <h1>สร้างบอร์ด</h1>
             <Paper className="createboard-form">
                 <form onSubmit={onSubmit}>
 
@@ -177,30 +177,30 @@ function CreateBoard() {
                         id="name"
                         element="input"
                         type="text"
-                        label="Board name *"
+                        label="ชื่อบอร์ด *"
                         validators={[VALIDATOR_REQUIRE()]}
-                        errorText="Please enter a valid board name."
+                        errorText="โปรดใส่ข้อมูล."
                         onInput={inputHandler}
                         required
                     />
 
                     <TextField
-                        label="Board code"
+                        label="รหัสบอร์ด"
                         variant="outlined"
                         fullWidth
                         type="text"
                         className={classes.input}
                         onChange={(e) => setBoardCode(e.target.value)}
                     />
-
+                    <h3>อุปกรณ์</h3>
                     <Paper className={classes.PaperFilter}>
                         <div className="editboard-select-group">
-                            <SelectComponent list={tools} typeFilter="tool" filterName="type" dataType="type" onChange={onChangeTypeFilter} value={typeSelect} />
-                            <SelectComponent list={typeFilter} typeFilter="tool" filterName="category" dataType="category" onChange={onChangeCategoryFilter} value={categorySelect} />
+                            <SelectComponent list={tools} typeFilter="tool" filterName="ชนิด" dataType="type" onChange={onChangeTypeFilter} value={typeSelect} />
+                            <SelectComponent list={typeFilter} typeFilter="tool" filterName="ประเภท" dataType="category" onChange={onChangeCategoryFilter} value={categorySelect} />
                         </div>
-                        <SelectComponent list={categoryFilter} typeFilter="tool" filterName="Tool name" dataType="name" onChange={onChangeNameFilter} value={nameSelect} />
+                        <SelectComponent list={categoryFilter} typeFilter="tool" filterName="ชื่ออุปกรณ์" dataType="name" onChange={onChangeNameFilter} value={nameSelect} />
                         <TextField
-                            label="Total"
+                            label="จำนวน"
                             variant="outlined"
                             type="number"
                             fullWidth
@@ -209,10 +209,10 @@ function CreateBoard() {
                             onChange={(e) => setTotalSelect(e.target.value)}
                         />
                         <Button variant="contained" size="small" color="primary" className={classes.margin} onClick={onSubmitToolSelected}>
-                            add
+                            เพิ่ม
                         </Button>
                         <Divider />
-                        <h4>Tool selected</h4>
+                        <h4>อุปกรณ์ที่ใช้ในบอร์ด</h4>
                         <ListToolSelected toolSelected={toolSelected} deleteTool={deleteToolSelected} />
 
                     </Paper>
@@ -220,7 +220,7 @@ function CreateBoard() {
 
                     <div className="createboard-input-group">
                         <TextField
-                            label="Total"
+                            label="จำนวน"
                             variant="outlined"
                             fullWidth
                             type="number"
@@ -228,7 +228,7 @@ function CreateBoard() {
                             onChange={(e) => setTotal(e.target.value)}
                         />
                         <TextField
-                            label="Type of work"
+                            label="ชนิดงาน"
                             variant="outlined"
                             fullWidth
                             type="text"
@@ -241,7 +241,7 @@ function CreateBoard() {
 
                     <TextField
                         id="outlined-multiline-flexible"
-                        label="Description"
+                        label="รายละเอียดเพิ่มเติม"
                         multiline
                         rowsMax={4}
                         variant="outlined"
@@ -258,7 +258,7 @@ function CreateBoard() {
                         className={classes.button}
                         disabled={!formState.isValid}
                     >
-                        submit
+                        ยืนยัน
                 </Button>
 
                 </form>

@@ -6,7 +6,7 @@ function BoardList() {
     return (
         <div>
             <div className="container-boardlist">
-                <h1>Board List</h1>
+                <h1>รายการบอร์ด</h1>
                 <TableBoard />
             </div>
         </div>

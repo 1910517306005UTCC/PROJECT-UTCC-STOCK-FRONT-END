@@ -104,7 +104,7 @@ function ImageUploadMultiple(props) {
 
     return (
         <div className="form-control">
-            <h4>Other Images</h4>
+            <h4>รูปภาพอื่นๆ</h4>
             { previewfiles && <div className="uploadMultiple-container">{renderPhotos(previewfiles)}</div>}
             <input
                 accept="image/*"
@@ -116,7 +116,7 @@ function ImageUploadMultiple(props) {
             />
             <label htmlFor="contained-button-files">
                 <Button variant="contained" color="primary" component="span">
-                    Upload Files
+                    อัพโหลด
                 </Button>
             </label>
         </div>

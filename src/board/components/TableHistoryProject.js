@@ -52,7 +52,7 @@ function TableHistoryProject() {
     const classes = useStyles();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
-    const [projects, setProjects] = useState(historyProject);
+    const [projects] = useState(historyProject);
     const [openRestore, setOpenRestore] = useState(false);
     const [data, setData] = useState();
     const [openDescription, setOpenDescription] = useState(false);
@@ -137,7 +137,7 @@ function TableHistoryProject() {
                                             <div className="TableHistoryTool-action">
                                                 <Button variant="contained" color="primary" onClick={() => handleOpenRestore(project.projectName, project.total)}>คืน</Button>
                                                 <Link to={`/project/${project.id}`}><Button variant="contained" color="primary">แก้ไข</Button></Link>
-                                                <Link to={`/${project.id}/project`}><Button variant="contained" color="primary">ดู</Button></Link>
+                                                <Link to={`/${project.id}/project`}><Button variant="contained" color="primary">เพิ่มเติม</Button></Link>
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -170,10 +170,10 @@ function TableHistoryProject() {
             >
                 <Fade in={openRestore}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">Are you sure ?</h2>
+                        <h2 id="transition-modal-title">คุณต้องการทำขั้นตอนนี้หรือไม่ ?</h2>
                         <div className="TableHistoryTool-action">
-                            <Button variant="contained" color="primary" onClick={handleSubmitRestore}>Submit</Button>
-                            <Button variant="contained" color="secondary" onClick={handleCloseRestore}>Cancel</Button>
+                            <Button variant="contained" color="primary" onClick={handleSubmitRestore}>ยืนยัน</Button>
+                            <Button variant="contained" color="secondary" onClick={handleCloseRestore}>ยกเลิก</Button>
                         </div>
                     </div>
                 </Fade>
@@ -193,7 +193,7 @@ function TableHistoryProject() {
             >
                 <Fade in={openDescription}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">Description</h2>
+                        <h2 id="transition-modal-title">รายละเอียดอื่นๆ</h2>
                         <p>{data}</p>
                     </div>
                 </Fade>

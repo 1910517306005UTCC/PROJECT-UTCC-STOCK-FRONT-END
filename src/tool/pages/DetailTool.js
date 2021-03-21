@@ -15,7 +15,7 @@ function DetailTool() {
 
     return (
         <div>
-            <h1>Tool Detail</h1>
+            <h1>รายเอียดอุปกรณ์ของ {tool.toolName}</h1>
 
             <div className="container-detailtool">
                 <div>
@@ -35,47 +35,46 @@ function DetailTool() {
                 <div>
                     <h2>{tool.toolName}</h2>
                     <div className="detailtool-list">
-                        <p>Tool Code</p>
+                        <p>รหัสอุปกรณ์</p>
                         <p>{tool.total}</p>
                     </div>
                     <div className="detailtool-list">
-                        <p>total</p>
+                        <p>จำนวน</p>
                         <p>{tool.total}</p>
                     </div>
                     <div className="detailtool-list">
-                        <p>type</p>
+                        <p>ชนิด</p>
                         <p>{tool.type}</p>
                     </div>
                     <div className="detailtool-list">
-                        <p>category</p>
+                        <p>ประเภท</p>
                         <p>{tool.category}</p>
                     </div>
                     <div className="detailtool-list">
-                        <p>status</p>
-                        <p>{tool.status}</p>
+                        <p>สถานะ</p>
+                        {Number(tool.total) > Number(tool.limit) ?
+                            <p>มี</p> :
+                            Number(tool.total) === 0 ?
+                                <p style={{ color: "red" }}>หมด</p> : <p style={{ color: "orange" }}>กำลังจะหมด</p>
+                        }
                     </div>
                     <div className="detailtool-list">
-                        <p>limit</p>
+                        <p>จำกัด</p>
                         <p>{tool.limit}</p>
                     </div>
                     <div className="detailtool-des">
-                        <p>description</p>
+                        <p>รายละเอียดเพิ่มเติม</p>
                         <p>{tool.description}</p>
                     </div>
                     <div className="detailtool-btn">
-                        <Button
-                            color="primary"
-                            type="button"
-                            variant="contained"
-                        >
-                            <Link to={`/tool/${tool.id}`}>Edit</Link>
-                        </Button>
-                        <Button
-                            type="button"
-                            variant="contained"
-                        >
-                            <Link to="/">Back</Link>
-                        </Button>
+
+                        <Link to={`/tool/${tool.id}`}>
+                            <Button color="primary" type="button" variant="contained">แก้ไข</Button>
+                        </Link>
+                        <Link to="/">
+                            <Button type="button" variant="contained">กลับ</Button>
+                        </Link>
+
                     </div>
                 </div>
             </div>

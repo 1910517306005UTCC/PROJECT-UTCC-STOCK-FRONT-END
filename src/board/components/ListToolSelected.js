@@ -24,7 +24,7 @@ function ListToolSelected(props) {
                         <ListItem key={item.id}>
                             <ListItemText
                                 primary={item.toolName}
-                                secondary={`total ${item.total}`}
+                                secondary={`จำนวน ${item.total}`}
                             />
                             <ListItemSecondaryAction onClick={() => props.deleteTool(item.id)}>
                                 <IconButton edge="end" aria-label="delete">

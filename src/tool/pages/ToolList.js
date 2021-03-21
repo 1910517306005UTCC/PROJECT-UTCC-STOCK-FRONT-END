@@ -7,7 +7,7 @@ function ToolList() {
 
     return (
         <div className="container-toollist">
-            <h1>Tool List</h1>
+            <h1>รายการอุปกรณ์</h1>
             <TableTool />
         </div>
     )

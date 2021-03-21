@@ -5,6 +5,7 @@ export const historyTool = [
         username: "Boonyarit",
         total: 12,
         time: "12.30 pm",
+        exp: "13/08/63",
         description: "nothing"
     },
     {
@@ -13,6 +14,7 @@ export const historyTool = [
         username: "USER",
         total: 4,
         time: "14.30 pm",
+        exp: "14/08/63",
         description: "there was an insufficient tool"
     },
     {
@@ -21,6 +23,7 @@ export const historyTool = [
         username: "ADMIN",
         total: 7,
         time: "09.10 am",
+        exp: "15/08/63",
         description: "nothing"
     }
 ]
@@ -33,7 +36,58 @@ export const historyBoard = [
         username: "Boonyarit",
         total: 12,
         time: "12.30 pm",
-        description: "nothing"
+        description: "nothing",
+        exp: "13/08/63",
+        tools: [
+            {
+                id: "t1",
+                toolName: "R10K",
+                toolCode: "codv51",
+                imageProfile: "/images/tool2.jpg",
+                status: "Out of Stock",
+                type: "RESISTER",
+                size: "CODE_100",
+                total: "5",
+                category: "SURFACE"
+            },
+            {
+                id: "t5",
+                toolName: "LM-2575",
+                toolCode: "codv52",
+                imageProfile: "/images/lm.jpg",
+                status: "In Stock",
+                type: "LM",
+                size: "CODE_845",
+                total: "2",
+                category: "SME"
+    
+            },
+            {
+                id: "t6",
+                toolName: "IC-1",
+                toolCode: "codv57",
+                imageProfile: "/images/ic1.jpg",
+                status: "Getting out of Stock",
+                type: "IC",
+                size: "CODE_448",
+                total: "1",
+                category: "SURFACE"
+    
+    
+            },
+            {
+                id: "t9",
+                toolName: "Module-WIFI",
+                toolCode: "codv56",
+                imageProfile: "/images/tool1.jpg",
+                status: "In Stock",
+                type: "Module",
+                size: "CODE_170",
+                total: "1",
+                category: "SURFACE"
+    
+            }
+        ]
     },
     {
         date: "14/02/63",
@@ -42,7 +96,58 @@ export const historyBoard = [
         username: "Asuna",
         total: 4,
         time: "14.30 pm",
-        description: "there was an insufficient tool"
+        description: "there was an insufficient tool",
+        exp: "14/08/63",
+        tools: [
+            {
+                id: "t1",
+                toolName: "R10K",
+                toolCode: "codv51",
+                imageProfile: "/images/tool2.jpg",
+                status: "Out of Stock",
+                type: "RESISTER",
+                size: "CODE_100",
+                total: "1",
+                category: "SURFACE"
+            },
+            {
+                id: "t5",
+                toolName: "LM-2575",
+                toolCode: "codv52",
+                imageProfile: "/images/lm.jpg",
+                status: "In Stock",
+                type: "LM",
+                size: "CODE_845",
+                total: "1",
+                category: "SME"
+    
+            },
+            {
+                id: "t6",
+                toolName: "IC-1",
+                toolCode: "codv57",
+                imageProfile: "/images/ic1.jpg",
+                status: "Getting out of Stock",
+                type: "IC",
+                size: "CODE_448",
+                total: "1",
+                category: "SURFACE"
+    
+    
+            },
+            {
+                id: "t9",
+                toolName: "Module-WIFI",
+                toolCode: "codv56",
+                imageProfile: "/images/tool1.jpg",
+                status: "In Stock",
+                type: "Module",
+                size: "CODE_170",
+                total: "1",
+                category: "SURFACE"
+    
+            }
+        ]
     },
     {
         date: "15/02/63",
@@ -51,7 +156,58 @@ export const historyBoard = [
         username: "ADMIN",
         total: 7,
         time: "09.10 am",
-        description: "nothing"
+        description: "nothing",
+        exp: "15/08/63",
+        tools: [
+            {
+                id: "t1",
+                toolName: "R10K",
+                toolCode: "codv51",
+                imageProfile: "/images/tool2.jpg",
+                status: "Out of Stock",
+                type: "RESISTER",
+                size: "CODE_100",
+                total: "1",
+                category: "SURFACE"
+            },
+            {
+                id: "t5",
+                toolName: "LM-2575",
+                toolCode: "codv52",
+                imageProfile: "/images/lm.jpg",
+                status: "In Stock",
+                type: "LM",
+                size: "CODE_845",
+                total: "2",
+                category: "SME"
+    
+            },
+            {
+                id: "t6",
+                toolName: "IC-1",
+                toolCode: "codv57",
+                imageProfile: "/images/ic1.jpg",
+                status: "Getting out of Stock",
+                type: "IC",
+                size: "CODE_448",
+                total: "2",
+                category: "SURFACE"
+    
+    
+            },
+            {
+                id: "t9",
+                toolName: "Module-WIFI",
+                toolCode: "codv56",
+                imageProfile: "/images/tool1.jpg",
+                status: "In Stock",
+                type: "Module",
+                size: "CODE_170",
+                total: "1",
+                category: "SURFACE"
+    
+            }
+        ]
     }
 ]
 

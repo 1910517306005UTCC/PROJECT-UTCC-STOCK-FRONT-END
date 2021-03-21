@@ -171,7 +171,7 @@ function CreateProject() {
 
     return (
         <Container maxWidth="sm">
-            <h1>Create Project</h1>
+            <h1>สร้างโปรเจค</h1>
             <Paper className="createproject-form">
                 <form onSubmit={onSubmit}>
 
@@ -179,15 +179,15 @@ function CreateProject() {
                         id="name"
                         element="input"
                         type="text"
-                        label="Project name *"
+                        label="ชื่อโปรเจค *"
                         validators={[VALIDATOR_REQUIRE()]}
-                        errorText="Please enter a valid board name."
+                        errorText="โปรดใส่ข้อมูล."
                         onInput={inputHandler}
                         required
                     />
 
                     <TextField
-                        label="Project code"
+                        label="รหัสโปรเจค"
                         variant="outlined"
                         fullWidth
                         type="text"
@@ -197,17 +197,17 @@ function CreateProject() {
 
                     <div className="createproject-input-group">
                         <Input
-                            id="total"
+                            id="จำนวน"
                             element="input"
                             type="number"
                             label="total *"
                             validators={[VALIDATOR_REQUIRE()]}
-                            errorText="Please enter a valid total."
+                            errorText="โปรดใส่ข้อมูล."
                             onInput={inputHandler}
                             required
                         />
                         <TextField
-                            label="Type of work"
+                            label="ชนิดงานของโปรเจค"
                             variant="outlined"
                             fullWidth
                             type="text"
@@ -217,14 +217,14 @@ function CreateProject() {
                     </div>
 
                     <Paper className={classes.PaperFilter}>
-                        <h2>Tool</h2>
+                        <h3>อุปกรณ์</h3>
                         <div className="createproject-select-group">
-                            <SelectComponent list={tools} typeFilter="tool" filterName="type" dataType="type" onChange={onChangeTypeFilter} value={typeSelect} />
-                            <SelectComponent list={typeFilter} typeFilter="tool" filterName="category" dataType="category" onChange={onChangeCategoryFilter} value={categorySelect} />
+                            <SelectComponent list={tools} typeFilter="tool" filterName="ชนิด" dataType="type" onChange={onChangeTypeFilter} value={typeSelect} />
+                            <SelectComponent list={typeFilter} typeFilter="tool" filterName="ประเภท" dataType="category" onChange={onChangeCategoryFilter} value={categorySelect} />
                         </div>
-                        <SelectComponent list={categoryFilter} typeFilter="tool" filterName="Tool name" dataType="name" onChange={onChangeNameFilter} value={nameSelect} />
+                        <SelectComponent list={categoryFilter} typeFilter="tool" filterName="ชื่ออุปกรณ์" dataType="name" onChange={onChangeNameFilter} value={nameSelect} />
                         <TextField
-                            label="Total"
+                            label="จำนวน"
                             variant="outlined"
                             type="number"
                             fullWidth
@@ -233,10 +233,10 @@ function CreateProject() {
                             onChange={(e) => setTotalSelect(e.target.value)}
                         />
                         <Button variant="contained" size="small" color="primary" className={classes.margin} onClick={onSubmitToolSelected}>
-                            add
+                            เพิ่ม
                         </Button>
                         <Divider />
-                        <h4>Tool selected</h4>
+                        <h4>อุปกรณ์ที่ใช้ในโปรเจค</h4>
                         <ListToolSelected toolSelected={toolSelected} deleteTool={deleteToolSelected} />
 
                     </Paper>
@@ -249,7 +249,7 @@ function CreateProject() {
 
                     <TextField
                         id="outlined-multiline-flexible"
-                        label="Description"
+                        label="รายละเอียดเพิ่มเติม"
                         multiline
                         rowsMax={4}
                         variant="outlined"
@@ -266,7 +266,7 @@ function CreateProject() {
                         className={classes.button}
                         disabled={!formState.isValid}
                     >
-                        submit
+                        ยืนยัน
                 </Button>
 
                 </form>

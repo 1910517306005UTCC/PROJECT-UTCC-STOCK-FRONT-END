@@ -68,15 +68,15 @@ function BoardRequest() {
 
     return (
         <Container maxWidth="sm">
-            <h1>Request Board</h1>
+            <h1>เบิกบอร์ด</h1>
             <Paper className="createtool-form">
                 <form onSubmit={onSubmit}>
                     <SelectValidation
                         id="name"
                         list={boards}
-                        filterName="Board name"
+                        filterName="ชื่อบอร์ด *"
                         validators={[VALIDATOR_REQUIRE()]}
-                        errorText="Please enter a valid board name."
+                        errorText="โปรดเลือกข้อมูล."
                         onInput={inputHandler}
                         required
                     />
@@ -84,9 +84,9 @@ function BoardRequest() {
                         id="total"
                         element="input"
                         type="number"
-                        label="total *"
+                        label="จำนวน *"
                         validators={[VALIDATOR_REQUIRE()]}
-                        errorText="Please enter a valid total."
+                        errorText="โปรดใส่ข้อมูล."
                         onInput={inputHandler}
                         required
                     />
@@ -99,7 +99,7 @@ function BoardRequest() {
                         disabled={!formState.isValid}
                         onClick={() => setOpenAlert(true)}
                     >
-                        Check
+                        ตรวจสอบ
                     </Button>
 
                     {openAlert && <Alert severity="error" onClose={() => setOpenAlert(false)} >This is an error alert — check it out!</Alert>}
@@ -112,7 +112,7 @@ function BoardRequest() {
                         className={classes.button}
                         disabled={!openAlert}
                     >
-                        submit
+                        ยืนยัน
                     </Button>
                 </form>
             </Paper>

@@ -8,22 +8,22 @@ import { VALIDATOR_REQUIRE } from '../../shared/util/validators';
 
 
 const columns = [
-    { label: 'Date', minWidth: 170 },
-    { label: 'Board name', minWidth: 170 },
+    { label: 'วันที่', minWidth: 170 },
+    { label: 'ชื่อบอร์ด', minWidth: 170 },
     {
-        label: 'Username',
+        label: 'ชื่อคนเบิก',
         minWidth: 170,
     },
     {
-        label: 'total',
+        label: 'จำนวน',
         minWidth: 170,
     },
     {
-        label: 'time',
+        label: 'เวลา',
         minWidth: 170,
     },
     {
-        label: 'action',
+        label: 'อื่นๆ',
         minWidth: 330,
         align: 'center'
     },
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     modal: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
     paper: {
         backgroundColor: theme.palette.background.paper,
@@ -55,7 +55,7 @@ export default function TableHistoryBoard() {
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [boards, setBoards] = useState(historyBoard);
     const [openRestore, setOpenRestore] = useState(false);
-    const [data, setData] = useState();
+    const [data, setData] = useState({});
     const [openEdit, setOpenEdit] = useState(false);
     const [openDescription, setOpenDescription] = useState(false);
 
@@ -91,10 +91,10 @@ export default function TableHistoryBoard() {
 
     const handleCloseRestore = () => {
         setOpenRestore(false)
-        setData()
+        setData({})
     }
     const handleSubmitRestore = () => {
-        setData()
+        setData({})
     }
     const handleCloseEdit = () => {
         setOpenEdit(false)
@@ -107,6 +107,7 @@ export default function TableHistoryBoard() {
     }
 
     const handleOpenDescription = (description) => {
+        console.log(description)
         setData(description)
         setOpenDescription(true)
     }
@@ -117,7 +118,7 @@ export default function TableHistoryBoard() {
 
     const handleCloseDescription = () => {
         setOpenDescription(false)
-        setData()
+        setData({})
     }
 
     return (
@@ -159,9 +160,9 @@ export default function TableHistoryBoard() {
                                         </TableCell>
                                         <TableCell>
                                             <div className="TableHistoryboard-action">
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenRestore(board.boardName, board.total)}>Restore</Button>
-                                                <Button variant="contained" color="primary" onClick={handleOpenEdit}>Edit</Button>
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenDescription(board.description)}>Description</Button>
+                                                <Button variant="contained" color="primary" onClick={() => handleOpenRestore(board.boardName, board.total)}>คืน</Button>
+                                                <Button variant="contained" color="primary" onClick={handleOpenEdit}>แก้ไข</Button>
+                                                <Button variant="contained" color="primary" onClick={() => handleOpenDescription(board)}>เพิ่มเติม</Button>
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -194,10 +195,10 @@ export default function TableHistoryBoard() {
             >
                 <Fade in={openRestore}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">Are you sure ?</h2>
+                        <h2 id="transition-modal-title">คุณต้องการทำขั้นตอนนี้หรือไม่ ?</h2>
                         <div className="TableHistoryboard-action">
-                            <Button variant="contained" color="primary" onClick={handleSubmitRestore}>Submit</Button>
-                            <Button variant="contained" color="secondary" onClick={handleCloseRestore}>Cancel</Button>
+                            <Button variant="contained" color="primary" onClick={handleSubmitRestore}>ยืนยัน</Button>
+                            <Button variant="contained" color="secondary" onClick={handleCloseRestore}>ยกเลิก</Button>
                         </div>
                     </div>
                 </Fade>
@@ -217,12 +218,12 @@ export default function TableHistoryBoard() {
             >
                 <Fade in={openEdit}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">History</h2>
+                        <h2 id="transition-modal-title">ประวัติ</h2>
                         <form onSubmit={handleSubmitEdit}>
                             <Input id="total" element="input" label="Total" type="number" errorText="Please fill data" validators={[VALIDATOR_REQUIRE()]} onInput={inputHandler} required />
                             <div className="TableHistoryTool-action">
-                                <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid}>Submit</Button>
-                                <Button variant="contained" color="secondary" onClick={handleCloseEdit}>Cancel</Button>
+                                <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid}>แก้ไข</Button>
+                                <Button variant="contained" color="secondary" onClick={handleCloseEdit}>ยกเลิก</Button>
                             </div>
                         </form>
                     </div>
@@ -244,8 +245,22 @@ export default function TableHistoryBoard() {
             >
                 <Fade in={openDescription}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">Description</h2>
-                        <p>{data}</p>
+                        <h2 id="transition-modal-title">รายละเอียดเพิ่มเติม</h2>
+                        <div className="historyboard-description">
+                            <p className="historyboard-h4">วันหมดอายุแจ้งเตือน</p>
+                            <p>{data.exp}</p>
+                        </div>
+                        <p className="historyboard-h4">จำนวนอุปกรณ์ที่ใช้ไป</p>
+                        { data.tools && data.tools.map((tool) => (
+                            <div className="historyboard-description" key={tool.id}>
+                                <p>{tool.toolName}</p>
+                                <p>{Number(tool.total) * Number(data.total) }</p>
+                            </div>
+                        ))}
+                        <div>
+                            <p className="historyboard-h4">รายละเอียดอื่นๆ</p>
+                            <p>{data.description}</p>
+                        </div>
                     </div>
                 </Fade>
             </Modal>

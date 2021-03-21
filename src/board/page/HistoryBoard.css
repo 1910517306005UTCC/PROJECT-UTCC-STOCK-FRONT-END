@@ -5,3 +5,22 @@
 .TableHistoryboard-action button {
     margin: 5px 5px 5px 0px;
 }
+
+.historyboard-description {
+    display: flex;
+    width: 250px;
+}
+
+.historyboard-description p:first-child{
+    width: 60%;
+}
+
+.historyboard-description p:last-child{
+    width: 40%;
+    text-align: right;
+}
+
+.historyboard-h4{
+    /* margin: 0px; */
+    font-weight: bold;
+}

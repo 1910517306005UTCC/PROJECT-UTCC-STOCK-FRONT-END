@@ -6,7 +6,7 @@ import "./HistoryProject.css"
 function HistoryProject() {
     return (
         <div>
-            <h1>History of Project</h1>
+            <h1>ประวัติการเบิกโปรเจค</h1>
             <TableHistoryProject />
         </div>
     )

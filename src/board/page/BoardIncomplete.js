@@ -27,7 +27,7 @@ function BoardIncomplete() {
     return (
         <div className="container-incomplete">
             <div className="section-incomplete">
-                <div className="headername-incomplete"><h3>Incomplete Board</h3></div>
+                <div className="headername-incomplete"><h3>อุปกรณ์ไม่ครบ</h3></div>
                 <div>
                     {toolList.map((item) => (
                         <div className="cover-incomplete" key={item.id}>
@@ -46,9 +46,9 @@ function BoardIncomplete() {
                                     <table className="table-incomplete">
                                         <thead style={{ background: "#EAE6EB" }}>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
+                                                <th>ชื่ออุปกรณ์</th>
+                                                <th>จำนวนค้าง</th>
+                                                <th>อื่นๆ</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -72,7 +72,7 @@ function BoardIncomplete() {
                                         size="small"
                                         className={classes.button}
                                     >
-                                        Update
+                                        อัพเดต
                                     </Button>
                                     <Button
                                         type="button"
@@ -83,7 +83,7 @@ function BoardIncomplete() {
                                         className={classes.button}
                                         onClick={() => onClickUpdateAll(item.tools)}
                                     >
-                                        Update All
+                                        อัพเดตทั้งหมด
                                     </Button>
                                 </div>
                             </div>

@@ -73,21 +73,21 @@ function CreateTool() {
 
     return (
         <Container maxWidth="sm">
-            <h1>Create Tool</h1>
+            <h1>สร้างอุปกรณ์</h1>
             <Paper className="createtool-form">
                 <form onSubmit={onSubmit}>
                     <Input
                         id="name"
                         element="input"
                         type="text"
-                        label="Name *"
+                        label="ชื่ออุปกรณ์ *"
                         validators={[VALIDATOR_REQUIRE()]}
-                        errorText="Please enter a valid name."
+                        errorText="โปรดใส่ข้อมูล."
                         onInput={inputHandler}
                         required
                     />
                     <TextField
-                        label="Tool code"
+                        label="รหัสอุปกรณ์"
                         variant="outlined"
                         fullWidth
                         type="text"
@@ -99,9 +99,9 @@ function CreateTool() {
                             id="type"
                             element="input"
                             type="text"
-                            label="Type *"
+                            label="ชนิด *"
                             validators={[VALIDATOR_REQUIRE()]}
-                            errorText="Please enter a valid type."
+                            errorText="โปรดใส่ข้อมูล."
                             onInput={inputHandler}
                             required
                         />
@@ -109,16 +109,16 @@ function CreateTool() {
                             id="category"
                             element="input"
                             type="text"
-                            label="Category *"
+                            label="ประเภท *"
                             validators={[VALIDATOR_REQUIRE()]}
-                            errorText="Please enter a valid category."
+                            errorText="โปรดใส่ข้อมูล."
                             onInput={inputHandler}
                             required
                         />
                     </div>
                     <div className="createtool-input-group">
                         <TextField
-                            label="Total"
+                            label="จำนวน"
                             variant="outlined"
                             fullWidth
                             type="number"
@@ -127,7 +127,7 @@ function CreateTool() {
 
                         />
                         <TextField
-                            label="Size"
+                            label="ขนาด"
                             variant="outlined"
                             fullWidth
                             type="text"
@@ -138,7 +138,7 @@ function CreateTool() {
                     <ImageUpload  file={file} setFile={setFile} />
                     <TextField
                         id="outlined-multiline-flexible"
-                        label="Description"
+                        label="รายละเอียดเพิ่มเติม"
                         multiline
                         rowsMax={4}
                         variant="outlined"
@@ -154,7 +154,7 @@ function CreateTool() {
                         className={classes.button}
                         disabled={!formState.isValid}
                     >
-                        submit
+                        ยืนยัน
                     </Button>
                 </form>
             </Paper>
