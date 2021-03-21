@@ -21,6 +21,7 @@ import HistoryBoard from "./board/page/HistoryBoard";
 import HistoryProject from "./board/page/HistoryProject";
 import DetailHistoryProject from "./board/page/DetailHistoryProject";
 import EditProject from "./board/page/EditProject";
+import Home from "./Home";
 
 
 function App() {
@@ -30,7 +31,10 @@ function App() {
         <Nav />
         <Container maxWidth="lg">
           <Switch>
-            <Route path="/" exact>
+          <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/tool/list" exact>
               <ToolList />
             </Route>
             <Route path="/tool/new">

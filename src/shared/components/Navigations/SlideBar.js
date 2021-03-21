@@ -5,14 +5,16 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
+import { Link } from "react-router-dom";
+import { ListItemIcon, ListItemText } from '@material-ui/core';
+
+// Icon
 import ListIcon from '@material-ui/icons/List';
 import AddIcon from '@material-ui/icons/Add';
 import RestorePageIcon from '@material-ui/icons/RestorePage';
 import GroupIcon from '@material-ui/icons/Group';
 import InputIcon from '@material-ui/icons/Input';
 import HomeIcon from '@material-ui/icons/Home';
-import { Link } from "react-router-dom";
-import { ListItemIcon, ListItemText } from '@material-ui/core';
 
 const useStyles = makeStyles({
     list: {
@@ -54,15 +56,6 @@ export default function SlideBar(props) {
         setState({ ...state, [anchor]: open });
     };
 
-    //     <List>
-    //     {['All mail', 'Trash', 'Spam'].map((text, index) => (
-    //       <ListItem button key={text}>
-    //         <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-    //         <ListItemText primary={text} />
-    //       </ListItem>
-    //     ))}
-    //   </List>
-
     const list = (anchor) => (
         <div
             className={clsx(classes.list, {
@@ -82,7 +75,7 @@ export default function SlideBar(props) {
             </List>
             <Divider />
             <List>
-                <Link className={classes.link} to="/">
+                <Link className={classes.link} to="/tool/list">
                     <ListItem button>
                         <ListItemIcon><ListIcon /></ListItemIcon>
                         <ListItemText primary="รายการอุปกรณ์" />

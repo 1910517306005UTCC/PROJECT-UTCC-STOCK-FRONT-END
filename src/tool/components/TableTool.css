@@ -8,12 +8,8 @@
 
 .table-tool-btn-action button:last-child {
     margin-left: 10px;
-    color: #fff;
 }
 
-.table-tool-btn-action button:last-child a {
-    color: #fff;
-}
 
 .table-tool-modal-textarea {
     margin: 10px 0;

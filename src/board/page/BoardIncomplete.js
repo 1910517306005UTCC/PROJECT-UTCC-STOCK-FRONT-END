@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
-import { boardIncompleteList } from "../../Api"
-import { Button, TextField } from "@material-ui/core"
-import { makeStyles } from '@material-ui/core/styles'
+import React, { useState } from 'react';
+import { boardIncompleteList } from "../../Api";
+import { Button, TextField } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
 
+// Icon
+import UpdateIcon from '@material-ui/icons/Update';
 
-import "./BoardIncomplete.css"
+// CSS
+import "./BoardIncomplete.css";
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -81,6 +84,7 @@ function BoardIncomplete() {
                                         fullWidth
                                         size="small"
                                         className={classes.button}
+                                        startIcon={<UpdateIcon />}
                                         onClick={() => onClickUpdateAll(item.tools)}
                                     >
                                         อัพเดตทั้งหมด

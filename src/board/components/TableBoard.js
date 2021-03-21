@@ -5,10 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Avatar, Button, Modal, Backdrop, Fade, TextField } from "@material-ui/core";
 import { useForm } from "../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
-import Input from "../../shared/components/FormElements/Input";
 import { boardListAction, addBoardToTotal } from "../../actions/boardActions";
 import { Link } from "react-router-dom";
 
+// Component
+import Input from "../../shared/components/FormElements/Input";
+
+// Icon
+import AddIcon from '@material-ui/icons/Add';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
+// CSS
 import "./TableBoard.css"
 
 const columns = [
@@ -50,6 +57,10 @@ const useStyles = makeStyles((theme) => ({
     },
     textarea: {
         margin: "10px 0"
+    },
+    btnAdd: {
+        backgroundColor: "#28a745",
+        color: "#fff"
     }
 }));
 
@@ -161,10 +172,10 @@ export default function TableBoard() {
                                         </TableCell>
                                         <TableCell align="left">
                                             <div className="table-board-btn-action">
-                                                <Button variant="contained" onClick={() => handleOpenModal(board.boardName, index, "เพิ่ม")} style={{ background: "#28a745", color: "#fff" }}>
+                                                <Button className={classes.btnAdd} variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenModal(board.boardName, index, "เพิ่ม")} >
                                                     เพิ่ม
                                                 </Button>
-                                                <Link to={`/${board.id}/board`}><Button variant="contained" color="primary">ดู</Button></Link>
+                                                <Link to={`/${board.id}/board`}><Button variant="contained" startIcon={<VisibilityIcon />} color="default">ดู</Button></Link>
                                             </div>
                                         </TableCell>
                                     </TableRow>

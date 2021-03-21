@@ -1,14 +1,17 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import SlideBar from './SlideBar';
+import { Link } from "react-router-dom"
+import { Avatar, Menu, MenuItem, Badge, InputBase, Typography, IconButton, Toolbar, AppBar } from "@material-ui/core"
+
+// Icon
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import SlideBar from './SlideBar';
-import { Link } from "react-router-dom"
-import { Avatar, Menu, MenuItem, Badge, InputBase, Typography, IconButton, Toolbar, AppBar } from "@material-ui/core"
 
+// CSS
 import "./Nav.css"
 
 const useStyles = makeStyles((theme) => ({

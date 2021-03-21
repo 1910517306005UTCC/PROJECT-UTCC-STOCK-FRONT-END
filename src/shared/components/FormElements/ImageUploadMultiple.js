@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react'
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Avatar, Badge } from "@material-ui/core"
 
-import './ImageUploadMultiple.css';
-// import 'swiper/components/navigation/navigation.scss';
-// import 'swiper/swiper.scss';
-// import 'swiper/components/pagination/pagination.scss';
-// import 'swiper/components/scrollbar/scrollbar.scss';
+// Icon
+import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
-// SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+// CSS
+import './ImageUploadMultiple.css';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -115,7 +112,7 @@ function ImageUploadMultiple(props) {
                 multiple
             />
             <label htmlFor="contained-button-files">
-                <Button variant="contained" color="primary" component="span">
+                <Button variant="contained" color="default" component="span" startIcon={<AddAPhotoIcon />}>
                     อัพโหลด
                 </Button>
             </label>

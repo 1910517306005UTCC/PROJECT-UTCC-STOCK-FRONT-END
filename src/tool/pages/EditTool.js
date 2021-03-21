@@ -3,13 +3,16 @@ import { useForm } from "../../shared/hooks/form-hook"
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators"
 import { toolItem } from "../../Api"
 import { Container, Paper, TextField, Button, Divider } from "@material-ui/core"
-import Input from "../../shared/components/FormElements/Input"
 import { makeStyles } from '@material-ui/core/styles'
 
-
-import "./EditTool.css"
+// Component
 import ImageUpload from '../../shared/components/FormElements/ImageUpload'
 import ImageUploadMultiple from '../../shared/components/FormElements/ImageUploadMultiple'
+import Input from "../../shared/components/FormElements/Input"
+
+// CSS
+import "./EditTool.css"
+
 
 const useStyles = makeStyles((theme) => ({
     margin: {

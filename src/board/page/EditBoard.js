@@ -1,19 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import { useForm } from "../../shared/hooks/form-hook"
-import { VALIDATOR_REQUIRE } from "../../shared/util/validators"
-import { boardItem } from "../../Api"
-import { Container, Paper, TextField, Button, Divider } from "@material-ui/core"
-import Input from "../../shared/components/FormElements/Input"
-import ListToolSelected from "../components/ListToolSelected";
+import React, { useState, useEffect } from 'react';
+import { useForm } from "../../shared/hooks/form-hook";
+import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
+import { boardItem } from "../../Api";
+import { Container, Paper, TextField, Button, Divider } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { toolListAction } from "../../actions/toolActions";
-import SelectComponent from "../../shared/components/FormElements/Select"
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles';
+
+// Component
+import ImageUpload from '../../shared/components/FormElements/ImageUpload';
+import ImageUploadMultiple from '../../shared/components/FormElements/ImageUploadMultiple';
+import Input from "../../shared/components/FormElements/Input";
+import SelectComponent from "../../shared/components/FormElements/Select";
+import ListToolSelected from "../components/ListToolSelected";
 
 
-import "./EditBoard.css"
-import ImageUpload from '../../shared/components/FormElements/ImageUpload'
-import ImageUploadMultiple from '../../shared/components/FormElements/ImageUploadMultiple'
+// Icon
+import AddIcon from '@material-ui/icons/Add';
+
+// CSS
+import "./EditBoard.css";
+
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -232,7 +239,7 @@ function EditBoard() {
                             className={classes.margin}
                             onChange={(e) => setTotalSelect(e.target.value)}
                         />
-                        <Button variant="contained" size="small" color="primary" className="editboard-btn-add" onClick={onSubmitToolSelected}>
+                        <Button variant="contained" size="small" color="primary" className="editboard-btn-add" startIcon={<AddIcon />} onClick={onSubmitToolSelected}>
                             เพิ่ม
                         </Button>
                         <Divider />

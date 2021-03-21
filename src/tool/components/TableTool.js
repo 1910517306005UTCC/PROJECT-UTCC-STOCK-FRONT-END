@@ -5,13 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Avatar, Button, Modal, Backdrop, Fade, TextField } from "@material-ui/core";
 import { useForm } from "../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
-import Input from "../../shared/components/FormElements/Input";
 import { toolListAction, addToolToTotal } from "../../actions/toolActions";
 import { Link } from "react-router-dom"
+
+// Component
+import Input from "../../shared/components/FormElements/Input";
+
+// Icon
 import RestorePageIcon from '@material-ui/icons/RestorePage';
 import AddIcon from '@material-ui/icons/Add';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
+// CSS
 import "./TableTool.css"
 
 const columns = [
@@ -59,6 +64,10 @@ const useStyles = makeStyles((theme) => ({
     },
     textarea: {
         margin: "10px 0"
+    },
+    btnAdd: {
+        backgroundColor: "#28a745",
+        color: "#fff"
     }
 }));
 
@@ -184,11 +193,11 @@ export default function TableTool() {
                                                 <Button variant="contained" color="primary" startIcon={<RestorePageIcon />} onClick={() => handleOpenModal(tool.toolName, index, "เบิก")}>
                                                     เบิก
                                                 </Button>
-                                                <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenModal(tool.toolName, index, "เพิ่ม")} style={{ background: "#28a745", color: "#fff" }}>
+                                                <Button className={classes.btnAdd} variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenModal(tool.toolName, index, "เพิ่ม")} >
                                                     เพิ่ม
                                                 </Button>
                                                 <Link to={`/${tool.id}/tool`}>
-                                                    <Button variant="contained" color="primary" startIcon={<VisibilityIcon />} >
+                                                    <Button variant="contained" color="default" startIcon={<VisibilityIcon />} >
                                                         ดู
                                                     </Button>
                                                 </Link>

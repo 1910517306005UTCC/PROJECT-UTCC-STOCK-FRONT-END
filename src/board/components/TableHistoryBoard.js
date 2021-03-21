@@ -3,8 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import { historyBoard } from '../../ApiHistory';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Button, Modal, Backdrop, Fade } from '@material-ui/core';
 import { useForm } from "../../shared/hooks/form-hook";
-import Input from '../../shared/components/FormElements/Input';
 import { VALIDATOR_REQUIRE } from '../../shared/util/validators';
+
+// Component
+import Input from '../../shared/components/FormElements/Input';
+
+
+// Icon
+import RestoreIcon from '@material-ui/icons/Restore';
+import EditIcon from '@material-ui/icons/Edit';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 
 const columns = [
@@ -20,6 +28,10 @@ const columns = [
     },
     {
         label: 'เวลา',
+        minWidth: 170,
+    },
+    {
+        label: 'วันหมดอายุ',
         minWidth: 170,
     },
     {
@@ -159,10 +171,13 @@ export default function TableHistoryBoard() {
                                             {board.time}
                                         </TableCell>
                                         <TableCell>
+                                            {board.exp}
+                                        </TableCell>
+                                        <TableCell>
                                             <div className="TableHistoryboard-action">
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenRestore(board.boardName, board.total)}>คืน</Button>
-                                                <Button variant="contained" color="primary" onClick={handleOpenEdit}>แก้ไข</Button>
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenDescription(board)}>เพิ่มเติม</Button>
+                                                <Button variant="contained" color="primary" startIcon={<RestoreIcon />} onClick={() => handleOpenRestore(board.boardName, board.total)}>คืน</Button>
+                                                <Button variant="contained" color="secondary" startIcon={<EditIcon />} onClick={handleOpenEdit}>แก้ไข</Button>
+                                                <Button variant="contained" color="default" startIcon={<DescriptionIcon />} onClick={() => handleOpenDescription(board)}>เพิ่มเติม</Button>
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -246,10 +261,6 @@ export default function TableHistoryBoard() {
                 <Fade in={openDescription}>
                     <div className={classes.paper}>
                         <h2 id="transition-modal-title">รายละเอียดเพิ่มเติม</h2>
-                        <div className="historyboard-description">
-                            <p className="historyboard-h4">วันหมดอายุแจ้งเตือน</p>
-                            <p>{data.exp}</p>
-                        </div>
                         <p className="historyboard-h4">จำนวนอุปกรณ์ที่ใช้ไป</p>
                         { data.tools && data.tools.map((tool) => (
                             <div className="historyboard-description" key={tool.id}>

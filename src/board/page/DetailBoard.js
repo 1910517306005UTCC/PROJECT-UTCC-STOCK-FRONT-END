@@ -4,8 +4,17 @@ import { boardItem } from "../../Api"
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, Divider, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@material-ui/core"
 
-import "./DetailBoard.css"
+
+// Component
 import { SlideImagePreview } from '../../shared/components/UIElements/SlideImagePreview';
+
+// Icon
+import EditIcon from '@material-ui/icons/Edit';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
+// CSS
+import "./DetailBoard.css"
 
 const columns = [
     { label: 'Image', minWidth: 100 },
@@ -47,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
     },
     textarea: {
         margin: "10px 0"
+    },
+    btnEdit: {
+        backgroundColor: "#343a40",
+        color: "#fff"
     }
 }));
 
@@ -108,8 +121,8 @@ function DetailBoard() {
                         <p>{board.description}</p>
                     </div>
                     <div className="detailboard-btn">
-                        <Link to={`/board/${board.id}`}><Button color="primary" type="button" variant="contained">แก้ไข</Button></Link>
-                        <Link to="/"><Button type="button" variant="contained">กลับ</Button></Link>
+                        <Link to={`/board/${board.id}`}><Button color="primary" type="button" variant="contained" startIcon={<EditIcon />}>แก้ไข</Button></Link>
+                        <Link to="/"><Button type="button" variant="contained" startIcon={<ArrowBackIcon />}>กลับ</Button></Link>
                     </div>
                 </div>
             </div>
@@ -162,7 +175,9 @@ function DetailBoard() {
                                         </TableCell>
                                         <TableCell align="left">
                                             <div className="table-board-btn-action">
-                                                <Link to={`/${tool.id}/tool`}><Button variant="contained" color="primary">ดู</Button></Link>
+                                                <Link to={`/${tool.id}/tool`}>
+                                                    <Button variant="contained" color="default" startIcon={<VisibilityIcon />}>ดู</Button>
+                                                </Link>
                                             </div>
                                         </TableCell>
                                     </TableRow>

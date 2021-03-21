@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Avatar, Badge } from "@material-ui/core"
 
+// Icon
+import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
+
+// CSS
 import './ImageUpload.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -76,7 +80,7 @@ const ImageUpload = props => {
                 onChange={pickedHandler}
             />
             <label htmlFor="contained-button-file">
-                <Button variant="contained" color="primary" component="span">
+                <Button variant="contained" color="default" component="span" startIcon={<AddAPhotoIcon />}>
                     อัพโหลด
                 </Button>
             </label>

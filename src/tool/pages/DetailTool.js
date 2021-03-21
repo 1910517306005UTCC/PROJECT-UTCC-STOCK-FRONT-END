@@ -3,8 +3,15 @@ import { Link } from "react-router-dom"
 import { toolItem } from "../../Api"
 import { Avatar, Button } from "@material-ui/core"
 
-import "./DetailTool.css"
+// Component
 import { SlideImagePreview } from '../../shared/components/UIElements/SlideImagePreview';
+
+// Icon
+import EditIcon from '@material-ui/icons/Edit';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
+// CSS
+import "./DetailTool.css"
 
 function DetailTool() {
 
@@ -69,10 +76,10 @@ function DetailTool() {
                     <div className="detailtool-btn">
 
                         <Link to={`/tool/${tool.id}`}>
-                            <Button color="primary" type="button" variant="contained">แก้ไข</Button>
+                            <Button color="primary" type="button" variant="contained" startIcon={<EditIcon />}>แก้ไข</Button>
                         </Link>
-                        <Link to="/">
-                            <Button type="button" variant="contained">กลับ</Button>
+                        <Link to="/tool/list">
+                            <Button type="button" variant="contained" startIcon={<ArrowBackIcon />}>กลับ</Button>
                         </Link>
 
                     </div>

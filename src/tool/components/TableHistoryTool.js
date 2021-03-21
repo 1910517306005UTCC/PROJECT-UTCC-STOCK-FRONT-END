@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { historyTool } from '../../ApiHistory';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Button, Modal, Backdrop, Fade } from '@material-ui/core';
-import Input from '../../shared/components/FormElements/Input';
 import { useForm } from "../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
+
+// Component
+import Input from '../../shared/components/FormElements/Input';
+
+// Icon
+import RestoreIcon from '@material-ui/icons/Restore';
+import EditIcon from '@material-ui/icons/Edit';
+import DescriptionIcon from '@material-ui/icons/Description';
+
 
 const columns = [
     { label: 'วันที่', minWidth: 170 },
@@ -166,9 +174,9 @@ export default function TableHistoryTool() {
                                         </TableCell>
                                         <TableCell>
                                             <div className="TableHistoryTool-action">
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenRestore(tool.toolName, tool.total)}>คืน</Button>
-                                                <Button variant="contained" color="primary" onClick={handleOpenEdit}>แก้ไข</Button>
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenDescription(tool.description)}>ดู</Button>
+                                                <Button variant="contained" color="primary" startIcon={<RestoreIcon />} onClick={() => handleOpenRestore(tool.toolName, tool.total)}>คืน</Button>
+                                                <Button variant="contained" color="secondary" startIcon={<EditIcon />} onClick={handleOpenEdit}>แก้ไข</Button>
+                                                <Button variant="contained" color="default" startIcon={<DescriptionIcon />} onClick={() => handleOpenDescription(tool.description)}>เพิ่มเติม</Button>
                                             </div>
                                         </TableCell>
                                     </TableRow>

@@ -4,6 +4,11 @@ import { historyProject } from '../../ApiHistory';
 import { Link } from "react-router-dom"
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Button, Modal, Backdrop, Fade } from '@material-ui/core';
 
+// Icon
+import RestoreIcon from '@material-ui/icons/Restore';
+import EditIcon from '@material-ui/icons/Edit';
+import DescriptionIcon from '@material-ui/icons/Description';
+
 
 const columns = [
     { label: 'วันที่', minWidth: 170 },
@@ -18,6 +23,10 @@ const columns = [
     },
     {
         label: 'เวลา',
+        minWidth: 170,
+    },
+    {
+        label: 'วันหมดอายุ',
         minWidth: 170,
     },
     {
@@ -134,10 +143,13 @@ function TableHistoryProject() {
                                             {project.time}
                                         </TableCell>
                                         <TableCell>
+                                            {project.exp}
+                                        </TableCell>
+                                        <TableCell>
                                             <div className="TableHistoryTool-action">
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenRestore(project.projectName, project.total)}>คืน</Button>
-                                                <Link to={`/project/${project.id}`}><Button variant="contained" color="primary">แก้ไข</Button></Link>
-                                                <Link to={`/${project.id}/project`}><Button variant="contained" color="primary">เพิ่มเติม</Button></Link>
+                                                <Button variant="contained" color="primary" onClick={() => handleOpenRestore(project.projectName, project.total)} startIcon={<RestoreIcon />}>คืน</Button>
+                                                <Link to={`/project/${project.id}`}><Button variant="contained" color="secondary" startIcon={<EditIcon />}>แก้ไข</Button></Link>
+                                                <Link to={`/${project.id}/project`}><Button variant="contained" color="default" startIcon={<DescriptionIcon />}>เพิ่มเติม</Button></Link>
                                             </div>
                                         </TableCell>
                                     </TableRow>

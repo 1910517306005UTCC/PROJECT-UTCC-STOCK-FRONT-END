@@ -4,8 +4,17 @@ import { projectItem } from "../../ApiHistory"
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, Divider, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@material-ui/core"
 
-import "./DetailHistoryProject.css"
+// Component
 import { SlideImagePreview } from '../../shared/components/UIElements/SlideImagePreview';
+
+// Icon
+import EditIcon from '@material-ui/icons/Edit';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
+
+// CSS
+import "./DetailHistoryProject.css"
 
 const columns = [
     { label: 'รูป', minWidth: 100 },
@@ -110,19 +119,25 @@ function DetailHistoryProject() {
                         <p>{project.description}</p>
                     </div>
                     <div className="detailproject-btn">
-                        <Button
-                            color="primary"
-                            type="button"
-                            variant="contained"
-                        >
-                            <Link to={`/project/${project.id}`}>แก้ไข</Link>
-                        </Button>
-                        <Button
-                            type="button"
-                            variant="contained"
-                        >
-                            <Link to="/historyProject">กลับ</Link>
-                        </Button>
+                        <Link to={`/project/${project.id}`}>
+                            <Button
+                                color="primary"
+                                type="button"
+                                variant="contained"
+                                startIcon={<EditIcon />}
+                            >
+                                แก้ไข
+                            </Button>
+                        </Link>
+                        <Link to="/historyProject">
+                            <Button
+                                type="button"
+                                variant="contained"
+                                startIcon={<ArrowBackIcon />}
+                            >
+                                กลับ
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -164,16 +179,22 @@ function DetailHistoryProject() {
                                             <p>{tool.type}</p>
                                         </TableCell>
                                         <TableCell align="left">
-                                            <p>In Stock</p>
+                                            {Number(tool.total) > Number(tool.limit) ?
+                                                <p>มี</p> :
+                                                Number(tool.total) === 0 ?
+                                                    <p style={{ color: "red" }}>หมด</p> : <p style={{ color: "orange" }}>กำลังจะหมด</p>
+                                            }
                                         </TableCell>
                                         <TableCell align="left">
                                             <p>{tool.total}</p>
                                         </TableCell>
                                         <TableCell align="left">
                                             <div className="table-project-btn-action">
-                                                <Button variant="contained" color="primary" >
-                                                    <Link to={`/${tool.id}/tool`}>ดู</Link>
-                                                </Button>
+                                                <Link to={`/${tool.id}/tool`}>
+                                                    <Button variant="contained" color="primary" startIcon={<VisibilityIcon />}>
+                                                        ดู
+                                                    </Button>
+                                                </Link>
                                             </div>
                                         </TableCell>
                                     </TableRow>

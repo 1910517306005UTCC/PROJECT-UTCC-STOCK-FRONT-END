@@ -23,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
     button: {
         margin: "10px 0"
     },
+    btnCheck: {
+        margin: "10px 0",
+        backgroundColor: "#FFC107"
+    },
     inputFilter: {
         margin: "20px 0px",
         padding: "0 5px"
@@ -169,9 +173,8 @@ function BoardRequest() {
                     <Button
                         type="button"
                         variant="contained"
-                        color="primary"
                         fullWidth
-                        className={classes.button}
+                        className={classes.btnCheck}
                         disabled={!formState.isValid}
                         onClick={onSubmitCheck}
                     >
