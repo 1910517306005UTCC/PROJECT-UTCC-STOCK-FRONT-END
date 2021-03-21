@@ -8,6 +8,9 @@ import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import Input from "../../shared/components/FormElements/Input";
 import { toolListAction, addToolToTotal } from "../../actions/toolActions";
 import { Link } from "react-router-dom"
+import RestorePageIcon from '@material-ui/icons/RestorePage';
+import AddIcon from '@material-ui/icons/Add';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import "./TableTool.css"
 
@@ -178,14 +181,14 @@ export default function TableTool() {
                                         </TableCell>
                                         <TableCell align="left">
                                             <div className="table-tool-btn-action">
-                                                <Button variant="contained" color="primary" onClick={() => handleOpenModal(tool.toolName, index, "เบิก")}>
+                                                <Button variant="contained" color="primary" startIcon={<RestorePageIcon />} onClick={() => handleOpenModal(tool.toolName, index, "เบิก")}>
                                                     เบิก
                                                 </Button>
-                                                <Button variant="contained" onClick={() => handleOpenModal(tool.toolName, index, "เพิ่ม")} style={{ background: "#28a745", color: "#fff" }}>
+                                                <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpenModal(tool.toolName, index, "เพิ่ม")} style={{ background: "#28a745", color: "#fff" }}>
                                                     เพิ่ม
                                                 </Button>
                                                 <Link to={`/${tool.id}/tool`}>
-                                                    <Button variant="contained" color="primary" >
+                                                    <Button variant="contained" color="primary" startIcon={<VisibilityIcon />} >
                                                         ดู
                                                     </Button>
                                                 </Link>

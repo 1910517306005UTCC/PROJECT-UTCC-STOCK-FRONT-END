@@ -5,7 +5,14 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
+import ListIcon from '@material-ui/icons/List';
+import AddIcon from '@material-ui/icons/Add';
+import RestorePageIcon from '@material-ui/icons/RestorePage';
+import GroupIcon from '@material-ui/icons/Group';
+import InputIcon from '@material-ui/icons/Input';
+import HomeIcon from '@material-ui/icons/Home';
 import { Link } from "react-router-dom";
+import { ListItemIcon, ListItemText } from '@material-ui/core';
 
 const useStyles = makeStyles({
     list: {
@@ -15,7 +22,7 @@ const useStyles = makeStyles({
         width: 'auto',
     },
     link: {
-        paddingLeft: "40px"
+
     }
 });
 
@@ -47,6 +54,15 @@ export default function SlideBar(props) {
         setState({ ...state, [anchor]: open });
     };
 
+    //     <List>
+    //     {['All mail', 'Trash', 'Spam'].map((text, index) => (
+    //       <ListItem button key={text}>
+    //         <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+    //         <ListItemText primary={text} />
+    //       </ListItem>
+    //     ))}
+    //   </List>
+
     const list = (anchor) => (
         <div
             className={clsx(classes.list, {
@@ -57,42 +73,86 @@ export default function SlideBar(props) {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                <ListItem button>
-                    <Link className={classes.link} to="/">All Tool</Link>
-                </ListItem>
-                <ListItem button>
-                    <Link className={classes.link} to="/tool/new">Add Tool</Link>
-                </ListItem>
-                <ListItem button>
-                    <Link className={classes.link} to="/historytool">history of Tool</Link>
-                </ListItem>
+            <Link className={classes.link} to="/">
+                    <ListItem button>
+                        <ListItemIcon><HomeIcon /></ListItemIcon>
+                        <ListItemText primary="หน้าแรก" />
+                    </ListItem>
+                </Link>
             </List>
             <Divider />
             <List>
-                <ListItem button>
-                    <Link className={classes.link} to="/board/list">All Board</Link>
-                </ListItem>
-                <ListItem button>
-                    <Link className={classes.link} to="/board/new">Add Board</Link>
-                </ListItem>
-                <ListItem button>
-                    <Link className={classes.link} to="/project/new">Add Project</Link>
-                </ListItem>
-                <ListItem button>
-                    <Link className={classes.link} to="/board/request">Request Board</Link>
-                </ListItem>
-                <ListItem button>
-                    <Link className={classes.link} to="/historyboard">history of Board</Link>
-                </ListItem>
-                <ListItem button>
-                    <Link className={classes.link} to="/historyproject">history of Project</Link>
-                </ListItem>
+                <Link className={classes.link} to="/">
+                    <ListItem button>
+                        <ListItemIcon><ListIcon /></ListItemIcon>
+                        <ListItemText primary="รายการอุปกรณ์" />
+                    </ListItem>
+                </Link>
+                <Link className={classes.link} to="/tool/new">
+                    <ListItem button>
+                        <ListItemIcon><AddIcon /></ListItemIcon>
+                        <ListItemText primary="สร้างอุปกรณ์" />
+                    </ListItem>
+                </Link>
+                <Link className={classes.link} to="/historytool">
+                    <ListItem button>
+                        <ListItemIcon><RestorePageIcon /></ListItemIcon>
+                        <ListItemText primary="ประวัติการเบิกอุปกรณ์" />
+                    </ListItem>
+                </Link>
             </List>
             <Divider />
             <List>
-                <ListItem button>
-                    <Link className={classes.link} to="/boardincomplete">อุปกรณ์ไม่ครบ</Link>
+                <Link className={classes.link} to="/board/list">
+                    <ListItem button>
+                        <ListItemIcon><ListIcon /></ListItemIcon>
+                        <ListItemText primary="รายการบอร์ด" />
+                    </ListItem>
+                </Link>
+                <Link className={classes.link} to="/board/new">
+                    <ListItem button>
+                        <ListItemIcon><AddIcon /></ListItemIcon>
+                        <ListItemText primary="สร้างบอร์ด" />
+                    </ListItem>
+                </Link>
+                <Link className={classes.link} to="/project/new">
+                    <ListItem button>
+                        <ListItemIcon><AddIcon /></ListItemIcon>
+                        <ListItemText primary="สร้างโปรเจค" />
+                    </ListItem>
+                </Link>
+                <Link className={classes.link} to="/board/request"><ListItem button>
+                    <ListItemIcon><InputIcon /></ListItemIcon>
+                    <ListItemText primary="เบิกบอร์ด" />
                 </ListItem>
+                </Link>
+                <Link className={classes.link} to="/historyboard">
+                    <ListItem button>
+                        <ListItemIcon><RestorePageIcon /></ListItemIcon>
+                        <ListItemText primary="ประวัติการเบิกบอร์ด" />
+                    </ListItem>
+                </Link>
+                <Link className={classes.link} to="/historyproject">
+                    <ListItem button>
+                        <ListItemIcon><RestorePageIcon /></ListItemIcon>
+                        <ListItemText primary="ประวัติการเบิกโปรเจค" />
+                    </ListItem>
+                </Link>
+            </List>
+            <Divider />
+            <List>
+                <Link className={classes.link} to="/boardincomplete">
+                    <ListItem button>
+                        <ListItemIcon><ListIcon /></ListItemIcon>
+                        <ListItemText primary="อุปกรณ์ไม่ครบ" />
+                    </ListItem>
+                </Link>
+                <Link className={classes.link} to="/auth/users">
+                    <ListItem button>
+                        <ListItemIcon><GroupIcon /></ListItemIcon>
+                        <ListItemText primary="จัดการเข้าถึงของผู้ใช้ทั้งหมด" />
+                    </ListItem>
+                </Link>
             </List>
         </div>
     );

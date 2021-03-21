@@ -130,7 +130,7 @@ export const listToolApi = [
         status: "2",
         type: "resister",
         size: "CODE_100",
-        total: "0",
+        total: "100",
         category: "SURFACE",
         limit: "1500"
     },
@@ -318,7 +318,7 @@ export const toolItem = {
     status: "Out of Stock",
     type: "RESISTER",
     size: "CODE_100",
-    total: "0",
+    total: "100",
     limit: "1500",
     category: "SURFACE",
     description: "this equipment is used for every project"
@@ -348,7 +348,7 @@ export const listBoards = [
                 status: "Out of Stock",
                 type: "RESISTER",
                 size: "CODE_100",
-                total: "0",
+                total: "1",
                 category: "SURFACE"
             },
             {
@@ -358,7 +358,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "LM",
                 size: "CODE_845",
-                total: "250",
+                total: "2",
                 category: "SME"
 
             },
@@ -369,7 +369,7 @@ export const listBoards = [
                 status: "Getting out of Stock",
                 type: "IC",
                 size: "CODE_448",
-                total: "17",
+                total: "1",
                 category: "SURFACE"
 
 
@@ -381,7 +381,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "Module",
                 size: "CODE_170",
-                total: "75",
+                total: "1",
                 category: "SURFACE"
 
             }
@@ -410,7 +410,7 @@ export const listBoards = [
                 status: "Out of Stock",
                 type: "RESISTER",
                 size: "CODE_100",
-                total: "0",
+                total: "10",
                 category: "SURFACE"
             },
             {
@@ -420,7 +420,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "LM",
                 size: "CODE_845",
-                total: "250",
+                total: "10",
                 category: "SME"
 
             },
@@ -431,7 +431,7 @@ export const listBoards = [
                 status: "Getting out of Stock",
                 type: "IC",
                 size: "CODE_448",
-                total: "17",
+                total: "5",
                 category: "SURFACE"
 
 
@@ -443,7 +443,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "Module",
                 size: "CODE_170",
-                total: "75",
+                total: "7",
                 category: "SURFACE"
 
             }
@@ -452,7 +452,7 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.3",
-        total: "0",
+        total: "420",
         limit: "20",
         boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",
@@ -472,7 +472,7 @@ export const listBoards = [
                 status: "Out of Stock",
                 type: "RESISTER",
                 size: "CODE_100",
-                total: "0",
+                total: "20",
                 category: "SURFACE"
             },
             {
@@ -482,7 +482,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "LM",
                 size: "CODE_845",
-                total: "250",
+                total: "5",
                 category: "SME"
 
             },
@@ -493,7 +493,7 @@ export const listBoards = [
                 status: "Getting out of Stock",
                 type: "IC",
                 size: "CODE_448",
-                total: "17",
+                total: "7",
                 category: "SURFACE"
 
 
@@ -505,7 +505,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "Module",
                 size: "CODE_170",
-                total: "75",
+                total: "5",
                 category: "SURFACE"
 
             }
@@ -514,7 +514,7 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.4",
-        total: "8",
+        total: "798",
         limit: "10",
         boardCode: "f5d6gs",
         imageProfile: "/images/b3.jpg",
@@ -534,7 +534,7 @@ export const listBoards = [
                 status: "Out of Stock",
                 type: "RESISTER",
                 size: "CODE_100",
-                total: "0",
+                total: "10",
                 category: "SURFACE"
             },
             {
@@ -544,7 +544,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "LM",
                 size: "CODE_845",
-                total: "250",
+                total: "9",
                 category: "SME"
 
             },
@@ -555,7 +555,7 @@ export const listBoards = [
                 status: "Getting out of Stock",
                 type: "IC",
                 size: "CODE_448",
-                total: "17",
+                total: "1",
                 category: "SURFACE"
 
 
@@ -567,7 +567,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "Module",
                 size: "CODE_170",
-                total: "75",
+                total: "5",
                 category: "SURFACE"
 
             }
@@ -596,7 +596,7 @@ export const listBoards = [
                 status: "Out of Stock",
                 type: "RESISTER",
                 size: "CODE_100",
-                total: "0",
+                total: "4",
                 category: "SURFACE"
             },
             {
@@ -606,7 +606,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "LM",
                 size: "CODE_845",
-                total: "250",
+                total: "2",
                 category: "SME"
 
             },
@@ -617,7 +617,7 @@ export const listBoards = [
                 status: "Getting out of Stock",
                 type: "IC",
                 size: "CODE_448",
-                total: "17",
+                total: "7",
                 category: "SURFACE"
 
 
@@ -629,7 +629,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "Module",
                 size: "CODE_170",
-                total: "75",
+                total: "8",
                 category: "SURFACE"
 
             }
@@ -638,7 +638,7 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.6",
-        total: "50",
+        total: "150",
         limit: "20",
         boardCode: "f5d6gs",
         imageProfile: "/images/b3.jpg",
@@ -658,7 +658,7 @@ export const listBoards = [
                 status: "Out of Stock",
                 type: "RESISTER",
                 size: "CODE_100",
-                total: "0",
+                total: "3",
                 category: "SURFACE"
             },
             {
@@ -668,7 +668,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "LM",
                 size: "CODE_845",
-                total: "250",
+                total: "6",
                 category: "SME"
 
             },
@@ -679,7 +679,7 @@ export const listBoards = [
                 status: "Getting out of Stock",
                 type: "IC",
                 size: "CODE_448",
-                total: "17",
+                total: "3",
                 category: "SURFACE"
 
 
@@ -691,7 +691,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "Module",
                 size: "CODE_170",
-                total: "75",
+                total: "5",
                 category: "SURFACE"
 
             }
@@ -700,7 +700,7 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.7",
-        total: "0",
+        total: "60",
         limit: "20",
         boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",
@@ -720,7 +720,7 @@ export const listBoards = [
                 status: "Out of Stock",
                 type: "RESISTER",
                 size: "CODE_100",
-                total: "0",
+                total: "10",
                 category: "SURFACE"
             },
             {
@@ -730,7 +730,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "LM",
                 size: "CODE_845",
-                total: "250",
+                total: "20",
                 category: "SME"
 
             },
@@ -741,7 +741,7 @@ export const listBoards = [
                 status: "Getting out of Stock",
                 type: "IC",
                 size: "CODE_448",
-                total: "17",
+                total: "1",
                 category: "SURFACE"
 
 
@@ -753,7 +753,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "Module",
                 size: "CODE_170",
-                total: "75",
+                total: "1",
                 category: "SURFACE"
 
             }
@@ -782,7 +782,7 @@ export const listBoards = [
                 status: "Out of Stock",
                 type: "RESISTER",
                 size: "CODE_100",
-                total: "0",
+                total: "1",
                 category: "SURFACE"
             },
             {
@@ -792,7 +792,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "LM",
                 size: "CODE_845",
-                total: "250",
+                total: "2",
                 category: "SME"
 
             },
@@ -803,7 +803,7 @@ export const listBoards = [
                 status: "Getting out of Stock",
                 type: "IC",
                 size: "CODE_448",
-                total: "17",
+                total: "1",
                 category: "SURFACE"
 
 
@@ -815,7 +815,7 @@ export const listBoards = [
                 status: "In Stock",
                 type: "Module",
                 size: "CODE_170",
-                total: "75",
+                total: "4",
                 category: "SURFACE"
 
             }

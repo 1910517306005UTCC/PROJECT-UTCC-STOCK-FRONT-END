@@ -144,18 +144,18 @@ export default function Nav() {
         >
             {/* <MenuItem onClick={handleNotificationClose} className={classes.menuNotification} > */}
             <div className="container-notification" >
-                <h2>News</h2>
+                <h2>ล่าสุด</h2>
                 <div className="list-notification">
                     <div className="detail-notification">
                         <Avatar alt="" src="/images/profile.png" />
                         <div className="profile-detail-notification"><p>Boonyarit <span>(Admin)</span></p></div>
                     </div>
                     <div className="text-notification">
-                        <p>Add a new project to database and then data will update </p>
-                        <p>34 minutes</p>
+                        <p>เพิ่มโปรเจคไปยังฐานข้อมูล </p>
+                        <p>34 นาทีที่แล้ว</p>
                     </div>
                 </div>
-                <h2>Earlier</h2>
+                <h2>ก่อนหน้านี้</h2>
                 <React.Fragment>
                     <div className="list-notification">
                         <div className="detail-notification">
@@ -163,7 +163,7 @@ export default function Nav() {
                             <div className="profile-detail-notification"><p>Boonyarit <span>(Admin)</span></p></div>
                         </div>
                         <div className="text-notification">
-                            <p>Edit board ET-RS's description </p>
+                            <p>แก้ไขรายละเอียดของบอร์ด ET-RS </p>
                             <p>25/01/64</p>
                         </div>
                     </div>
@@ -173,7 +173,7 @@ export default function Nav() {
                             <div className="profile-detail-notification"><p>Boonyarit <span>(Admin)</span></p></div>
                         </div>
                         <div className="text-notification">
-                            <p>requested board ET-RS </p>
+                            <p>เบิกบอร์ด ET-RS </p>
                             <p>24/01/64</p>
                         </div>
                     </div>
@@ -192,9 +192,9 @@ export default function Nav() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}><Link to="/profile/id">Edit account</Link></MenuItem>
-            <MenuItem onClick={handleMenuClose}>Sign out</MenuItem>
+            <MenuItem onClick={handleMenuClose}>โปรไฟล์</MenuItem>
+            <MenuItem onClick={handleMenuClose}><Link to="/profile/id">แก้ไขโปรไฟล์</Link></MenuItem>
+            <MenuItem onClick={handleMenuClose}>ออกจากระบบ</MenuItem>
         </Menu>
     );
 
@@ -217,7 +217,7 @@ export default function Nav() {
                         <NotificationsIcon />
                     </Badge>
                 </IconButton>
-                <p>Notifications</p>
+                <p>การแจ้งเตือน</p>
             </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
@@ -228,7 +228,7 @@ export default function Nav() {
                 >
                     <AccountCircle />
                 </IconButton>
-                <p>Profile</p>
+                <p>โปรไฟล์</p>
             </MenuItem>
         </Menu>
     );
@@ -260,7 +260,7 @@ export default function Nav() {
                             <SearchIcon />
                         </div>
                         <InputBase
-                            placeholder="Search…"
+                            placeholder="ค้นหา…"
                             classes={{
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
