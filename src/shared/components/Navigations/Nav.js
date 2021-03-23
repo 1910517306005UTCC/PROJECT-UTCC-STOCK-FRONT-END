@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SlideBar from './SlideBar';
-import { Link } from "react-router-dom"
-import { Avatar, Menu, MenuItem, Badge, InputBase, Typography, IconButton, Toolbar, AppBar } from "@material-ui/core"
+import { Link } from "react-router-dom";
+import { listToolApi, listBoards } from "../../../Api";
+import { useHistory } from "react-router-dom";
+
+// Component
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { Avatar, Menu, MenuItem, Badge, InputBase, Typography, IconButton, Toolbar, AppBar, TextField } from "@material-ui/core";
 
 // Icon
 import MenuIcon from '@material-ui/icons/Menu';
@@ -33,10 +38,10 @@ const useStyles = makeStyles((theme) => ({
     search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
+        // backgroundColor: fade(theme.palette.common.white, 0.15),
+        // '&:hover': {
+        //     backgroundColor: fade(theme.palette.common.white, 0.25),
+        // },
         marginRight: theme.spacing(2),
         marginLeft: 0,
         width: '100%',
@@ -91,6 +96,28 @@ export default function Nav() {
     const [anchorElNoti, setAnchorElNoti] = React.useState(null);
     const [Hamburgur, setHamburgur] = React.useState(false);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    // Database
+    const [data, setData] = useState([]);
+    const history = useHistory();
+
+    useEffect(async () => {
+        let newArr = []
+        await listToolApi.map((tool) => {
+            let newData = { id: tool.id, name: tool.toolName, status: "tool" }
+            newArr = [...newArr, newData]
+        })
+
+        await listBoards.map((board) => {
+            let newData = { id: board.id, name: board.boardName, status: "board" }
+            newArr = [...newArr, newData]
+        })
+
+        setData(newArr);
+
+        return () => {
+
+        }
+    }, [])
 
     const isMenuOpen = Boolean(anchorEl);
     const isNotifiOpen = Boolean(anchorElNoti);
@@ -132,6 +159,17 @@ export default function Nav() {
 
     const closeHamburgur = () => {
         setHamburgur(false);
+    }
+
+    // Handle Search and Link
+    const handleSearch = (event, value) => {
+        if (value) {
+            if (value.status === "tool") {
+                history.push(`/${value.id}/tool`)
+            } else {
+                history.push(`/${value.id}/board`)
+            }
+        }
     }
 
     const menuId = 'primary-search-account-menu';
@@ -258,19 +296,39 @@ export default function Nav() {
                     </Typography>
 
                     {/* Search Icon */}
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
+                    {/* <div className={classes.search}> */}
+                    {/* <div className={classes.searchIcon}>
                             <SearchIcon />
-                        </div>
-                        <InputBase
+                        </div> */}
+                    {/* <InputBase
                             placeholder="ค้นหา…"
                             classes={{
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
                             }}
                             inputProps={{ 'aria-label': 'search' }}
+                        /> */}
+                    <div className={classes.search} id="nav-search" >
+                        <Autocomplete
+                            // freeSolo
+                            onChange={handleSearch}
+                            // id="free-solo-2-demo"
+                            // disableClearable
+                            options={data}
+                            getOptionLabel={(option) => option.name}
+                            renderInput={(params) => (
+                                <TextField
+                                    {...params}
+                                    label="ค้นหา..."
+                                    margin="normal"
+                                    variant="outlined"
+                                    InputProps={{ ...params.InputProps }}
+                                    className={classes.inputRoot}
+                                />
+                            )}
                         />
                     </div>
+                    {/* </div> */}
 
 
                     <div className={classes.grow} />
