@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { boardListAction } from "../../actions/boardActions"
-import { Container, Paper, Button } from "@material-ui/core"
-import { makeStyles } from '@material-ui/core/styles'
-import { useForm } from "../../shared/hooks/form-hook"
-import { VALIDATOR_REQUIRE } from "../../shared/util/validators"
-import Input from "../../shared/components/FormElements/Input"
-// import { Alert } from "@material-ui/lab"
+import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import { boardListAction } from "../../actions/boardActions";
+import { makeStyles } from '@material-ui/core/styles';
+import { useForm } from "../../shared/hooks/form-hook";
+import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import { useDispatch, useSelector } from "react-redux";
 import { listToolApi } from "../../Api"
 
+// Component
+import Input from "../../shared/components/FormElements/Input";
+import SelectValidation from '../../shared/components/FormElements/SelectValidation';
+import { Container, Paper, Button } from "@material-ui/core";
+
+// CSS
 import "./BoardRequest.css"
-import SelectValidation from '../../shared/components/FormElements/SelectValidation'
-import { useHistory } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
     textarea: {
@@ -47,7 +49,7 @@ function BoardRequest() {
     const [openAlert, setOpenAlert] = useState(false);
     const [validTool, setValidTool] = useState(false);
     const [validBoard, setvalidBoard] = useState(false);
-    const [boardToltal, setBoardToltal] = useState({})
+    const [boardToltal, setBoardToltal] = useState({});
 
     const [formState, inputHandler] = useForm(
         {
@@ -104,8 +106,6 @@ function BoardRequest() {
             newTotalTool = [...newTotalTool, newArr]
         })
 
-        // console.log(newTotalTool)
-
         // อุปกรณ์ที่เหลือ = อุปกรณ์ที่ใช้ - อุปกรณ์ในสต๊อก
         let sumTotal = []
         newTotalTool.map((item) => {
@@ -115,8 +115,6 @@ function BoardRequest() {
             let newArr = { id: item.id, toolName: item.toolName, total: calSum }
             sumTotal = [...sumTotal, newArr]
         })
-
-        // console.log(sumTotal)
 
         // ตรวจสอบว่ามีค่า ติดลบไหม
         let inSufficientTool = []

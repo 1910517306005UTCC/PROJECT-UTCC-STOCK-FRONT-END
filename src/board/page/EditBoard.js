@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from "../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import { boardItem } from "../../Api";
-import { Container, Paper, TextField, Button, Divider } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { toolListAction } from "../../actions/toolActions";
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,6 +11,7 @@ import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 import ImageUploadMultiple from '../../shared/components/FormElements/ImageUploadMultiple';
 import Input from "../../shared/components/FormElements/Input";
 import SelectComponent from "../../shared/components/FormElements/Select";
+import { Container, Paper, TextField, Button, Divider } from "@material-ui/core";
 import ListToolSelected from "../components/ListToolSelected";
 
 
@@ -52,12 +52,16 @@ function EditBoard() {
     const [typeFilter, setTypeFilter] = useState([]);
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [nameFilter, setNameFilter] = useState([]);
-    const [toolBackup, setToolBackup] = useState(board.tools)
-    const [tools, setTools] = useState(toolList.tools)
+    const [toolBackup, setToolBackup] = useState(board.tools);
+    const [tools, setTools] = useState(toolList.tools);
 
     const [formState, inputHandler] = useForm(
         {
             name: {
+                value: '',
+                isValid: false
+            },
+            total: {
                 value: '',
                 isValid: false
             }
@@ -69,13 +73,19 @@ function EditBoard() {
         // ดึงข้อมูลอุปกรณ์สำหรับเพิ่มลงในรายการบอร์ด
         dispatch(toolListAction());
 
-        // กำหนดค่าอาเรย์ของอุปกรณ์ โดยนำข้อมูล อุปกรณ์ที่ใช้ในบอร์ด(board.tools) มาลบกับ อุปกรณ์(toolList.tool) 
-        let arr = toolList.tools
-        board.tools.map((item, index) => {
-            arr = arr.filter((tool, index) => item.id !== tool.id)
-        })
-        setTools(arr)
-     
+        let temArr = []
+        for (var count = 0; count < board.tools.length; count++) {
+            if (temArr.length === 0) {
+                temArr = tools.filter((item) => board.tools[count].id !== item.id)
+            }
+            if (temArr.length > 0) {
+                let filterData = temArr.filter((item) => board.tools[count].id !== item.id)
+                temArr = filterData
+            }
+        }
+
+        setTools(temArr)
+
         return () => {
 
         }
@@ -155,11 +165,9 @@ function EditBoard() {
 
     const deleteToolSelected = (id) => {
         let findData = toolBackup.find((item) => item.id === id);
-        // console.log(findData)
         setToolSelected(toolSelected.filter((item) => item.id !== id));
-        setToolBackup(toolBackup.filter(item => console.log(item.id !== id)))
+        setToolBackup(toolBackup.filter(item => item.id !== id))
         // set ข้อมูลที่ถูกลบกลับไปยังตัวแปรเดิม
-        // console.log(toolBackup)
         setTools([...tools, findData])
         setTotalSelect("")
         setNameSelect("")
@@ -202,15 +210,18 @@ function EditBoard() {
                         className={classes.margin}
                         onChange={(e) => setLimit(e.target.value)}
                     />
-                    <div className="editboard-input-group">
-                        <TextField
-                            label="จำนวน"
-                            variant="outlined"
-                            type="number"
-                            fullWidth
-                            value={total}
-                            onChange={(e) => setTotal(e.target.value)}
-                        />
+                    <div className="editboard-input-group">      
+                            <Input
+                                id="total"
+                                element="input"
+                                type="number"
+                                label="จำนวน *"
+                                validators={[VALIDATOR_REQUIRE()]}
+                                errorText="โปรดใส่ข้อมูล."
+                                onInput={inputHandler}
+                                initialValue={total}
+                                initialValid={true}
+                            />
                         <TextField
                             label="ชนิด"
                             variant="outlined"

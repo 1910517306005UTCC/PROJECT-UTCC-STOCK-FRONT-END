@@ -90,7 +90,7 @@ export default function SlideBar(props) {
                 <Link className={classes.link} to="/historytool">
                     <ListItem button>
                         <ListItemIcon><RestorePageIcon /></ListItemIcon>
-                        <ListItemText primary="ประวัติการเบิกอุปกรณ์" />
+                        <ListItemText primary="ประวัติการเบิก/เพิ่มอุปกรณ์" />
                     </ListItem>
                 </Link>
             </List>
@@ -122,7 +122,7 @@ export default function SlideBar(props) {
                 <Link className={classes.link} to="/historyboard">
                     <ListItem button>
                         <ListItemIcon><RestorePageIcon /></ListItemIcon>
-                        <ListItemText primary="ประวัติการเบิกบอร์ด" />
+                        <ListItemText primary="ประวัติการเบิก/เพิ่มบอร์ด" />
                     </ListItem>
                 </Link>
                 <Link className={classes.link} to="/historyproject">

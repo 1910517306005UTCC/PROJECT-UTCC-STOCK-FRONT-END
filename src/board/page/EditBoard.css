@@ -5,10 +5,12 @@ form {
 .editboard-input-group {
     display: flex;
     padding: 20px 0;
+    align-items: center;
 }
 
 .editboard-input-group div:first-child {
     padding-right: 5px;
+    width: 100%;
 }
 
 .editboard-input-group div:last-child {

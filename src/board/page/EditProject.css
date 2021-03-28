@@ -4,11 +4,13 @@ form {
 
 .editproject-input-group {
     display: flex;
-    padding: 20px 0;
+    align-items: center;
+    padding: 10px 0;
 }
 
 .editproject-input-group div:first-child {
     padding-right: 5px;
+    width: 100%;
 }
 
 .editproject-input-group div:last-child {

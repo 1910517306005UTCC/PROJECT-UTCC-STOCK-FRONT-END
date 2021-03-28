@@ -18,6 +18,10 @@ const columns = [
         minWidth: 170,
     },
     {
+        label: 'สถานะผู้เบิก',
+        minWidth: 170,
+    },
+    {
         label: 'จำนวน',
         minWidth: 170,
     },
@@ -135,6 +139,9 @@ function TableHistoryProject() {
                                         </TableCell>
                                         <TableCell>
                                             {project.username}
+                                        </TableCell>
+                                        <TableCell>
+                                            {project.status}
                                         </TableCell>
                                         <TableCell>
                                             {project.total}

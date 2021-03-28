@@ -23,6 +23,10 @@ const columns = [
         minWidth: 170,
     },
     {
+        label: 'สถานะผู้เบิก',
+        minWidth: 170,
+    },
+    {
         label: 'จำนวน',
         minWidth: 170,
     },
@@ -59,6 +63,12 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    actionAdd: {
+        color: "#28a745",
+    },
+    actionRequest: {
+        color: "#dc3545",
+    }
 }));
 
 export default function TableHistoryBoard() {
@@ -165,7 +175,13 @@ export default function TableHistoryBoard() {
                                             {board.username}
                                         </TableCell>
                                         <TableCell>
-                                            {board.total}
+                                            {board.status}
+                                        </TableCell>
+                                        <TableCell>
+                                            {board.actionType === "add" ?
+                                                <span className={classes.actionAdd}>+ {board.total}</span> :
+                                                <span className={classes.actionRequest}>- {board.total}</span>
+                                            }
                                         </TableCell>
                                         <TableCell>
                                             {board.time}
@@ -235,7 +251,7 @@ export default function TableHistoryBoard() {
                     <div className={classes.paper}>
                         <h2 id="transition-modal-title">ประวัติ</h2>
                         <form onSubmit={handleSubmitEdit}>
-                            <Input id="total" element="input" label="Total" type="number" errorText="Please fill data" validators={[VALIDATOR_REQUIRE()]} onInput={inputHandler} required />
+                            <Input id="total" element="input" label="จำนวนบอร์ด" type="number" errorText="Please fill data" validators={[VALIDATOR_REQUIRE()]} onInput={inputHandler} required />
                             <div className="TableHistoryTool-action">
                                 <Button type="submit" variant="contained" color="primary" disabled={!formState.isValid}>แก้ไข</Button>
                                 <Button variant="contained" color="secondary" onClick={handleCloseEdit}>ยกเลิก</Button>
@@ -261,11 +277,11 @@ export default function TableHistoryBoard() {
                 <Fade in={openDescription}>
                     <div className={classes.paper}>
                         <h2 id="transition-modal-title">รายละเอียดเพิ่มเติม</h2>
-                        <p className="historyboard-h4">จำนวนอุปกรณ์ที่ใช้ไป</p>
-                        { data.tools && data.tools.map((tool) => (
+                        {data.actionType === "request" && <p className="historyboard-h4">จำนวนอุปกรณ์ที่ใช้ไป</p>}
+                        {data.tools && data.actionType === "request" && data.tools.map((tool) => (
                             <div className="historyboard-description" key={tool.id}>
                                 <p>{tool.toolName}</p>
-                                <p>{Number(tool.total) * Number(data.total) }</p>
+                                <p>{Number(tool.total) * Number(data.total)}</p>
                             </div>
                         ))}
                         <div>

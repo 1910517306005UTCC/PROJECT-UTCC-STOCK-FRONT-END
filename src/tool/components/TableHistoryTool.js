@@ -22,6 +22,10 @@ const columns = [
         minWidth: 170,
     },
     {
+        label: 'สถานะผู้เบิก',
+        minWidth: 170,
+    },
+    {
         label: 'จำนวน',
         minWidth: 170,
     },
@@ -58,6 +62,12 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    actionAdd: {
+        color: "#28a745",
+    },
+    actionRequest: {
+        color: "#dc3545",
+    }
 }));
 
 export default function TableHistoryTool() {
@@ -164,7 +174,13 @@ export default function TableHistoryTool() {
                                             {tool.username}
                                         </TableCell>
                                         <TableCell>
-                                            {tool.total}
+                                            {tool.status}
+                                        </TableCell>
+                                        <TableCell>
+                                            {tool.actionType === "add" ?
+                                                <span className={classes.actionAdd}>+ {tool.total}</span> :
+                                                <span className={classes.actionRequest}>- {tool.total}</span>
+                                            }
                                         </TableCell>
                                         <TableCell>
                                             {tool.time}

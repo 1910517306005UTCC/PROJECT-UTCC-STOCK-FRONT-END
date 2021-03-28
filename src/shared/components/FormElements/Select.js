@@ -26,6 +26,7 @@ function SelectComponent(props) {
                     }
                     else if (arr.length > 0) {
                         // ฟิลเตอร์ข้อมูลในอาเรย์ ว่ามีข้อมูลซ้ำกันไหม ถ้ามีให้ลบออก
+                        // console.log(item)
                         filter = arr.filter((x) => x !== item.type.toLowerCase())
                         // เพิ่มข้อมูลใหม่เข้าไปหลังจากฟิลเตอร์ข้อมูลแล้ว
                         filter.push(item.type.toLowerCase())

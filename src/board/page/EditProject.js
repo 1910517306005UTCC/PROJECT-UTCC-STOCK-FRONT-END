@@ -1,24 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import { useForm } from "../../shared/hooks/form-hook"
-import { VALIDATOR_REQUIRE } from "../../shared/util/validators"
-import { projectItem } from "../../ApiHistory"
-import { Container, Paper, TextField, Button, Divider } from "@material-ui/core"
-import Input from "../../shared/components/FormElements/Input"
-import ListToolSelected from "../components/ListToolSelected";
+import React, { useState, useEffect } from 'react';
+import { useForm } from "../../shared/hooks/form-hook";
+import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
+import { projectItem } from "../../ApiHistory";
 import { useDispatch, useSelector } from "react-redux";
 import { toolListAction } from "../../actions/toolActions";
-import SelectComponent from "../../shared/components/FormElements/Select"
 import { makeStyles } from '@material-ui/core/styles'
 
+// Component
+import Input from "../../shared/components/FormElements/Input";
+import ListToolSelected from "../components/ListToolSelected";
+import SelectComponent from "../../shared/components/FormElements/Select";
+import ImageUpload from '../../shared/components/FormElements/ImageUpload';
+import { Container, Paper, TextField, Button, Divider } from "@material-ui/core";
+import ImageUploadMultiple from '../../shared/components/FormElements/ImageUploadMultiple';
 
+// CSS
 import "./EditProject.css"
-import ImageUpload from '../../shared/components/FormElements/ImageUpload'
-import ImageUploadMultiple from '../../shared/components/FormElements/ImageUploadMultiple'
+
 
 const useStyles = makeStyles((theme) => ({
     margin: {
-        margin: "10px 0"
-    }
+        margin: "20px 0"
+    },
+    btnCheck: {
+        margin: "10px 0",
+        backgroundColor: "#FFC107"
+    },
 }));
 
 
@@ -33,9 +40,8 @@ function EditProject() {
     const toolList = useSelector((state) => state.toolList);
     const [file, setFile] = useState(project.profileImage);
     const [files, setFiles] = useState(project.images);
-    const [total, setTotal] = useState(project.total);
+    const [total] = useState(project.total);
     const [type, setType] = useState(project.type);
-    const [limit, setLimit] = useState(project.limit);
     const [description, setDescription] = useState(project.description);
     const [projectCode, setprojectCode] = useState(project.projectCode);
     const [typeSelect, setTypeSelect] = useState('');
@@ -45,12 +51,22 @@ function EditProject() {
     const [typeFilter, setTypeFilter] = useState([]);
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [nameFilter, setNameFilter] = useState([]);
-    const [toolBackup, setToolBackup] = useState(project.tools)
-    const [tools, setTools] = useState(toolList.tools)
+    const [toolBackup, setToolBackup] = useState(project.tools);
+    const [tools, setTools] = useState(toolList.tools);
+    const [openAlert, setOpenAlert] = useState(false);
+    const [validTool, setValidTool] = useState(false);
+    const [validBtn, setValidBtn] = useState(false);
+    const [validName, setValidName] = useState(false);
+    const [validTotal, setValidTotal] = useState(false);
+    const [toolCal] = useState(toolList.tools);
 
     const [formState, inputHandler] = useForm(
         {
             name: {
+                value: '',
+                isValid: false
+            },
+            total: {
                 value: '',
                 isValid: false
             }
@@ -61,14 +77,19 @@ function EditProject() {
     useEffect(() => {
         // ดึงข้อมูลอุปกรณ์สำหรับเพิ่มลงในรายการบอร์ด
         dispatch(toolListAction());
-
         // กำหนดค่าอาเรย์ของอุปกรณ์ โดยนำข้อมูล อุปกรณ์ที่ใช้ในบอร์ด(project.tools) มาลบกับ อุปกรณ์(toolList.tool) 
-        let arr = toolList.tools
-        project.tools.map((item, index) => {
-            arr = arr.filter((tool, index) => item.id !== tool.id)
-        })
-        setTools(arr)
+        let temArr = []
+        for (var count = 0; count < project.tools.length; count++) {
+            if(temArr.length === 0){
+                temArr = tools.filter((item) => project.tools[count].id !== item.id)
+            } 
+            if(temArr.length > 0) {
+                let filterData = temArr.filter((item) => project.tools[count].id !== item.id)
+                temArr = filterData
+            }
+        }
 
+        setTools(temArr)
         return () => {
 
         }
@@ -80,10 +101,9 @@ function EditProject() {
         let newTool = {
             projectName: formState.inputs.name.value,
             projectCode: projectCode,
-            total: total,
+            total: formState.inputs.name.value,
             type: type,
             profileImage: file,
-            limit: limit,
             description: description,
             tools: toolSelected,
             images: files
@@ -111,7 +131,9 @@ function EditProject() {
     const onChangeNameFilter = (e) => {
         setNameSelect(e.target.value);
         let filterData = categoryFilter.filter((item) => item.toolName.toLowerCase() === e.target.value);
-        setNameFilter(filterData)
+        setNameFilter(filterData);
+        setValidName(true)
+        setValidBtn(true && validTotal)
     }
 
     const onSubmitToolSelected = () => {
@@ -144,20 +166,79 @@ function EditProject() {
         setTypeSelect("")
         setToolSelected([...toolSelected, createNewTool])
         setCategoryFilter([])
+        setValidBtn(false)
+        setValidTotal(false)
+        setValidName(false)
     }
 
+    // console.log(toolBackup)
+
     const deleteToolSelected = (id) => {
+        // let findData = toolBackup.filter((item) => item.id === id);
         let findData = toolBackup.find((item) => item.id === id);
-        // console.log(findData)
         setToolSelected(toolSelected.filter((item) => item.id !== id));
-        setToolBackup(toolBackup.filter(item => console.log(item.id !== id)))
+        setToolBackup(toolBackup.filter(item => item.id !== id))
         // set ข้อมูลที่ถูกลบกลับไปยังตัวแปรเดิม
-        // console.log(toolBackup)
         setTools([...tools, findData])
         setTotalSelect("")
         setNameSelect("")
         setCategorySelect("")
         setTypeSelect("")
+        // ให้การแจ้งเตือน ข้อผิดพลาด หายไป
+        setOpenAlert(false)
+    }
+
+    const handleAlert = () => {
+        setOpenAlert(false)
+    }
+
+    const totalInput = (e) => {
+        if (e.target.value === "") {
+            setValidTool(false)
+            setValidBtn(false)
+        } else {
+            setValidTotal(true)
+            setValidBtn(validName && true)
+        }
+        setTotalSelect(e.target.value)
+    }
+
+    const onSubmitCheck = async () => {
+        let projectTotal = formState.inputs.total.value;
+        // console.log(toolSelected)
+
+        // คำนวนอุปกรณ์ที่ต้องใช้
+        let requiredTool = []
+        await toolSelected.map((tool) => {
+            let sum = Number(tool.total) * projectTotal;
+            let newArr = { id: tool.id, toolName: tool.toolName, total: sum }
+            requiredTool = [...requiredTool, newArr]
+        })
+
+        // คำนวนอุปกรณ์ที่ต้องเหลือ
+        let newTotalTool = []
+        await requiredTool.map((tool) => {
+            let findTool = toolCal.find((item) => item.id === tool.id)
+            let sum = Number(findTool.total) - Number(tool.total)
+            let newArr = { id: tool.id, toolName: tool.toolName, total: sum }
+            newTotalTool = [...newTotalTool, newArr]
+        })
+
+        // เก็บค่าอุปกรณ์ที่ขาดโชวหน้าจอ
+        let inSufficientTool = []
+        newTotalTool.map((item) => {
+            if (item.total < 0) {
+                inSufficientTool = [...inSufficientTool, item]
+            }
+        })
+
+        if (inSufficientTool.length > 0) {
+            setOpenAlert(true)
+            setValidTool(inSufficientTool)
+
+        } else {
+            setValidTool(false)
+        }
     }
 
     return (
@@ -187,14 +268,19 @@ function EditProject() {
                         onChange={(e) => setprojectCode(e.target.value)}
                     />
                     <div className="editproject-input-group">
-                        <TextField
-                            label="จำนวน"
-                            variant="outlined"
-                            type="number"
-                            fullWidth
-                            value={total}
-                            onChange={(e) => setTotal(e.target.value)}
-                        />
+                        <div onClick={handleAlert}>
+                            <Input
+                                id="total"
+                                element="input"
+                                type="number"
+                                label="จำนวน *"
+                                validators={[VALIDATOR_REQUIRE()]}
+                                errorText="โปรดใส่ข้อมูล."
+                                onInput={inputHandler}
+                                initialValue={total}
+                                initialValid={true}
+                            />
+                        </div>
                         <TextField
                             label="ชนิด"
                             variant="outlined"
@@ -221,9 +307,12 @@ function EditProject() {
                             fullWidth
                             value={totalSelect}
                             className={classes.margin}
-                            onChange={(e) => setTotalSelect(e.target.value)}
+                            onChange={totalInput}
                         />
-                        <Button variant="contained" size="small" color="primary" className="editproject-btn-add" onClick={onSubmitToolSelected}>
+                        <Button variant="contained" size="small" color="primary" className="editproject-btn-add"
+                            onClick={onSubmitToolSelected}
+                            disabled={!validBtn}
+                        >
                             เพิ่ม
                         </Button>
                         <Divider />
@@ -243,6 +332,29 @@ function EditProject() {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
+
+                    <Button
+                        type="button"
+                        variant="contained"
+                        fullWidth
+                        className={classes.btnCheck}
+                        disabled={formState.isValid === false || toolSelected.length === 0 ? true : false}
+                        onClick={onSubmitCheck}
+                    >
+                        ตรวจสอบ
+                    </Button>
+
+                    {openAlert &&
+                        <div className="alert-errordata">
+                            <h3>รายการอุปกรณ์ไม่ครบ</h3>
+                            {validTool && validTool.map((item) => (
+                                <div key={item.id} className="valid-data">
+                                    <p>{item.toolName}</p>
+                                    <p>{item.total}</p>
+                                </div>
+                            ))}
+                        </div>
+                    }
 
                     <Button
                         type="submit"

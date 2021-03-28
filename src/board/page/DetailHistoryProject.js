@@ -107,6 +107,10 @@ function DetailHistoryProject() {
                         <p>{project.username}</p>
                     </div>
                     <div className="detailproject-list">
+                        <p>สถานะผู้เบิก</p>
+                        <p>{project.status}</p>
+                    </div>
+                    <div className="detailproject-list">
                         <p>วันที่เบิก</p>
                         <p>{project.date}</p>
                     </div>

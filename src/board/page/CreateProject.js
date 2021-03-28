@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { Container, Paper, TextField, Button, Divider } from "@material-ui/core"
-import { makeStyles } from '@material-ui/core/styles'
-import { useForm } from "../../shared/hooks/form-hook"
-import { VALIDATOR_REQUIRE } from "../../shared/util/validators"
-import Input from "../../shared/components/FormElements/Input"
+import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import { useForm } from "../../shared/hooks/form-hook";
+import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import { useDispatch, useSelector } from "react-redux";
 import { toolListAction } from "../../actions/toolActions";
 
+// Component
+import ImageUpload from '../../shared/components/FormElements/ImageUpload';
+import SelectComponent from '../../shared/components/FormElements/Select';
+import ListToolSelected from '../components/ListToolSelected';
+import ImageUploadMultiple from '../../shared/components/FormElements/ImageUploadMultiple';
+import Input from "../../shared/components/FormElements/Input";
+import { Container, Paper, TextField, Button, Divider } from "@material-ui/core";
 
-
+// CSS
 import "./CreateProject.css"
-import ImageUpload from '../../shared/components/FormElements/ImageUpload'
-import SelectComponent from '../../shared/components/FormElements/Select'
-import ListToolSelected from '../components/ListToolSelected'
-import ImageUploadMultiple from '../../shared/components/FormElements/ImageUploadMultiple'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,15 +34,21 @@ const useStyles = makeStyles((theme) => ({
     },
     margin: {
         margin: "10px 0"
-    }
+    },
+    btnCheck: {
+        margin: "10px 0",
+        backgroundColor: "#FFC107"
+    },
 }));
 
 function CreateProject() {
 
     const classes = useStyles();
     const dispatch = useDispatch();
+    const history = useHistory();
     const toolList = useSelector((state) => state.toolList);
-    const [tools, setTools] = useState(toolList.tools)
+    const [tools, setTools] = useState(toolList.tools);
+    const [toolCal] = useState(toolList.tools);
     const [file, setFile] = useState(null);
     const [type, setType] = useState('');
     const [description, setDescription] = useState('');
@@ -54,6 +63,12 @@ function CreateProject() {
     const [toolSelected, setToolSelected] = useState([]);
     const [files, setFiles] = useState(null);
     const [toolBackup, setToolBackup] = useState([])
+    const [openAlert, setOpenAlert] = useState(false);
+    const [validTool, setValidTool] = useState(false);
+    const [validBtn, setValidBtn] = useState(false);
+    const [validName, setValidName] = useState(false);
+    const [validTotal, setValidTotal] = useState(false);
+
 
 
 
@@ -71,6 +86,8 @@ function CreateProject() {
         },
         false
     );
+
+    // console.log(formState.isValid)
 
 
     useEffect(() => {
@@ -95,12 +112,14 @@ function CreateProject() {
             images: files
         }
 
+        if (!validTool) {
+            history.push("/historyproject")
+        } else {
+            history.push("/boardincomplete")
+        }
+
         console.log(newProject);
     }
-
-
-
-
 
     const onChangeTypeFilter = (e) => {
         let filterData = tools.filter((item) => item.type.toLowerCase() === e.target.value)
@@ -114,13 +133,14 @@ function CreateProject() {
         setCategorySelect(e.target.value);
         let filterData = typeFilter.filter((item) => item.category.toLowerCase() === e.target.value)
         setNameFilter(filterData);
-
     }
 
     const onChangeNameFilter = (e) => {
         setNameSelect(e.target.value);
         let filterData = categoryFilter.filter((item) => item.toolName.toLowerCase() === e.target.value);
         setNameFilter(filterData)
+        setValidName(true)
+        setValidBtn(true && validTotal)
     }
 
     const onSubmitToolSelected = () => {
@@ -153,11 +173,13 @@ function CreateProject() {
         setTypeSelect("")
         setToolSelected([...toolSelected, createNewTool])
         setCategoryFilter([])
+        setValidBtn(false)
+        setValidTotal(false)
+        setValidName(false)
     }
 
     const deleteToolSelected = (id) => {
         let findData = toolBackup.find((item) => item.id === id);
-        // console.log(findData)
         setToolSelected(toolSelected.filter(item => item.id !== id));
         setToolBackup(toolBackup.filter(item => item.id !== id))
         // set ข้อมูลที่ถูกลบกลับไปยังตัวแปรเดิม
@@ -166,7 +188,63 @@ function CreateProject() {
         setNameSelect("")
         setCategorySelect("")
         setTypeSelect("")
+        // ให้การแจ้งเตือน ข้อผิดพลาด หายไป
+        setOpenAlert(false)
     }
+
+    const onSubmitCheck = async () => {
+        let projectTotal = formState.inputs.total.value;
+        // console.log(toolSelected)
+
+        // คำนวนอุปกรณ์ที่ต้องใช้
+        let requiredTool = []
+        await toolSelected.map((tool) => {
+            let sum = Number(tool.total) * projectTotal;
+            let newArr = { id: tool.id, toolName: tool.toolName, total: sum }
+            requiredTool = [...requiredTool, newArr]
+        })
+
+        // คำนวนอุปกรณ์ที่ต้องเหลือ
+        let newTotalTool = []
+        await requiredTool.map((tool) => {
+            let findTool = toolCal.find((item) => item.id === tool.id)
+            let sum = Number(findTool.total) - Number(tool.total)
+            let newArr = { id: tool.id, toolName: tool.toolName, total: sum }
+            newTotalTool = [...newTotalTool, newArr]
+        })
+
+        // เก็บค่าอุปกรณ์ที่ขาดโชวหน้าจอ
+        let inSufficientTool = []
+        newTotalTool.map((item) => {
+            if (item.total < 0) {
+                inSufficientTool = [...inSufficientTool, item]
+            }
+        })
+
+        if (inSufficientTool.length > 0) {
+            setOpenAlert(true)
+            setValidTool(inSufficientTool)
+
+        } else {
+            setValidTool(false)
+        }
+    }
+
+    const handleAlert = () => {
+        setOpenAlert(false)
+    }
+
+    const totalInput = (e) => {
+        if (e.target.value === "") {
+            setValidTool(false)
+            setValidBtn(false)
+        } else {
+            setValidTotal(true)
+            setValidBtn(validName && true)
+        }
+        setTotalSelect(e.target.value)
+    }
+
 
 
     return (
@@ -174,17 +252,18 @@ function CreateProject() {
             <h1>สร้างโปรเจค</h1>
             <Paper className="createproject-form">
                 <form onSubmit={onSubmit}>
-
-                    <Input
-                        id="name"
-                        element="input"
-                        type="text"
-                        label="ชื่อโปรเจค *"
-                        validators={[VALIDATOR_REQUIRE()]}
-                        errorText="โปรดใส่ข้อมูล."
-                        onInput={inputHandler}
-                        required
-                    />
+                    <div onClick={handleAlert}>
+                        <Input
+                            id="name"
+                            element="input"
+                            type="text"
+                            label="ชื่อโปรเจค *"
+                            validators={[VALIDATOR_REQUIRE()]}
+                            errorText="โปรดใส่ข้อมูล."
+                            onInput={inputHandler}
+                            required
+                        />
+                    </div>
 
                     <TextField
                         label="รหัสโปรเจค"
@@ -196,16 +275,18 @@ function CreateProject() {
                     />
 
                     <div className="createproject-input-group">
-                        <Input
-                            id="จำนวน"
-                            element="input"
-                            type="number"
-                            label="total *"
-                            validators={[VALIDATOR_REQUIRE()]}
-                            errorText="โปรดใส่ข้อมูล."
-                            onInput={inputHandler}
-                            required
-                        />
+                        <div onClick={handleAlert}>
+                            <Input
+                                id="total"
+                                element="input"
+                                type="number"
+                                label="จำนวน *"
+                                validators={[VALIDATOR_REQUIRE()]}
+                                errorText="โปรดใส่ข้อมูล."
+                                onInput={inputHandler}
+                                required
+                            />
+                        </div>
                         <TextField
                             label="ชนิดงานของโปรเจค"
                             variant="outlined"
@@ -230,9 +311,10 @@ function CreateProject() {
                             fullWidth
                             value={totalSelect}
                             className={classes.margin}
-                            onChange={(e) => setTotalSelect(e.target.value)}
+                            onChange={totalInput}
                         />
-                        <Button variant="contained" size="small" color="primary" className={classes.margin} onClick={onSubmitToolSelected}>
+                        <Button variant="contained" size="small" color="primary" className={classes.margin}
+                            disabled={!validBtn} onClick={onSubmitToolSelected}>
                             เพิ่ม
                         </Button>
                         <Divider />
@@ -257,6 +339,29 @@ function CreateProject() {
                         className={classes.textarea}
                         onChange={(e) => setDescription(e.target.value)}
                     />
+
+                    <Button
+                        type="button"
+                        variant="contained"
+                        fullWidth
+                        className={classes.btnCheck}
+                        disabled={formState.isValid === false || toolSelected.length === 0 ? true : false}
+                        onClick={onSubmitCheck}
+                    >
+                        ตรวจสอบ
+                    </Button>
+
+                    {openAlert &&
+                        <div className="alert-errordata">
+                            <h3>รายการอุปกรณ์ไม่ครบ</h3>
+                            {validTool && validTool.map((item) => (
+                                <div key={item.id} className="valid-data">
+                                    <p>{item.toolName}</p>
+                                    <p>{item.total}</p>
+                                </div>
+                            ))}
+                        </div>
+                    }
 
                     <Button
                         type="submit"
