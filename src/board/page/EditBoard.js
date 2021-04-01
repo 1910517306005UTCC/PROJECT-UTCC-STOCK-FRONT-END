@@ -53,7 +53,7 @@ function EditBoard() {
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [nameFilter, setNameFilter] = useState([]);
     const [toolBackup, setToolBackup] = useState(board.tools);
-    const [tools, setTools] = useState(toolList.tools);
+    const [tools, setTools] = useState([]);
 
     const [formState, inputHandler] = useForm(
         {
@@ -76,7 +76,7 @@ function EditBoard() {
         let temArr = []
         for (var count = 0; count < board.tools.length; count++) {
             if (temArr.length === 0) {
-                temArr = tools.filter((item) => board.tools[count].id !== item.id)
+                temArr = toolList.tools.filter((item) => board.tools[count].id !== item.id)
             }
             if (temArr.length > 0) {
                 let filterData = temArr.filter((item) => board.tools[count].id !== item.id)
@@ -89,7 +89,7 @@ function EditBoard() {
         return () => {
 
         }
-    }, [])
+    }, [toolList.tools])
 
     const onSubmit = (e) => {
         e.preventDefault();

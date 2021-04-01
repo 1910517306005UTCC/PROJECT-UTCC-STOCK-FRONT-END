@@ -47,8 +47,8 @@ function CreateProject() {
     const dispatch = useDispatch();
     const history = useHistory();
     const toolList = useSelector((state) => state.toolList);
-    const [tools, setTools] = useState(toolList.tools);
-    const [toolCal] = useState(toolList.tools);
+    const [tools, setTools] = useState([]);
+    const [toolCal, setToolCal] = useState([]);
     const [file, setFile] = useState(null);
     const [type, setType] = useState('');
     const [description, setDescription] = useState('');
@@ -92,10 +92,15 @@ function CreateProject() {
 
     useEffect(() => {
         dispatch(toolListAction());
+        if(toolList.tools.length !== 0) {
+            setTools(toolList.tools);
+            setToolCal(toolList.tools);
+            
+        }
         return () => {
 
         }
-    }, [])
+    }, [toolList.tools])
 
     // send data to front-end
     const onSubmit = (e) => {

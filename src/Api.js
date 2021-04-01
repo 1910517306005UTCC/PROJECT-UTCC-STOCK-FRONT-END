@@ -576,7 +576,7 @@ export const listBoards = [
     {
         id: uuidv4(),
         boardName: "ET-ARDUINO v.5",
-        total: "100",
+        total: "0",
         limit: "10",
         boardCode: "f5d6gs",
         imageProfile: "/images/b2.jpg",

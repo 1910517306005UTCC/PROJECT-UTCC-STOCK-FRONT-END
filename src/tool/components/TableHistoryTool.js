@@ -12,6 +12,7 @@ import Input from '../../shared/components/FormElements/Input';
 import RestoreIcon from '@material-ui/icons/Restore';
 import EditIcon from '@material-ui/icons/Edit';
 import DescriptionIcon from '@material-ui/icons/Description';
+import SelectFilterTimeAndStatus from '../../shared/components/UIElements/SelectFilterTimeAndStatus';
 
 
 const columns = [
@@ -142,8 +143,17 @@ export default function TableHistoryTool() {
         setData()
     }
 
+
+    // let lastTime = new Date("3/28/2021")
+    
+    // let currentTime = new Date();
+    // const latestTime = currentTime.getTime() / lastTime.getTime()
+    // // console.log(currentTime.getTime() / lastTime.getTime())
+    // console.log(currentTime)
+
     return (
         <div>
+            <SelectFilterTimeAndStatus label="เวลา" />
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Alert } from "@material-ui/lab";
 import { useDispatch, useSelector } from "react-redux";
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Avatar, Button, Modal, Backdrop, Fade, TextField } from "@material-ui/core";
 import { useForm } from "../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "../../shared/util/validators";
 import { toolListAction, addToolToTotal } from "../../actions/toolActions";
@@ -10,6 +8,8 @@ import { Link } from "react-router-dom"
 
 // Component
 import Input from "../../shared/components/FormElements/Input";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Avatar, Button, Modal, Backdrop, Fade, TextField } from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 
 // Icon
 import RestorePageIcon from '@material-ui/icons/RestorePage';
@@ -18,6 +18,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 
 // CSS
 import "./TableTool.css"
+import SelectFilter from '../../shared/components/UIElements/SelectFilter';
 
 const columns = [
     { label: 'รูปภาพ', minWidth: 100 },
@@ -75,21 +76,32 @@ export default function TableTool() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const toolList = useSelector((state) => state.toolList);
-    const { tools, loading, error, messageAlert } = toolList;
+    const { messageAlert } = toolList;
+    const [tools, setTools] = useState([])
+    const [defaultValue, setDefaultValue] = useState([])
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     // const [tools] = useState(listToolApi);
     const [openModal, setOpenModal] = useState(false);
     const [headerForm, setHeaderForm] = useState('');
     const [headerId, setHeaderId] = useState('');
-    const [toolId, setToolId] = useState('')
+    const [toolId, setToolId] = useState('');
+    const [valueFilterType, setValueFilterType] = useState("ทั้งหมด");
+    const [valueFilterStatus, setValueFilterStatus] = useState("ทั้งหมด");
 
     useEffect(() => {
         dispatch(toolListAction());
+        if (toolList.tools.length !== 0) {
+            setTools(toolList.tools);
+            setDefaultValue(toolList.tools)
+        }
+
         return () => {
 
         }
-    }, [])
+    }, [toolList.tools])
+
+
 
     const [formState, inputHandler] = useForm(
         {
@@ -139,6 +151,10 @@ export default function TableTool() {
         <div>
             { messageAlert && <Alert onClose={() => { }} style={{ margin: "10px 0" }}>This is a success alert — check it out!</Alert>}
             {/* Table */}
+
+            <SelectFilter label="ชนิด" defaultValue={defaultValue} data={tools} setData={setTools} filterType="type" setValueFilterType={setValueFilterType} valueFilterType={valueFilterType} valueFilterStatus={valueFilterStatus} setValueFilterStatus={setValueFilterStatus} />
+            <SelectFilter label="สถานะ" defaultValue={defaultValue} data={tools} setData={setTools} filterType="status" setValueFilterType={setValueFilterType} valueFilterType={valueFilterType} valueFilterStatus={valueFilterStatus} setValueFilterStatus={setValueFilterStatus} />
+
 
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>

@@ -43,7 +43,7 @@ function CreateBoard() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const toolList = useSelector((state) => state.toolList);
-    const [tools, setTools] = useState(toolList.tools)
+    const [tools, setTools] = useState([])
     const [file, setFile] = useState(null);
     const [total, setTotal] = useState('');
     const [type, setType] = useState('');
@@ -76,10 +76,13 @@ function CreateBoard() {
     useEffect(() => {
         // ดึงข้อมูลอุปกรณ์สำหรับเพิ่มลงในรายการบอร์ด
         dispatch(toolListAction());
+        if(toolList.tools.length !== 0) {
+            setTools(toolList.tools)
+        }
         return () => {
 
         }
-    }, [])
+    }, [toolList.tools])
 
     // send data to front-end
     const onSubmit = (e) => {

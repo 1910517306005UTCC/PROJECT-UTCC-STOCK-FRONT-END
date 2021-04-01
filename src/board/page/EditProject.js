@@ -52,7 +52,7 @@ function EditProject() {
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [nameFilter, setNameFilter] = useState([]);
     const [toolBackup, setToolBackup] = useState(project.tools);
-    const [tools, setTools] = useState(toolList.tools);
+    const [tools, setTools] = useState([]);
     const [openAlert, setOpenAlert] = useState(false);
     const [validTool, setValidTool] = useState(false);
     const [validBtn, setValidBtn] = useState(false);
@@ -81,7 +81,7 @@ function EditProject() {
         let temArr = []
         for (var count = 0; count < project.tools.length; count++) {
             if(temArr.length === 0){
-                temArr = tools.filter((item) => project.tools[count].id !== item.id)
+                temArr = toolList.tools.filter((item) => project.tools[count].id !== item.id)
             } 
             if(temArr.length > 0) {
                 let filterData = temArr.filter((item) => project.tools[count].id !== item.id)
@@ -93,7 +93,7 @@ function EditProject() {
         return () => {
 
         }
-    }, [])
+    }, [toolList.tools])
 
     const onSubmit = (e) => {
         e.preventDefault();

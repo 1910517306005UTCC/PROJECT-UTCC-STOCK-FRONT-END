@@ -17,6 +17,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 
 // CSS
 import "./TableBoard.css"
+import SelectFilter from '../../shared/components/UIElements/SelectFilter';
 
 const columns = [
     { label: 'รูปภาพ', minWidth: 100 },
@@ -68,21 +69,30 @@ export default function TableBoard() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const boardList = useSelector((state) => state.boardList);
-    const { boards, loading, error, messageAlert } = boardList;
+    const { messageAlert } = boardList;
+    // const [boards, setBoards] = useState(boardList.boards);
+    const [boards, setBoards] = useState([])
+    const [defaultValue, setDefaultValue] = useState([])
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     // const [tools] = useState(listToolApi);
     const [openModal, setOpenModal] = useState(false);
     const [headerForm, setHeaderForm] = useState('');
     const [headerId, setHeaderId] = useState('');
-    const [boardId, setBoardId] = useState('')
+    const [boardId, setBoardId] = useState('');
+    const [valueFilterType, setValueFilterType] = useState("ทั้งหมด");
+    const [valueFilterStatus, setValueFilterStatus] = useState("ทั้งหมด");
 
     useEffect(() => {
         dispatch(boardListAction());
+        if(boardList.boards.length !== 0) {
+            setBoards(boardList.boards)
+            setDefaultValue(boardList.boards)
+        }
         return () => {
 
         }
-    }, [])
+    }, [boardList.boards])
 
     const [formState, inputHandler] = useForm(
         {
@@ -123,10 +133,14 @@ export default function TableBoard() {
         setOpenModal(false)
     }
 
+    console.log(boards)
+
     return (
         <div>
             { messageAlert && <Alert onClose={() => { }} style={{ margin: "10px 0" }}>This is a success alert — check it out!</Alert>}
             {/* Table */}
+
+            <SelectFilter label="สถานะ" defaultValue={defaultValue} data={boards} setData={setBoards} filterType="status" setValueFilterType={setValueFilterType} valueFilterType={valueFilterType} valueFilterStatus={valueFilterStatus} setValueFilterStatus={setValueFilterStatus} />
 
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
