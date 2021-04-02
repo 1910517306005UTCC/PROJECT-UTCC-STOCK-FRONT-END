@@ -1,34 +1,34 @@
 export const historyTool = [
     {
-        date: "13/02/63",
+        date: "4/2/2021",
         toolName: "R100K",
         username: "Boonyarit",
         status: "Admin",
         actionType: "add",
         total: 12,
-        time: "12.30 pm",
-        exp: "13/08/63",
+        time: "12:30",
+        exp: "4/2/63",
         description: "nothing"
     },
     {
-        date: "14/02/63",
+        date: "3/26/2021",
         toolName: "IC4227",
         username: "Asuna",
         status: "User",
         actionType: "request",
         total: 4,
-        time: "14.30 pm",
+        time: "20:30",
         exp: "14/08/63",
         description: "there was an insufficient tool"
     },
     {
-        date: "15/02/63",
+        date: "3/1/2021",
         toolName: "Module-WIFI",
         username: "Mio",
         status: "User",
         actionType: "add",
         total: 7,
-        time: "09.10 am",
+        time: "09:10",
         exp: "15/08/63",
         description: "nothing"
     }

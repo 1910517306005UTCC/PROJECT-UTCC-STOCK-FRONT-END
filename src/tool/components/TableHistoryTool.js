@@ -75,7 +75,8 @@ export default function TableHistoryTool() {
     const classes = useStyles();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
-    const [tools] = useState(historyTool);
+    const [tools, setTools] = useState(historyTool);
+    const [defaultValueTools, setDefaultValueTools] = useState(historyTool);
     const [openRestore, setOpenRestore] = useState(false);
     const [data, setData] = useState();
     const [openEdit, setOpenEdit] = useState(false);
@@ -145,7 +146,7 @@ export default function TableHistoryTool() {
 
 
     // let lastTime = new Date("3/28/2021")
-    
+
     // let currentTime = new Date();
     // const latestTime = currentTime.getTime() / lastTime.getTime()
     // // console.log(currentTime.getTime() / lastTime.getTime())
@@ -153,7 +154,8 @@ export default function TableHistoryTool() {
 
     return (
         <div>
-            <SelectFilterTimeAndStatus label="เวลา" />
+            <SelectFilterTimeAndStatus label="เวลา" tools={tools} setTools={setTools}
+                defaultValueTools={defaultValueTools} setDefaultValueTools={setDefaultValueTools} />
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">
