@@ -1,6 +1,6 @@
 export const historyTool = [
     {
-        date: "4/2/2021",
+        date: "4/3/2021",
         toolName: "R100K",
         username: "Boonyarit",
         status: "Admin",
@@ -22,13 +22,13 @@ export const historyTool = [
         description: "there was an insufficient tool"
     },
     {
-        date: "3/1/2021",
+        date: "11/2/2020",
         toolName: "Module-WIFI",
         username: "Mio",
         status: "User",
         actionType: "add",
         total: 7,
-        time: "09:10",
+        time: "12:10",
         exp: "15/08/63",
         description: "nothing"
     }
