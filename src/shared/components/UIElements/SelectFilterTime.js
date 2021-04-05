@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Component 
@@ -10,10 +10,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function SelectFilterTimeAndStatus(props) {
+function SelectFilterTime(props) {
 
     const classes = useStyles();
-    const { label, tools, setTools, defaultValueTools, setDefaultValueTools } = props;
+    const { label, setTools, defaultValueTools } = props;
     const [typeList] = useState([{ period: "ทั้งหมด", value: 0 }, { period: "วันนี้", value: 1 }, { period: "ภายใน 7 วัน", value: 7 },
     { period: "ภายใน 14 วัน", value: 14 }, { period: "ภายใน 1 เดือน", value: 30 }, { period: "ภายใน 3 เดือน", value: 90 }, { period: "ภายใน 5 เดือน", value: 150 }]);
     const [value, setValue] = useState("ทั้งหมด");
@@ -32,6 +32,7 @@ function SelectFilterTimeAndStatus(props) {
         } else {
             defaultValueTools.map((tool) => {
                 let currentTime = new Date();
+                // let currentTime = new Date();
                 let latestTime = new Date(tool.date + " " + tool.time)
                 let latestMonth = latestTime.getMonth() + 1;
                 let latestYear = latestTime.getFullYear();
@@ -114,6 +115,8 @@ function SelectFilterTimeAndStatus(props) {
                         }
                     }
 
+
+
                     // ไม่เกิน 14 วัน
                     if (cal <= 14) {
                         // คำนวณระยะเวลาของชั่วโมงของวันสุดท้าย เช่น 17/04/63 17.00 และ 24/04/63 16.00 = TRUE(อีก 1 ชั่วโมงครบ 7 วัน)
@@ -135,9 +138,9 @@ function SelectFilterTimeAndStatus(props) {
                     if (currentMonth === latestMonth) {
                         cal = currentDate - latestDate;
                     }
-                    // เดือนธันวาคม + เดือนมกราคม 12 + 1 = 13  เดือนกุมภาพันธ์ - เดือนมกราคม  2 - 1 = 1 
+                    // เดือนมกราคม - เดือนธันวาคม 1 - 12 = -11 หรือ เดือนกุมภาพันธ์ - เดือนมกราคม  2 - 1 = 1 
                     if (calYear === 1 || calYear === 0) {
-                        if (lastMonth === 1 || lastMonth === 13) {
+                        if (lastMonth === 1 || lastMonth === -11) {
                             // เช็คเดือนที่มี 31 วัน
                             if (latestMonth === 1 || 3 || 5 || 7 || 8 || 10 || 12) {
                                 cal = (31 - latestDate) + currentDate;
@@ -176,19 +179,16 @@ function SelectFilterTimeAndStatus(props) {
                     let lastMonth = 0;
                     if (calYear === 1 || calYear === 0) {
                         if (currentMonth > latestMonth) {
+                            // กรณีเดือนเมษายน - เดือนมกราคม = 4 - 1  = 3
                             lastMonth = currentMonth - latestMonth
-                            // console.log("if: " + currentMonth + " - " + latestMonth + " = " + lastMonth)
-
-                        } if(latestMonth > currentMonth) {
-                            // กรณีเดือน ธันวาคม กับ มกราคม = 12 - (1+10) = 12 - 11 = 1
-                            lastMonth = latestMonth + currentMonth
-                            // console.log("else: " + currentMonth + " - " + (latestMonth+10) + "=" + lastMonth)
+                        } if (latestMonth > currentMonth) {
+                            // กรณีเดือนตุลาคม - เดือนมกราคม = (12-10) + 1  = 3
+                            lastMonth = (12 - latestMonth) + currentMonth
 
                         }
                     }
-                    // console.log(lastMonth)
                     // เช็คเดือนในปัจจุบันว่าตรงกับเดือนในข้อมูลหรือไม่
-                    if (lastMonth <= 3 || lastMonth >= 13) {
+                    if (lastMonth <= 3) {
                         if (currentMonth === latestMonth) {
                             if (currentDate === latestDate) {
                                 newArr = [...newArr, tool]
@@ -203,15 +203,18 @@ function SelectFilterTimeAndStatus(props) {
                 }
                 if (value === "ภายใน 5 เดือน") {
                     // เช็คระยะห่างของเดือน
-                    let lastMonth;
-                    if (currentMonth > lastMonth) {
-                        lastMonth = currentMonth - latestMonth
-                    } else {
-                        if (calYear === 1 || calYear === 0) {
-                            // กรณีเดือน ธันวาคม กับ มกราคม = 12 - (1+10) = 12 - 11 = 1
-                            lastMonth = currentMonth - (latestMonth + 10)
+                    let lastMonth = 0;
+                    if (calYear === 1 || calYear === 0) {
+                        if (currentMonth > latestMonth) {
+                            // กรณีเดือนมิถุนายน - เดือนมกราคม = 6 - 1  = 5
+                            lastMonth = currentMonth - latestMonth
+                        } if (latestMonth > currentMonth) {
+                            // กรณีเดือนสิงหาคม - เดือนมกราคม = (12-8) + 1  = 5
+                            lastMonth = (12 - latestMonth) + currentMonth
+
                         }
                     }
+                    // console.log(lastMonth)
                     // เช็คเดือนในปัจจุบันว่าตรงกับเดือนในข้อมูลหรือไม่
                     if (lastMonth <= 5) {
                         if (currentMonth === latestMonth) {
@@ -252,4 +255,4 @@ function SelectFilterTimeAndStatus(props) {
     )
 }
 
-export default SelectFilterTimeAndStatus
+export default SelectFilterTime

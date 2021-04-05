@@ -1,35 +1,68 @@
 export const historyTool = [
     {
-        date: "4/3/2021",
+        date: "4/5/2021",
         toolName: "R100K",
         username: "Boonyarit",
         status: "Admin",
         actionType: "add",
         total: 12,
-        time: "12:30",
-        exp: "4/2/63",
+        time: "20:30",
+        exp: "10/5/2021",
         description: "nothing"
     },
     {
-        date: "3/26/2021",
+        date: "3/31/2021",
         toolName: "IC4227",
         username: "Asuna",
         status: "User",
         actionType: "request",
         total: 4,
-        time: "20:30",
-        exp: "14/08/63",
+        time: "21:30",
+        exp: "9/31/2021",
         description: "there was an insufficient tool"
     },
     {
-        date: "11/2/2020",
+        date: "3/25/2021",
         toolName: "Module-WIFI",
         username: "Mio",
         status: "User",
         actionType: "add",
         total: 7,
         time: "12:10",
-        exp: "15/08/63",
+        exp: "9/25/2021",
+        description: "nothing"
+    },
+    {
+        date: "3/10/2021",
+        toolName: "R560K",
+        username: "Mio",
+        status: "User",
+        actionType: "request",
+        total: -50,
+        time: "12:10",
+        exp: "9/25/2021",
+        description: "nothing"
+    },
+    {
+        date: "1/20/2021",
+        toolName: "DB-9",
+        username: "Yukino",
+        status: "User",
+        actionType: "add",
+        total: 50,
+        time: "12:10",
+        exp: "7/20/2021",
+        description: "nothing"
+    },
+    {
+        date: "11/20/2020",
+        toolName: "Module-WIFI",
+        username: "Iroha",
+        status: "User",
+        actionType: "add",
+        total: 100,
+        time: "12:10",
+        exp: "5/20/2020",
         description: "nothing"
     }
 ]

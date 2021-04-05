@@ -12,7 +12,8 @@ import Input from '../../shared/components/FormElements/Input';
 import RestoreIcon from '@material-ui/icons/Restore';
 import EditIcon from '@material-ui/icons/Edit';
 import DescriptionIcon from '@material-ui/icons/Description';
-import SelectFilterTimeAndStatus from '../../shared/components/UIElements/SelectFilterTimeAndStatus';
+import SelectFilterTime from '../../shared/components/UIElements/SelectFilterTime';
+import SelectFilterStatus from '../../shared/components/UIElements/SelectFilterStatus';
 
 
 const columns = [
@@ -76,7 +77,7 @@ export default function TableHistoryTool() {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [tools, setTools] = useState(historyTool);
-    const [defaultValueTools, setDefaultValueTools] = useState(historyTool);
+    const [defaultValueTools] = useState(historyTool);
     const [openRestore, setOpenRestore] = useState(false);
     const [data, setData] = useState();
     const [openEdit, setOpenEdit] = useState(false);
@@ -154,8 +155,8 @@ export default function TableHistoryTool() {
 
     return (
         <div>
-            <SelectFilterTimeAndStatus label="เวลา" tools={tools} setTools={setTools}
-                defaultValueTools={defaultValueTools} setDefaultValueTools={setDefaultValueTools} />
+            <SelectFilterTime label="ระยะเวลา"  setTools={setTools} defaultValueTools={defaultValueTools}  />
+            <SelectFilterStatus label="ชนิดการใช้งานอุปกรณ์"  setTools={setTools} defaultValueTools={defaultValueTools}  />
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">
