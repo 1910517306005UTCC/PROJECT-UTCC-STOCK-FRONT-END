@@ -3,8 +3,9 @@
     grid-template-columns: 50% 50%;
 }
 
-.createproject-input-group div {
+.createproject-input-group .grid-input {
     width: 98%;
+    display: block;
 }
 
 .createproject-select-group {

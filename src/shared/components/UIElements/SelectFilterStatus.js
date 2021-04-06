@@ -13,31 +13,31 @@ const useStyles = makeStyles((theme) => ({
 function SelectFilterStatus(props) {
 
     const classes = useStyles();
-    const { label,setTools, defaultValueTools } = props;
-    const [typeList] = useState([{text:"ทั้งหมด", value: "ทั้งหมด"}, {text:"การเพิ่ม", value: "add"}, { text: "การเบิก", value:"request"}]);
+    const { label, setData, defaultValueData } = props;
+    const [typeList] = useState([{ text: "ทั้งหมด", value: "ทั้งหมด" }, { text: "การเพิ่ม", value: "add" }, { text: "การเบิก", value: "request" }]);
     const [value, setValue] = useState("ทั้งหมด");
 
 
     const onChange = (e) => {
-        const value = e.target.value;
+        const newValue = e.target.value;
 
-        const newValue = typeList.filter((item) => item.value === value)
-        console.log(newValue[0].text)
-        setValue(newValue[0].text)
         let newArr = []
 
-        if (value === "ทั้งหมด") {
-            newArr = defaultValueTools
+        if (newValue === "ทั้งหมด") {
+            newArr = defaultValueData
             setValue("ทั้งหมด");
         } else {
-            defaultValueTools.map((tool) => {
-                if(value === tool.actionType) {
+            defaultValueData.map((tool) => {
+                if (newValue === tool.actionType) {
                     newArr = [...newArr, tool]
                 }
             }) // function map()
+            setValue(newValue)
+
         } // if 1
 
-        setTools(newArr)
+        setData(newArr)
+
     }
 
 

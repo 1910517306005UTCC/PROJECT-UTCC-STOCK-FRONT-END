@@ -233,8 +233,8 @@ export default function Nav() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>โปรไฟล์</MenuItem>
-            <MenuItem onClick={handleMenuClose}><Link to="/profile/id">แก้ไขโปรไฟล์</Link></MenuItem>
+            <Link to="/profile"><MenuItem onClick={handleMenuClose}>โปรไฟล์</MenuItem></Link>
+            <Link to="/profile/id"><MenuItem onClick={handleMenuClose}>แก้ไขโปรไฟล์</MenuItem></Link>
             <MenuItem onClick={handleMenuClose}>ออกจากระบบ</MenuItem>
         </Menu>
     );

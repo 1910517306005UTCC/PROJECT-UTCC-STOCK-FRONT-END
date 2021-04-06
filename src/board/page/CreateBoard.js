@@ -180,7 +180,7 @@ function CreateBoard() {
                         id="name"
                         element="input"
                         type="text"
-                        label="ชื่อบอร์ด *"
+                        label="ชื่อบอร์ด"
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="โปรดใส่ข้อมูล."
                         onInput={inputHandler}
@@ -203,7 +203,7 @@ function CreateBoard() {
                         </div>
                         <SelectComponent list={categoryFilter} typeFilter="tool" filterName="ชื่ออุปกรณ์" dataType="name" onChange={onChangeNameFilter} value={nameSelect} />
                         <TextField
-                            label="จำนวน"
+                            label="จำนวนบอร์ด"
                             variant="outlined"
                             type="number"
                             fullWidth

@@ -58,12 +58,12 @@
 }
 
 .container-detailtool div:last-child .detailtool-list p:first-child {
-    width: 25%;
+    width: 40%;
     font-weight: bold;
 }
 
 .container-detailtool div:last-child .detailtool-list p:last-child {
-    width: 75%;
+    width: 60%;
 }
 
 .container-detailtool div:last-child .detailtool-des {

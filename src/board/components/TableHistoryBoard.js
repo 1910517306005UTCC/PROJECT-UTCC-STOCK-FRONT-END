@@ -13,6 +13,10 @@ import Input from '../../shared/components/FormElements/Input';
 import RestoreIcon from '@material-ui/icons/Restore';
 import EditIcon from '@material-ui/icons/Edit';
 import DescriptionIcon from '@material-ui/icons/Description';
+import SelectFilterTime from '../../shared/components/UIElements/SelectFilterTime';
+import SelectFilterStatus from '../../shared/components/UIElements/SelectFilterStatus';
+import DescriptionHistory from '../../shared/components/UIElements/DescriptionHistory';
+
 
 
 const columns = [
@@ -76,6 +80,7 @@ export default function TableHistoryBoard() {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [boards, setBoards] = useState(historyBoard);
+    const [defaultValueBoards] = useState(historyBoard);
     const [openRestore, setOpenRestore] = useState(false);
     const [data, setData] = useState({});
     const [openEdit, setOpenEdit] = useState(false);
@@ -145,6 +150,8 @@ export default function TableHistoryBoard() {
 
     return (
         <div>
+            <SelectFilterTime label="ระยะเวลา" setData={setBoards} defaultValueData={defaultValueBoards} />
+            <SelectFilterStatus label="ชนิดการใช้งานบอร์ด" setData={setBoards} defaultValueData={defaultValueBoards} />
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">
@@ -291,6 +298,7 @@ export default function TableHistoryBoard() {
                     </div>
                 </Fade>
             </Modal>
+            <DescriptionHistory />
         </div>
     );
 }

@@ -29,7 +29,6 @@ function EditTool() {
     const [tool] = useState(toolItem);
     const [file, setFile] = useState(tool.imageProfile);
     const [files, setFiles] = useState(tool.images);
-    const [total, setTotal] = useState(tool.total);
     const [type] = useState(tool.type);
     const [limit, setLimit] = useState(tool.limit);
     const [description, setDescription] = useState(tool.description);
@@ -38,6 +37,10 @@ function EditTool() {
     const [formState, inputHandler] = useForm(
         {
             name: {
+                value: '',
+                isValid: false
+            },
+            total: {
                 value: '',
                 isValid: false
             },
@@ -59,7 +62,7 @@ function EditTool() {
         let newTool = {
             toolName: formState.inputs.name.value,
             toolCode: toolCode,
-            total: total,
+            total: formState.inputs.total.value,
             type: formState.inputs.type.value,
             category: formState.inputs.category.value,
             imageProfile: file,
@@ -81,7 +84,7 @@ function EditTool() {
                         id="name"
                         element="input"
                         type="text"
-                        label="ชื่ออุปกรณ์ *"
+                        label="ชื่ออุปกรณ์"
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="โปรดใส่ข้อมูล."
                         onInput={inputHandler}
@@ -99,7 +102,7 @@ function EditTool() {
                         onChange={(e) => settoolCode(e.target.value)}
                     />
                     <TextField
-                        label="จำกัด"
+                        label="การแจ้งเตือนอุปกรณ์"
                         variant="outlined"
                         type="number"
                         fullWidth
@@ -112,7 +115,7 @@ function EditTool() {
                             id="type"
                             element="input"
                             type="text"
-                            label="ชนิด *"
+                            label="ชนิด"
                             validators={[VALIDATOR_REQUIRE()]}
                             errorText="โปรดใส่ข้อมูล."
                             onInput={inputHandler}
@@ -124,7 +127,7 @@ function EditTool() {
                             id="category"
                             element="input"
                             type="text"
-                            label="ประเภท *"
+                            label="ประเภท"
                             validators={[VALIDATOR_REQUIRE()]}
                             errorText="โปรดใส่ข้อมูล."
                             onInput={inputHandler}
@@ -133,14 +136,17 @@ function EditTool() {
                             required
                         />
                     </div>
-                    <TextField
-                        label="จำนวน"
-                        variant="outlined"
-                        type="number"
-                        fullWidth
-                        value={total}
-                        className={classes.margin}
-                        onChange={(e) => setTotal(e.target.value)}
+                    <Input
+                        id="total"
+                        element="input"
+                        type="text"
+                        label="จำนวนอุปกรณ์"
+                        validators={[VALIDATOR_REQUIRE()]}
+                        errorText="โปรดใส่ข้อมูล."
+                        onInput={inputHandler}
+                        initialValue={tool.total}
+                        initialValid={true}
+                        required
                     />
                     <ImageUpload file={file} setFile={setFile} />
                     <ImageUploadMultiple files={files} setFiles={setFiles} />

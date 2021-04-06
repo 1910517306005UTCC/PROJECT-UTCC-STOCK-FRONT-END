@@ -46,7 +46,7 @@ function DetailTool() {
                         <p>{tool.total}</p>
                     </div>
                     <div className="detailtool-list">
-                        <p>จำนวน</p>
+                        <p>จำนวนอุปกรณ์</p>
                         <p>{tool.total}</p>
                     </div>
                     <div className="detailtool-list">
@@ -66,7 +66,7 @@ function DetailTool() {
                         }
                     </div>
                     <div className="detailtool-list">
-                        <p>จำกัด</p>
+                        <p>การแจ้งเตือนจำนวนอุปกรณ์(จำนวนอุปกรณ์ 58 น้อยกว่า 68 = กำลังจะหมด)</p>
                         <p>{tool.limit}</p>
                     </div>
                     <div className="detailtool-des">

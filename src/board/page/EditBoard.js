@@ -184,7 +184,7 @@ function EditBoard() {
                         id="name"
                         element="input"
                         type="text"
-                        label="ชื่อบอร์ด *"
+                        label="ชื่อบอร์ด"
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="Please enter a valid board name."
                         onInput={inputHandler}
@@ -215,7 +215,7 @@ function EditBoard() {
                                 id="total"
                                 element="input"
                                 type="number"
-                                label="จำนวน *"
+                                label="จำนวน"
                                 validators={[VALIDATOR_REQUIRE()]}
                                 errorText="โปรดใส่ข้อมูล."
                                 onInput={inputHandler}

@@ -65,7 +65,7 @@ const Input = props => {
             // />
             <TextField error={!inputState.isValid && inputState.isTouched}
                 id={props.id}
-                label={props.label}
+                label={<div>{props.label} <span style={{color: "red", fontWeight: "bold"}}>*</span></div>}
                 variant="outlined"
                 fullWidth
                 type={props.type}

@@ -97,7 +97,7 @@ function DetailBoard() {
                         <p>{board.boardCode}</p>
                     </div>
                     <div className="detailboard-list">
-                        <p>จำนวน</p>
+                        <p>จำนวนบอร์ด</p>
                         <p>{board.total}</p>
                     </div>
                     <div className="detailboard-list">
@@ -113,7 +113,7 @@ function DetailBoard() {
                         }
                     </div>
                     <div className="detailboard-list">
-                        <p>จำกัด</p>
+                        <p>การแจ้งเตือนจำนวนบอร์ด(จำนวนบอร์ด 58 น้อยกว่า 68 = กำลังจะหมด)</p>
                         <p>{board.limit}</p>
                     </div>
                     <div className="detailboard-des">

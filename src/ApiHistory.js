@@ -69,16 +69,16 @@ export const historyTool = [
 
 export const historyBoard = [
     {
-        date: "13/02/63",
+        date: "4/6/2021",
         boardName: "ET-Arduino",
         boardId: "dvsv",
         username: "Boonyarit",
         status: "Admin",
         actionType: "request",
         total: 12,
-        time: "12.30 pm",
+        time: "20:30",
         description: "nothing",
-        exp: "13/08/63",
+        exp: "10/6/2021",
         tools: [
             {
                 id: "t1",
@@ -131,29 +131,29 @@ export const historyBoard = [
         ]
     },
     {
-        date: "14/02/63",
+        date: "3/27/2021",
         boardName: "ET-Arduino",
         boardId: "dvsv",
         username: "Boonyarit",
         status: "Admin",
         actionType: "add",
         total: 4,
-        time: "14.30 pm",
+        time: "11:30",
         description: "",
-        exp: "14/08/63",
+        exp: "9/27/2021",
         tools: []
     },
     {
-        date: "14/02/63",
+        date: "3/12/2021",
         boardName: "ET-JCD4 PLUS",
         boardId: "dvsv",
         username: "Boonyarit",
         status: "Admin",
         actionType: "request",
         total: 4,
-        time: "14.30 pm",
+        time: "14:30",
         description: "there was an insufficient tool",
-        exp: "14/08/63",
+        exp: "9/12/2021",
         tools: [
             {
                 id: "t1",
@@ -206,16 +206,16 @@ export const historyBoard = [
         ]
     },
     {
-        date: "15/02/63",
+        date: "1/5/2021",
         boardName: "ET-MEGA-IT",
         boardId: "dvsv",
         username: "Boonyarit",
         status: "Admin",
         actionType: "request",
         total: 7,
-        time: "09.10 am",
+        time: "9:30",
         description: "nothing",
-        exp: "15/08/63",
+        exp: "7/5/2021",
         tools: [
             {
                 id: "t1",

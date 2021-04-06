@@ -13,24 +13,25 @@ const useStyles = makeStyles((theme) => ({
 function SelectFilterTime(props) {
 
     const classes = useStyles();
-    const { label, setTools, defaultValueTools } = props;
+    const { label, setData, defaultValueData } = props;
     const [typeList] = useState([{ period: "ทั้งหมด", value: 0 }, { period: "วันนี้", value: 1 }, { period: "ภายใน 7 วัน", value: 7 },
     { period: "ภายใน 14 วัน", value: 14 }, { period: "ภายใน 1 เดือน", value: 30 }, { period: "ภายใน 3 เดือน", value: 90 }, { period: "ภายใน 5 เดือน", value: 150 }]);
     const [value, setValue] = useState("ทั้งหมด");
 
 
     const onChange = (e) => {
-        const value = e.target.value;
+        const newValue = e.target.value;
 
-        const newValue = typeList.filter((item) => item.period === value)
-        setValue(newValue[0].period)
+        // const newType = typeList.filter((item) => item.period === value)
+        // setValue(newType[0].period)
         let newArr = []
 
-        if (value === "ทั้งหมด") {
-            newArr = defaultValueTools
+        if (newValue === "ทั้งหมด") {
+            newArr = defaultValueData
             setValue("ทั้งหมด");
         } else {
-            defaultValueTools.map((tool) => {
+            setValue(newValue)
+            defaultValueData.map((tool) => {
                 let currentTime = new Date();
                 // let currentTime = new Date();
                 let latestTime = new Date(tool.date + " " + tool.time)
@@ -46,12 +47,12 @@ function SelectFilterTime(props) {
                 let currentHour = currentTime.getHours();
                 let calYear = currentYear - latestYear;
 
-                if (value === "วันนี้") {
+                if (newValue === "วันนี้") {
                     if (currentMonth === latestMonth && currentDate === latestDate) {
                         newArr = [...newArr, tool]
                     }
                 }
-                if (value === "ภายใน 7 วัน") {
+                if (newValue === "ภายใน 7 วัน") {
                     let cal;
                     if (currentMonth === latestMonth) {
                         cal = currentDate - latestDate;
@@ -90,7 +91,7 @@ function SelectFilterTime(props) {
                     }
                 }
 
-                if (value === "ภายใน 14 วัน") {
+                if (newValue === "ภายใน 14 วัน") {
                     let cal;
                     if (currentMonth === latestMonth) {
                         cal = currentDate - latestDate;
@@ -132,7 +133,7 @@ function SelectFilterTime(props) {
                     }
                 }
 
-                if (value === "ภายใน 1 เดือน") {
+                if (newValue === "ภายใน 1 เดือน") {
                     let cal;
                     let lastMonth = currentMonth - latestMonth;
                     if (currentMonth === latestMonth) {
@@ -174,7 +175,7 @@ function SelectFilterTime(props) {
                     }
                 }
 
-                if (value === "ภายใน 3 เดือน") {
+                if (newValue === "ภายใน 3 เดือน") {
                     // เช็คระยะห่างของเดือน
                     let lastMonth = 0;
                     if (calYear === 1 || calYear === 0) {
@@ -201,7 +202,7 @@ function SelectFilterTime(props) {
                         }
                     }
                 }
-                if (value === "ภายใน 5 เดือน") {
+                if (newValue === "ภายใน 5 เดือน") {
                     // เช็คระยะห่างของเดือน
                     let lastMonth = 0;
                     if (calYear === 1 || calYear === 0) {
@@ -232,7 +233,7 @@ function SelectFilterTime(props) {
             }) // function map()
         } // if 1
 
-        setTools(newArr)
+        setData(newArr)
     }
 
 

@@ -10,7 +10,7 @@ import CreateBoard from "./board/page/CreateBoard";
 import CreateProject from "./board/page/CreateProject";
 import BoardList from "./board/page/BoardList";
 import BoardRequest from "./board/page/BoardRequest";
-// import EditProfile from "./user/pages/EditProfile";
+import EditProfile from "./user/pages/EditProfile";
 import DetailTool from "./tool/pages/DetailTool";
 import DetailBoard from "./board/page/DetailBoard";
 import EditBoard from "./board/page/EditBoard";
@@ -24,6 +24,7 @@ import EditProject from "./board/page/EditProject";
 import Home from "./Home";
 import Login from "./user/pages/Login";
 import Register from "./user/pages/Register";
+import Profile from "./user/pages/Profile";
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
         <Nav />
         <Container maxWidth="lg">
           <Switch>
-          <Route path="/" exact>
+            <Route path="/" exact>
               <Home />
             </Route>
             <Route path="/tool/list" exact>
@@ -69,9 +70,6 @@ function App() {
             <Route path="/project/new">
               <CreateProject />
             </Route>
-            {/* <Route path="/profile/id">
-              <EditProfile />
-            </Route> */}
             <Route path="/historytool">
               <HistoryTool />
             </Route>
@@ -92,6 +90,12 @@ function App() {
             </Route>
             <Route path="/register">
               <Register />
+            </Route>
+            <Route path="/profile" exact>
+              <Profile />
+            </Route>
+            <Route path="/profile/id">
+              <EditProfile />
             </Route>
             <Redirect to="/" />
           </Switch>

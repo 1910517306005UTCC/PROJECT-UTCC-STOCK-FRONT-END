@@ -262,7 +262,7 @@ function CreateProject() {
                             id="name"
                             element="input"
                             type="text"
-                            label="ชื่อโปรเจค *"
+                            label="ชื่อโปรเจค"
                             validators={[VALIDATOR_REQUIRE()]}
                             errorText="โปรดใส่ข้อมูล."
                             onInput={inputHandler}
@@ -280,12 +280,12 @@ function CreateProject() {
                     />
 
                     <div className="createproject-input-group">
-                        <div onClick={handleAlert}>
+                        <div onClick={handleAlert} className="grid-input">
                             <Input
                                 id="total"
                                 element="input"
                                 type="number"
-                                label="จำนวน *"
+                                label="จำนวนโปรเจค"
                                 validators={[VALIDATOR_REQUIRE()]}
                                 errorText="โปรดใส่ข้อมูล."
                                 onInput={inputHandler}

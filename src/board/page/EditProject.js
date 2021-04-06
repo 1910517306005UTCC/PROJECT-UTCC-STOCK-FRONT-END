@@ -250,7 +250,7 @@ function EditProject() {
                         id="name"
                         element="input"
                         type="text"
-                        label="ชื่อโปรเจค *"
+                        label="ชื่อโปรเจค"
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="กรุณาใส่ข้อมูล."
                         onInput={inputHandler}
@@ -273,7 +273,7 @@ function EditProject() {
                                 id="total"
                                 element="input"
                                 type="number"
-                                label="จำนวน *"
+                                label="จำนวนโปรเจค"
                                 validators={[VALIDATOR_REQUIRE()]}
                                 errorText="โปรดใส่ข้อมูล."
                                 onInput={inputHandler}

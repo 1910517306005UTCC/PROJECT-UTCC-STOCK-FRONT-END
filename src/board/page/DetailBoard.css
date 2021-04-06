@@ -59,12 +59,12 @@
 }
 
 .container-detailboard div:last-child .detailboard-list p:first-child {
-    width: 25%;
+    width: 40%;
     font-weight: bold;
 }
 
 .container-detailboard div:last-child .detailboard-list p:last-child {
-    width: 75%;
+    width: 60%;
 }
 
 .container-detailboard div:last-child .detailboard-des {

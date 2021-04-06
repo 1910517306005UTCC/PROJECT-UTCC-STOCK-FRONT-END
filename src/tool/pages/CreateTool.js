@@ -80,7 +80,7 @@ function CreateTool() {
                         id="name"
                         element="input"
                         type="text"
-                        label="ชื่ออุปกรณ์ *"
+                        label="ชื่ออุปกรณ์"
                         validators={[VALIDATOR_REQUIRE()]}
                         errorText="โปรดใส่ข้อมูล."
                         onInput={inputHandler}
@@ -99,7 +99,7 @@ function CreateTool() {
                             id="type"
                             element="input"
                             type="text"
-                            label="ชนิด *"
+                            label="ชนิด"
                             validators={[VALIDATOR_REQUIRE()]}
                             errorText="โปรดใส่ข้อมูล."
                             onInput={inputHandler}
@@ -109,7 +109,7 @@ function CreateTool() {
                             id="category"
                             element="input"
                             type="text"
-                            label="ประเภท *"
+                            label="ประเภท"
                             validators={[VALIDATOR_REQUIRE()]}
                             errorText="โปรดใส่ข้อมูล."
                             onInput={inputHandler}
@@ -118,7 +118,7 @@ function CreateTool() {
                     </div>
                     <div className="createtool-input-group">
                         <TextField
-                            label="จำนวน"
+                            label="จำนวนอุปกรณ์"
                             variant="outlined"
                             fullWidth
                             type="number"

@@ -14,6 +14,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DescriptionIcon from '@material-ui/icons/Description';
 import SelectFilterTime from '../../shared/components/UIElements/SelectFilterTime';
 import SelectFilterStatus from '../../shared/components/UIElements/SelectFilterStatus';
+import DescriptionHistory from '../../shared/components/UIElements/DescriptionHistory';
 
 
 const columns = [
@@ -155,8 +156,8 @@ export default function TableHistoryTool() {
 
     return (
         <div>
-            <SelectFilterTime label="ระยะเวลา"  setTools={setTools} defaultValueTools={defaultValueTools}  />
-            <SelectFilterStatus label="ชนิดการใช้งานอุปกรณ์"  setTools={setTools} defaultValueTools={defaultValueTools}  />
+            <SelectFilterTime label="ระยะเวลา"  setData={setTools} defaultValueData={defaultValueTools}  />
+            <SelectFilterStatus label="ชนิดการใช้งานอุปกรณ์"  setData={setTools} defaultValueData={defaultValueTools}  />
             <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">
@@ -293,6 +294,7 @@ export default function TableHistoryTool() {
                     </div>
                 </Fade>
             </Modal>
+            <DescriptionHistory />
         </div>
     );
 }
