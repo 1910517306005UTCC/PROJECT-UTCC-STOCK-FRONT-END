@@ -22,6 +22,8 @@ import HistoryProject from "./board/page/HistoryProject";
 import DetailHistoryProject from "./board/page/DetailHistoryProject";
 import EditProject from "./board/page/EditProject";
 import Home from "./Home";
+import Login from "./user/pages/Login";
+import Register from "./user/pages/Register";
 
 
 function App() {
@@ -84,6 +86,12 @@ function App() {
             </Route>
             <Route path="/project/:pid">
               <EditProject />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/register">
+              <Register />
             </Route>
             <Redirect to="/" />
           </Switch>
